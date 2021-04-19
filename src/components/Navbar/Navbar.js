@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import {graphql, useStaticQuery} from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { useStaticQuery, graphql } from "gatsby"
+import React, {useState} from "react"
+import styled from "styled-components"
 import links from "../../constants/links"
 import quickNav from "../../constants/quickNav"
-import styled from "styled-components"
 // import DarkMode from "../DarkMode/DarkMode"
 
 const NavBar = styled.nav`

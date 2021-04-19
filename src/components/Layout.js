@@ -1,12 +1,12 @@
 import React from "react"
-import Navbar from "./Navbar/Navbar"
-import Footer from "./Footer"
-import { createGlobalStyle } from "styled-components"
+import {createGlobalStyle} from "styled-components"
 import "typeface-heebo"
+import Footer from "./Footer"
+import Navbar from "./Navbar/Navbar"
 
 const GlobalStyle = createGlobalStyle`
 :root {
-  --background: #1d1d1d;
+  --background: #1a211e;
   --border: #313131;
   --primary: #ffc400;
   --inActive: #505050;
