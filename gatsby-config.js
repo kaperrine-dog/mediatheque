@@ -48,5 +48,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
     `gatsby-plugin-transition-link`,
+    `gatsby-transformer-sharp`,
   ],
 }
