@@ -1,11 +1,11 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image";
-import Grid from "../components/Grid/Grid"
-import styled from "styled-components"
-import Button from "../components/Button/Button"
-import Faq from "../components/Faq"
-import Seo from "../components/SEO"
+import {graphql} from "gatsby";
+import {GatsbyImage} from "gatsby-plugin-image";
+import React from "react";
+import styled from "styled-components";
+import Button from "../components/Button/Button";
+import Faq from "../components/Faq";
+import Grid from "../components/Grid/Grid";
+import Seo from "../components/SEO";
 
 const ImageArea = styled.div`
   grid-column: 1 / 4;
@@ -79,21 +79,23 @@ const productTemplate = ({ data }) => {
     faq,
   } = data.product
 
+  console.log(images)
   const [mainImage, ...productImages] = images
-
   return <>
     <Seo title={name} />
     <section className="section-padding">
       <Grid>
         <ImageArea>
-          <GatsbyImage image={mainImage.gatsbyImageData} className="main-img" />
+          <GatsbyImage 
+            image={mainImage.gatsbyImageData} 
+            className="main-img" 
+          />
         </ImageArea>
         <ContentArea>
           <h1>{name}</h1>
           <h2>£{price}</h2>
           <p>{description}</p>
           <Button text="Enquire Now" link="/contact" />
-
           <ImageGallery>
             {productImages.map((item, index) => {
               return (
@@ -124,7 +126,7 @@ const productTemplate = ({ data }) => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String) {
     product: contentfulProducts(slug: { eq: $slug }) {
       name
       price
@@ -139,6 +141,7 @@ export const query = graphql`
         fluid {
           ...GatsbyContentfulFluid_tracedSVG
         }
+        gatsbyImageData
       }
     }
   }

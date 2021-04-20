@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, {Component} from "react"
 import styled from "styled-components"
 import Product from "./Product"
 
@@ -41,10 +41,10 @@ export default class ProductList extends Component {
     return (
       <Section>
         <FlexContainer>
-          {this.state.sortedProducts.map(({ node }) => {
+          {this.state.sortedProducts.map(({ node, index}) => {
             return (
               <FlexItem>
-                <Product key={node.contentful_id} product={node} />
+                <Product key={index /* node.contentful_id */} product={node} />
               </FlexItem>
             )
           })}
