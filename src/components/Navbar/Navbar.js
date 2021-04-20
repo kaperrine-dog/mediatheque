@@ -11,7 +11,8 @@ const NavBar = styled.nav`
   position: fixed;
   width: 100%;
   z-index: 5;
-  background-color: var(--background);
+  background-color: var(--headerBG);
+  border-bottom: 1px solid var(--border);
 `
 
 const NavButton = styled.button`
@@ -118,7 +119,7 @@ const NavSocials = styled.div`
 `
 
 const NavLinks = styled.div`
-  background-color: var(--background);
+  background-color: var(--headerBG);
   display: flex;
   align-content: center;
   list-style: none;
@@ -263,7 +264,7 @@ const Navbar = () => {
       <NavBar>
         <NavCenter>
           <NavLogo>
-            <AniLink cover bg="var(--background)" to="/">
+            <AniLink cover bg="var(--headerBG)" to="/">
               {siteMetadata.title}
             </AniLink>
           </NavLogo>
@@ -280,7 +281,7 @@ const Navbar = () => {
               {links.map((item, index) => {
                 return (
                   <li key={index}>
-                    <AniLink cover bg="var(--background)" to={item.path}>
+                    <AniLink cover bg="var(--headerBG)" to={item.path}>
                       {item.text}
                     </AniLink>
                   </li>
@@ -292,7 +293,7 @@ const Navbar = () => {
             {quickNav.map((item, index) => {
               return (
                 <li key={index}>
-                  <AniLink cover bg="var(--background)" to={item.path}>
+                  <AniLink cover bg="var(--headerBG)" to={item.path}>
                     {item.icon}
                   </AniLink>
                 </li>
