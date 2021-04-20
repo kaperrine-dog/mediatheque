@@ -6,9 +6,10 @@ import Navbar from "./Navbar/Navbar"
 
 const GlobalStyle = createGlobalStyle`
 :root {
-  --background: #1a211e;
+  --background: #080812;
+  --headerBG: #232323;
   --border: #313131;
-  --primary: #ffc400;
+  --primary: #029a9e;
   --inActive: #505050;
   --menuItem: 1.125rem;
   --transition: 0.3s;
