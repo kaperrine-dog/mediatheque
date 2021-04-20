@@ -1,12 +1,11 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Grid from "../components/Grid/Grid"
-import styled from "styled-components"
-import { GatsbyImage } from "gatsby-plugin-image"
+import {graphql} from "gatsby"
+import {GatsbyImage} from "gatsby-plugin-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import {renderRichText} from "gatsby-source-contentful/rich-text"
+import {default as React, default as React} from "react"
+import styled from "styled-components"
+import Grid from "../components/Grid/Grid"
 import Seo from "../components/SEO"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { renderRichText } from "gatsby-source-contentful/rich-text"
 
 const DetailArea = styled.div`
   grid-column: 1 / 4;
@@ -37,14 +36,15 @@ const ContentArea = styled.div`
 
   .main-image {
     border-bottom: 3px solid var(--primary);
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   p {
     margin-bottom: 40px;
   }
 `
+
 
 const Blog = ({ data }) => {
   const {
@@ -55,6 +55,8 @@ const Blog = ({ data }) => {
     richText,
     richText: { raw },
   } = data.post
+  
+  const [mainImage, ...blogImages] = images
 
   const options = {
     renderNode: {
@@ -87,10 +89,10 @@ const Blog = ({ data }) => {
           </DetailArea>
           <ContentArea>
             <h1>{title}</h1>
-            {/* <GatsbyImage
-            image={images.childImageSharp.gatsbyImageData}
-            className="main-image"
-            alt="Placeholder" /> */}
+              <GatsbyImage
+              image={mainImage.gatsbyImageData}
+              className="main-image"
+              alt="Placeholder" />
             <article>{renderRichText(richText, options)}</article>
           </ContentArea>
         </Grid>
@@ -109,6 +111,7 @@ export const query = graphql`
         fluid {
           ...GatsbyContentfulFluid
         }
+        gatsbyImageData
       }
       richText {
         raw
