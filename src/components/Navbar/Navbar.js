@@ -135,7 +135,7 @@ const NavLinks = styled.div`
   width: 100%;
   max-width: 500px;
   transform: translateX(-100%);
-  transition: opacity 0.2s ease-in, transform 0.2s ease-in,
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in,
     visibility var(--transition) ease-in;
 
   @media (min-width: 768px) {
