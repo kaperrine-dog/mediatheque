@@ -7,21 +7,23 @@ import Faq from "../components/Faq";
 import Grid from "../components/Grid/Grid";
 import Seo from "../components/SEO";
 
-const ImageArea = styled.div`
+const ImageLinkArea = styled.a`
   grid-column: 1 / 4;
-
-  .main-img {
+  height: fit-content;
+  .main-image {
     border-bottom: 3px solid var(--primary);
   }
-
-  @media (min-width: 1200px) {
+  @media (min-width: 765px){
+    grid-column: 1 / 2;
+  }
+  @media (min-width: 1000px) {
     grid-column: 1 / 2;
   }
 `
 
 const ContentArea = styled.div`
   grid-column: 1 / 4;
-  @media (min-width: 1200px) {
+  @media (min-width: 1000px) {
     grid-column: 2 / 4;
   }
 
@@ -33,6 +35,13 @@ const ContentArea = styled.div`
   p {
     margin-bottom: 40px;
   }
+`
+
+const Iframe = styled.iframe`
+  width: 100%;
+  min-height: 400px;
+  aspect-ratio: 16 / 9;
+  //background: white;
 `
 
 const ImageGallery = styled.div`
@@ -70,12 +79,15 @@ const FaqBlock = styled.div`
   margin-top: 40px;
 `
 
+
+
 const productTemplate = ({ data }) => {
   const {
     name,
     price,
     description: { description },
     images,
+    url,
     faq,
   } = data.product
 
@@ -85,12 +97,15 @@ const productTemplate = ({ data }) => {
     <Seo title={name} />
     <section className="section-padding">
       <Grid>
-        <ImageArea>
+        
+        <ImageLinkArea
+          href={ url }
+        >
           <GatsbyImage 
             image={mainImage.gatsbyImageData} 
-            className="main-img" 
+            className="main-image" 
           />
-        </ImageArea>
+        </ImageLinkArea>
         <ContentArea>
           <h1>{name}</h1>
           <h2>£{price}</h2>
@@ -107,7 +122,6 @@ const productTemplate = ({ data }) => {
               );
             })}
           </ImageGallery>
-
           <FaqBlock>
             {faq.map((item, index) => {
               return (
@@ -143,6 +157,7 @@ export const query = graphql`
         }
         gatsbyImageData
       }
+      url
     }
   }
 `
