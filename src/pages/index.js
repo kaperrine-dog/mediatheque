@@ -1,13 +1,13 @@
+import {graphql, useStaticQuery} from "gatsby"
 import React from "react"
-import Hero from "../components/Hero/Hero"
-import Banner from "../components/Banner/Banner"
+import {Link} from "react-scroll"
 import About from "../components/About/About"
+import Banner from "../components/Banner/Banner"
+import FeaturedWorks from "../components/FeaturedWorks/FeaturedWorks"
+import Hero from "../components/Hero/Hero"
+import Seo from "../components/SEO"
 import Service from "../components/Service/Service"
 import StyledAbout from "../components/StyledAbout/StyledAbout"
-import FeaturedProducts from "../components/FeaturedProducts/FeaturedProducts"
-import { useStaticQuery, graphql } from "gatsby"
-import Seo from "../components/SEO"
-import { Link } from "react-scroll"
 
 const Index = () => {
   const data = useStaticQuery(graphql`
@@ -18,7 +18,7 @@ const Index = () => {
           description
         }
       }
-      featuredProductsImg: file(relativePath: { eq: "bark.jpg" }) {
+      featuredWorksImg: file(relativePath: { eq: "bark.jpg" }) {
         childImageSharp {
           gatsbyImageData(quality: 90, layout: FULL_WIDTH)
         }
@@ -45,9 +45,9 @@ const Index = () => {
       <Service largePadding={true} />
       <StyledAbout
         gradient="true"
-        img={data.featuredProductsImg.childImageSharp.gatsbyImageData}
+        img={data.featuredWorksImg.childImageSharp.gatsbyImageData}
       >
-        <FeaturedProducts id="products" largePadding={true} />
+        <FeaturedWorks id="works" largePadding={true} />
       </StyledAbout>
     </>
   )

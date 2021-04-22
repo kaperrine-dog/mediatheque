@@ -1,7 +1,7 @@
 import React from "react"
+import {Link} from "react-scroll"
 import styled from "styled-components"
 import Grid from "../Grid/Grid"
-import { Link } from "react-scroll"
 
 const TitleArea = styled.div`
   grid-column: 1 / 4;
@@ -38,8 +38,8 @@ const About = ({ largePadding, id }) => {
             A super-fast theme that is easy to get started, using the power of
             GatsbyJS
           </Title>
-          <Link className="btn" to="products" smooth={true} duration={500}>
-            View Products
+          <Link className="btn" to="works" smooth={true} duration={500}>
+            View Works
           </Link>
         </TitleArea>
         <ContentArea>

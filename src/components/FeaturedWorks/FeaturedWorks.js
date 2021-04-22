@@ -1,13 +1,13 @@
+import {graphql, useStaticQuery} from "gatsby"
 import React from "react"
-import Grid from "../Grid/Grid"
-import Product from "../Products/Product"
-import Button from "../Button/Button"
 import styled from "styled-components"
-import { useStaticQuery, graphql } from "gatsby"
+import Button from "../Button/Button"
+import Grid from "../Grid/Grid"
+import Work from "../Works/Work"
 
-const getProducts = graphql`
+const getWorks = graphql`
   query {
-    featuredProducts: allContentfulProducts(
+    featuredWorks: allContentfulWorks(
       filter: { featured: { eq: true } }
     ) {
       edges {
@@ -62,9 +62,9 @@ const FlexItem = styled.div`
   }
 `
 
-const FeaturedProducts = ({ largePadding, id }) => {
-  const response = useStaticQuery(getProducts)
-  const products = response.featuredProducts.edges
+const FeaturedWorks = ({ largePadding, id }) => {
+  const response = useStaticQuery(getWorks)
+  const works = response.featuredWorks.edges
 
   return (
     <section
@@ -73,18 +73,18 @@ const FeaturedProducts = ({ largePadding, id }) => {
     >
       <Grid>
         <TitleArea>
-          <Title>Displaying your featured products is easy</Title>
+          <Title>Displaying your featured works is easy</Title>
           <p>
-            Your featured products are listed here, a great way of showcasing
+            Your featured works are listed here, a great way of showcasing
             your best items to your users
           </p>
-          <Button text="All Products" link="/products" />
+          <Button text="All Works" link="/works" />
         </TitleArea>
         <FlexContainer>
-          {products.map(({ node }) => {
+          {works.map(({ node }) => {
             return (
               <FlexItem>
-                <Product key={node.contentful_id} product={node} />
+                <Work key={node.contentful_id} product={node} />
               </FlexItem>
             )
           })}
@@ -94,4 +94,4 @@ const FeaturedProducts = ({ largePadding, id }) => {
   )
 }
 
-export default FeaturedProducts
+export default FeaturedWorks
