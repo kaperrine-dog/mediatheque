@@ -10,7 +10,7 @@ const WorkItem = styled.article`
 `
 
 const WorkContent = styled.div`
-  background-color: #272727;
+  background: var(--worksPanelBG);
   border-top: 3px solid var(--primary);
   padding: 2.5rem 1.25rem;
 
