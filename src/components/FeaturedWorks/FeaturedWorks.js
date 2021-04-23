@@ -5,6 +5,7 @@ import Button from "../Button/Button"
 import Grid from "../Grid/Grid"
 import Work from "../Works/Work"
 
+
 const getWorks = graphql`
   query {
     featuredWorks: allContentfulWorks(
@@ -62,12 +63,16 @@ const FlexItem = styled.div`
   }
 `
 
+const Section = styled.section`
+  background: var(--parallaxBG);
+`
+
 const FeaturedWorks = ({ largePadding, id }) => {
   const response = useStaticQuery(getWorks)
   const works = response.featuredWorks.edges
 
   return (
-    <section
+    <Section
       id={id}
       className={largePadding ? "section-padding--large" : "section-padding"}
     >
@@ -90,7 +95,7 @@ const FeaturedWorks = ({ largePadding, id }) => {
           })}
         </FlexContainer>
       </Grid>
-    </section>
+    </Section>
   )
 }
 
