@@ -11,6 +11,8 @@ const GlobalStyle = createGlobalStyle`
   --border: #313131;
   --primary: #029a9e;
   --inActive: #505050;
+  --textColor: #fff;
+  --parallaxBGColor: rgba(0,0, 0, 0.7);
   --menuItem: 1.125rem;
   --transition: 0.3s;
   --h1: 2rem;
@@ -25,7 +27,6 @@ const GlobalStyle = createGlobalStyle`
     --paddingStd: 4.688rem;
     --paddingLarge: 7.813rem;
   }
-
   @media(min-width: 1200px) {
     --menuItem: 1.25rem;
     --h1: 3.125rem;
@@ -44,8 +45,17 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--background);
-    color: #fff;
+    color: var(--textColor);
   }
+.light-mode{
+  --background: rgba(241, 241, 241, 1);
+  --headerBG: rgba(233, 243, 255, 1);
+  --border: #313131;
+  --primary: rgba(94, 2, 158, 1);
+  --inActive: #505050;
+  --textColor: rgba(30, 30, 30, 1);
+  --parallaxBGColor: rgba(255, 255, 255, 0.7);
+}
 
 h1,
 h2 {
@@ -70,7 +80,7 @@ h2 {
 
 a.btn,
 button.btn {
-    color: #fff;
+    color: var(--text-color);
     background-color: transparent;
     font-family: 'Heebo', sans-serif;
     border: 0;
@@ -134,9 +144,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Navbar />
-      {children}
-      <Footer />
+        <Navbar />
+          {children}
+        <Footer />
     </>
   )
 }

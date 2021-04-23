@@ -15,7 +15,7 @@ const FaqItem = styled.article`
 `
 
 const FaqTitle = styled.div`
-  color: #fff;
+  color: var(--text-color);
   padding: 14px 15px;
   background-color: #272727;
   position: relative;

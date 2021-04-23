@@ -1,12 +1,12 @@
-import React from "react"
-import Grid from "../components/Grid/Grid"
-import styled from "styled-components"
 import { Link } from "gatsby"
+import React from "react"
+import styled from "styled-components"
+import Grid from "../components/Grid/Grid"
 import Seo from "../components/SEO"
 
 const Error404 = styled.section`
   background-color: var(--background);
-  color: #fff;
+  color: var(--text-color);
 `
 
 const Title = styled.h1`

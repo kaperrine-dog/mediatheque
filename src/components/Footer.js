@@ -1,9 +1,9 @@
+import { graphql, useStaticQuery } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
+import styled from "styled-components"
 import links from "../constants/links"
 import socials from "../constants/socials"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
 
 const FooterArea = styled.footer`
   padding-left: 1.875rem;
@@ -71,7 +71,7 @@ const FooterMenu = styled.div`
   }
 
   a {
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     padding: 0;
     transition: var(--transition) color;

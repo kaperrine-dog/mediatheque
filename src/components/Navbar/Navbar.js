@@ -4,7 +4,7 @@ import React, {useState} from "react"
 import styled from "styled-components"
 import links from "../../constants/links"
 import quickNav from "../../constants/quickNav"
-// import DarkMode from "../DarkMode/DarkMode"
+import DarkMode from "../DarkMode/DarkMode"
 
 const NavBar = styled.nav`
   padding: 0 1.875rem;
@@ -17,7 +17,7 @@ const NavBar = styled.nav`
 
 const NavButton = styled.button`
   position: relative;
-  color: #fff;
+  color: var(--text-color);
   padding: 12px 0 17px 0;
   order: 1;
   border: none;
@@ -59,7 +59,7 @@ const NavLogo = styled.div`
   }
 
   a {
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s;
 
@@ -104,7 +104,7 @@ const NavSocials = styled.div`
     list-style: none;
 
     a {
-      color: #fff;
+      color: var(--text-color);
       transition: var(--transition);
 
       &:hover {
@@ -212,7 +212,7 @@ const NavLinks = styled.div`
   }
 
   a {
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     padding: 0;
     transition: var(--transition) color;
@@ -268,7 +268,7 @@ const Navbar = () => {
               {siteMetadata.title}
             </AniLink>
           </NavLogo>
-          <ThemeSwitch>{/* <DarkMode /> */}</ThemeSwitch>
+          <ThemeSwitch> <DarkMode /> </ThemeSwitch>
           <NavButton type="button" onClick={toggleNav}>
             Menu.
           </NavButton>

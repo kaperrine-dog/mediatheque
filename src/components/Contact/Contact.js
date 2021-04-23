@@ -1,6 +1,6 @@
 import React from "react"
-import Grid from "../Grid/Grid"
 import styled from "styled-components"
+import Grid from "../Grid/Grid"
 
 const Section = styled.section``
 
@@ -41,7 +41,7 @@ const Form = styled.form`
   input,
   textarea {
     background-color: #000;
-    color: #fff;
+    color: var(--text-color);
     border: none;
     border-bottom: 3px solid var(--inActive);
     width: 100%;
