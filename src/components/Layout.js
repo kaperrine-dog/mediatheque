@@ -7,12 +7,14 @@ import Navbar from "./Navbar/Navbar"
 const GlobalStyle = createGlobalStyle`
 :root {
   --background: #080812;
-  --headerBG: #232323;
+  --headerBG: rgba(35, 35, 35, 0.6);
   --border: #313131;
   --primary: #029a9e;
   --inActive: #505050;
   --textColor: #fff;
-  --parallaxBGColor: rgba(0,0, 0, 0.7);
+  --parallaxBG: rgba(0,0, 0, 0.5);
+  --worksPanelBG: rgba(55,55,55,0.9);
+  --servicesPanelBG: rgba(50,50,50,0.85);
   --menuItem: 1.125rem;
   --transition: 0.3s;
   --h1: 2rem;
@@ -49,12 +51,14 @@ body {
   }
 .light-mode{
   --background: rgba(241, 241, 241, 1);
-  --headerBG: rgba(233, 243, 255, 1);
+  --headerBG: rgba(206, 208, 218, 0.60);
   --border: #313131;
-  --primary: rgba(94, 2, 158, 1);
+  --primary: rgba(94, 2, 158, 0.92);
   --inActive: #505050;
   --textColor: rgba(30, 30, 30, 1);
-  --parallaxBGColor: rgba(255, 255, 255, 0.7);
+  --parallaxBG: rgba(207, 168, 149, 0.48);
+  --worksPanelBG: rgba(255,255,255,0.65);
+  --servicesPanelBG: rgba(255,255,255,0.85);
 }
 
 h1,
