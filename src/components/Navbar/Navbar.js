@@ -4,6 +4,7 @@ import React, {useState} from "react"
 import styled from "styled-components"
 import links from "../../constants/links"
 import quickNav from "../../constants/quickNav"
+import Logo from "../../images/logo.svg"
 import DarkMode from "../DarkMode/DarkMode"
 
 const NavBar = styled.nav`
@@ -62,7 +63,9 @@ const NavLogo = styled.div`
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s;
-
+    img{
+      width: 50px;
+    }
     @media (hover: hover) {
       &:hover {
         color: var(--primary);
@@ -119,7 +122,7 @@ const NavSocials = styled.div`
 `
 
 const NavLinks = styled.div`
-  background-color: var(--headerBG);
+  //background-color: var(--headerBG);
   display: flex;
   align-content: center;
   list-style: none;
@@ -265,7 +268,10 @@ const Navbar = () => {
         <NavCenter>
           <NavLogo>
             <AniLink cover bg="var(--headerBG)" to="/">
-              {siteMetadata.title}
+              <img
+                src={Logo}
+                />
+                { siteMetadata.title }
             </AniLink>
           </NavLogo>
           <ThemeSwitch> <DarkMode /> </ThemeSwitch>
