@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import Grid from "../Grid/Grid"
 import services from "../../constants/services"
+import Grid from "../Grid/Grid"
 
 const ServiceItem = styled.article`
-  background-color: #272727;
+  background-color: var(--servicesPanelBG);
   border-top: 3px solid var(--primary);
   padding: 2.5rem 1.25rem;
 
