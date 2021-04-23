@@ -25,10 +25,13 @@ const ContentArea = styled.div`
     }
   }
 `
+const AboutSection = styled.section`
+  background: var(--parallaxBG);
+`
 
 const About = ({ largePadding, id }) => {
   return (
-    <section
+    <AboutSection
       id={id}
       className={largePadding ? "section-padding--large" : "section-padding"}
     >
@@ -50,7 +53,7 @@ const About = ({ largePadding, id }) => {
           </p>
         </ContentArea>
       </Grid>
-    </section>
+    </AboutSection>
   )
 }
 
