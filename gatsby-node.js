@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const { data } = await graphql(`
     query {
-      products: allContentfulProducts {
+      works: allContentfulWorks {
         edges {
           node {
             slug
@@ -22,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  data.products.edges.forEach(({ node }) => {
+/*   data.products.edges.forEach(({ node }) => {
     createPage({
       path: `products/${node.slug}`,
       component: path.resolve("src/templates/product-template.js"),
@@ -30,11 +30,20 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: node.slug,
       },
     })
-  })
+  }) */
   data.posts.edges.forEach(({ node }) => {
     createPage({
       path: `blogs/${node.slug}`,
       component: path.resolve("src/templates/blog-template.js"),
+      context: {
+        slug: node.slug,
+      },
+    })
+  })
+  data.works.edges.forEach(({ node }) => {
+    createPage({
+      path: `works/${node.slug}`,
+      component: path.resolve("src/templates/work-template.js"),
       context: {
         slug: node.slug,
       },
