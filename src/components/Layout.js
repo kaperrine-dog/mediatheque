@@ -1,3 +1,4 @@
+import "@fontsource/noto-sans-jp"
 import React from "react"
 import {createGlobalStyle} from "styled-components"
 import "typeface-heebo"
@@ -23,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   --paddingBorder: 1.875rem;
   --paddingStd: 3.125rem;
   --paddingLarge: 4.688rem;
+  
 
   @media(min-width:768px) {
     --h1: 2.375rem;
@@ -43,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
 
 }  
 body {
-    font-family: 'Heebo', sans-serif;
+    font-family: 'Heebo','Noto Sans JP', sans-serif;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
