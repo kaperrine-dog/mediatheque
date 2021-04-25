@@ -1,7 +1,8 @@
-import React from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import {GatsbyImage, getImage} from "gatsby-plugin-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import React from "react"
 import styled from "styled-components"
+//import { Background } from 'react-parallax';
 
 const BlogItem = styled.article`
   width: 100%;
@@ -9,7 +10,7 @@ const BlogItem = styled.article`
 `
 
 const BlogItemContent = styled.div`
-  background-color: #272727;
+  background-color: var(--blogPanelBG);
   border-top: 3px solid var(--primary);
   padding: 2.5rem 1.25rem;
 

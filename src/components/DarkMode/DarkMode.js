@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import styled from "styled-components"
 
 const ThemeSelect = styled.div`
@@ -86,7 +86,7 @@ const DarkMode = () => {
   return (
     <>
       <ThemeSelect>
-        <CurrentMode>{darkMode ? `${"Polar"}` : `${"Wasp"}`}</CurrentMode>
+        <CurrentMode>{darkMode ? `${"Ice"}` : `${"DeepSea"}`}</CurrentMode>
         <SwitchContainer>
           <Switch
             onClick={changeMode}

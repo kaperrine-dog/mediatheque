@@ -6,7 +6,7 @@ import Navbar from "./Navbar/Navbar"
 
 const GlobalStyle = createGlobalStyle`
 :root {
-  --background: #080812;
+  --background: rgba(3, 3, 30, 0.99);
   --headerBG: rgba(35, 35, 35, 0.6);
   --border: #313131;
   --primary: #029a9e;
@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   --textColor: #fff;
   --parallaxBG: rgba(0,0, 0, 0.5);
   --worksPanelBG: rgba(55,55,55,0.9);
+  --blogPanelBG: rgba(55,55,55,0.9);
   --servicesPanelBG: rgba(50,50,50,0.85);
   --menuItem: 1.125rem;
   --transition: 0.3s;
@@ -58,6 +59,7 @@ body {
   --textColor: rgba(30, 30, 30, 1);
   --parallaxBG: rgba(207, 168, 149, 0.48);
   --worksPanelBG: rgba(255,255,255,0.65);
+  --blogPanelBG: rgba(255,255,255,0.65);
   --servicesPanelBG: rgba(255,255,255,0.85);
 }
 
