@@ -1,6 +1,6 @@
-import { graphql, useStaticQuery } from "gatsby"
+import {graphql, useStaticQuery} from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import React, { useState } from "react"
+import React, {useState} from "react"
 import styled from "styled-components"
 import links from "../../constants/links"
 import quickNav from "../../constants/quickNav"
