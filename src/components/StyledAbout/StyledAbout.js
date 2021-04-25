@@ -1,18 +1,15 @@
 import {graphql, useStaticQuery} from "gatsby";
-import {getImage} from "gatsby-plugin-image";
-import {convertToBgImage} from "gbimage-bridge";
 import React from "react";
-import Image from "react-image-webp";
+//import Image from "react-image-webp";
 import {Background, Parallax} from 'react-parallax';
 import parallaxBGImg from "../../images/jellyfish01.jpg";
 import parallaxBGImgWebp from "../../images/jellyfish01.webp";
-import DarkMode from '../DarkMode/DarkMode';
 
 const StyledAbout = ({ children }) => {
   const { placeholderImage } = useStaticQuery(
     graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "whiteRose.jpg" }) {
+        placeholderImage: file(relativePath: { eq: "jellyfish01.jpg" }) {
           childImageSharp {
             gatsbyImageData(
               width: 1920
@@ -25,11 +22,12 @@ const StyledAbout = ({ children }) => {
     `
   )
 
-  const image = getImage(placeholderImage)
-  const bgImage = convertToBgImage(image)
-  console.log(DarkMode)
-  console.log(image)
-  console.log(bgImage)
+  //const image = getImage(placeholderImage)
+  //const bgImage = convertToBgImage(image)
+  //console.log(DarkMode)
+  //console.log(image)
+  //console.log(bgImage)
+  
   return (
     <Parallax 
       strength={1000}
@@ -54,7 +52,7 @@ const StyledAbout = ({ children }) => {
           //backgroundColor: "rgba(0,0,0,0.5)" 
         }}
         >
-        <Image
+{/*         <Image
           src={parallaxBGImg}
           webp={parallaxBGImgWebp}
           alt="the Parallax image"
@@ -64,7 +62,23 @@ const StyledAbout = ({ children }) => {
             objectFit: 'cover',
             //filter: 'hue-rotate(270deg)',
           }}
-        />
+        /> */}
+        <picture>
+          <source
+            type='image/webp'
+            srcSet={parallaxBGImgWebp}
+          />
+          <img 
+            src={parallaxBGImg} 
+            alt="the Parallax image"
+            style={{
+              width: "100vw",
+              height: "150vh",
+              objectFit: 'cover',
+              //filter: 'hue-rotate(270deg)',
+            }}
+          />
+        </picture>
       </Background>
           {children}
     </Parallax>
