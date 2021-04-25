@@ -12,7 +12,12 @@ const BlogItem = styled.article`
 const BlogItemContent = styled.div`
   background-color: var(--blogPanelBG);
   border-top: 3px solid var(--primary);
-  padding: 2.5rem 1.25rem;
+  padding: 1.5rem 1.25rem;
+  min-height: 14rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
 
   &:last-child {
     margin-bottom: 0;
@@ -29,6 +34,14 @@ const BlogItemContent = styled.div`
 
   p {
     margin-bottom: 40px;
+  }
+`
+const Bottom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  span{
+    padding: 0 0 6px;
   }
 `
 
@@ -48,8 +61,10 @@ const BlogCard = ({ blog }) => {
         <GatsbyImage image={image} alt="Single Post" />
         <BlogItemContent>
           <h2>{title}</h2>
-          <p>{published}</p>
-          <button className="btn">Read Post</button>
+          <Bottom>
+            <span>{published}</span>
+            <button className="btn">Read Post</button>
+          </Bottom>
         </BlogItemContent>
       </AniLink>
     </BlogItem>
