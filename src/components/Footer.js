@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from "gatsby"
+import {graphql, useStaticQuery} from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
@@ -89,6 +89,7 @@ const FooterMenu = styled.div`
 `
 
 const Copyright = styled.div`
+  text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 0.875rem;
@@ -157,7 +158,7 @@ const Footer = () => {
           <Copyright>
             Copyright &copy; {new Date().getFullYear()}{" "}
             <a
-              href="https://www.linkedin.com/in/morgan-baker-developer-inverness/"
+              href=""
               target="_blank"
               rel="noopener noreferrer"
             >
