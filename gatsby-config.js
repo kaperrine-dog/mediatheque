@@ -49,5 +49,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-transition-link`,
     `gatsby-transformer-sharp`,
+    'gatsby-background-image',
   ],
 }
