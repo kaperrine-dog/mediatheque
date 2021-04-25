@@ -31,8 +31,8 @@ const WorkContent = styled.div`
   }
 `
 
-const Work = ({ product }) => {
-  const { name, price, slug, images } = product
+const Work = ({ work }) => {
+  const { name, price, slug, images } = work
 
   const image = getImage(images[0])
 
@@ -51,7 +51,7 @@ const Work = ({ product }) => {
 }
 
 Work.propTypes = {
-  product: propTypes.shape({
+  work: propTypes.shape({
     name: propTypes.string.isRequired,
     price: propTypes.number.isRequired,
     images: propTypes.arrayOf(propTypes.object).isRequired,

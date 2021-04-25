@@ -44,7 +44,7 @@ export default class WorkList extends Component {
           {this.state.sortedWorks.map(({ node, index}) => {
             return (
               <FlexItem>
-                <Work key={index /* node.contentful_id */} product={node} />
+                <Work key={index /* node.contentful_id */} work={node} />
               </FlexItem>
             )
           })}
