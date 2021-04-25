@@ -89,7 +89,7 @@ const FeaturedWorks = ({ largePadding, id }) => {
           {works.map(({ node }) => {
             return (
               <FlexItem>
-                <Work key={node.contentful_id} product={node} />
+                <Work key={node.contentful_id} work={node} />
               </FlexItem>
             )
           })}
