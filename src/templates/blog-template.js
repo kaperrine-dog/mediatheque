@@ -71,7 +71,7 @@ const Blog = ({ data }) => {
           <div>
             <img
               width="100%"
-              src={node.data.target.fields.file["en-US"].url}
+              src={node.data.target.fields.file["ja-JP"].url}
               alt="Placeholder"
             />
           </div>
