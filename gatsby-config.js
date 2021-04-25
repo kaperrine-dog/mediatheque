@@ -37,8 +37,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "",
-        sitemap: "h",
+        host: "https://mediatheque.netlify.app",
+        sitemap: "https://mediatheque.netlify.app/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
