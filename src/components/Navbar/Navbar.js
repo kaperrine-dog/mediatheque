@@ -1,6 +1,6 @@
-import {graphql, useStaticQuery} from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import React, {useState} from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import links from "../../constants/links"
 import quickNav from "../../constants/quickNav"
@@ -45,7 +45,7 @@ const NavButton = styled.button`
 `
 
 const NavLogo = styled.div`
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 900;
   width: 60%;
   flex-shrink: 0;
@@ -63,9 +63,14 @@ const NavLogo = styled.div`
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s;
+    display: flex;
+    align-items: center;
     img{
-      width: 50px;
+      width: 35px;
+      margin-right: 1rem;
+      cursor: pointer;
     }
+    
     @media (hover: hover) {
       &:hover {
         color: var(--primary);
@@ -271,10 +276,14 @@ const Navbar = () => {
               <img
                 src={Logo}
                 />
+              <span>
                 { siteMetadata.title }
+              </span>
             </AniLink>
           </NavLogo>
-          <ThemeSwitch> <DarkMode /> </ThemeSwitch>
+          <ThemeSwitch> 
+            <DarkMode /> 
+          </ThemeSwitch>
           <NavButton type="button" onClick={toggleNav}>
             Menu.
           </NavButton>
