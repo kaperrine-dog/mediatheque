@@ -6,6 +6,7 @@ import links from "../../constants/links"
 import quickNav from "../../constants/quickNav"
 import Logo from "../../images/logo.svg"
 import DarkMode from "../DarkMode/DarkMode"
+//import BackgroundImage from 'gatsby-background-image'
 
 const NavBar = styled.nav`
   padding: 0 1.875rem;
@@ -127,7 +128,7 @@ const NavSocials = styled.div`
 `
 
 const NavLinks = styled.div`
-  //background-color: var(--headerBG);
+  background-color: var(--navMenuBG);
   display: flex;
   align-content: center;
   list-style: none;
@@ -144,7 +145,7 @@ const NavLinks = styled.div`
   max-width: 500px;
   transform: translateX(-100%);
   transition: opacity 0.5s ease-in, transform 0.5s ease-in,
-    visibility var(--transition) ease-in;
+  visibility var(--transition) ease-in;
 
   @media (min-width: 768px) {
     position: relative;
@@ -287,6 +288,7 @@ const Navbar = () => {
           <NavButton type="button" onClick={toggleNav}>
             Menu.
           </NavButton>
+          
           <NavLinks
             className={
               isOpen ? `${"navbar-links"} ${"show-nav"}` : `${"navbar-links"}`

@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
 :root {
   --background: rgba(3, 3, 30, 0.99);
   --headerBG: rgba(35, 35, 35, 0.6);
+  --navMenuBG: rgba(84, 84, 84, 0.7);
   --border: #313131;
   --primary: #029a9e;
   --inActive: #505050;
@@ -55,6 +56,7 @@ body {
 .light-mode{
   --background: rgba(241, 241, 241, 1);
   --headerBG: rgba(206, 208, 218, 0.60);
+  --navMenuBG: rgba(240,240,240,0.7);
   --border: #313131;
   --primary: rgba(94, 2, 158, 0.92);
   --inActive: #505050;
