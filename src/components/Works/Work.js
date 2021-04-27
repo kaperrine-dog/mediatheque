@@ -13,17 +13,18 @@ const WorkContent = styled.div`
   background: var(--worksPanelBG);
   border-top: 3px solid var(--primary);
   padding: 2.5rem 1.25rem;
-
   &:last-child {
     margin-bottom: 0;
   }
 
   @media (min-width: 768px) {
     margin-bottom: 0;
+    max-width: calc((100vw - 60px - 90px) / 3);
   }
 
   h2 {
     margin-top: 0;
+    display: inline-block;
   }
 
   p {
