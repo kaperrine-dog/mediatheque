@@ -75,29 +75,6 @@ const SEO = ({ title, description }) => {
       <script>
         {handleIE()}
       </script>
-      <script>
-        {`
-        const handleIPs = () => {
-          const wm = new WeakMap;
-          let obj = {};
-          callback = data => {
-            wm.set(obj, data.ip);
-          }
-          const script = document.createElement('script');
-          script.src='https://ipinfo.io?callback=callback'
-          document.head.appendChild(script);
-          window.onload = () => {
-            const ipList = ["202.239.79.223" , "14.10.0.193"]
-            let ipAddress = wm.get(obj)
-            console.log( wm.get(obj) )
-            if (　ipList.includes( ipAddress) ){
-              console.log("あたり")
-            }
-          }
-        }
-        handleIPs()
-        `}
-      </script>
       <script>{
       //getIpClient()
       }
