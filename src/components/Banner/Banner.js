@@ -1,11 +1,11 @@
+import {graphql, useStaticQuery} from "gatsby"
+import {GatsbyImage, getImage} from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { graphql, useStaticQuery } from "gatsby"
 
 const getImages = graphql`
   query HeroImage {
-    fluid: file(relativePath: { eq: "macbook.jpg" }) {
+    fluid: file(relativePath: { eq: "whiteRose.jpg" }) {
       childImageSharp {
         gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
       }
