@@ -1,6 +1,6 @@
-import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
-import { Helmet } from "react-helmet"
+import {graphql, useStaticQuery} from "gatsby";
+import React from "react";
+import {Helmet} from "react-helmet";
 
 const getData = graphql`
   query {
@@ -16,6 +16,18 @@ const getData = graphql`
     }
   }
 `
+const handleIE = () => {
+  if(
+    !(window.navigator.userAgent.toLowerCase().indexOf('MSIE') === -1 
+    && window.navigator.userAgent.toLowerCase().indexOf('TRIDENT') === -1
+    )){
+      console.log("is IE");
+      window.location.href = "https://www.microsoft.com/ja-JP/edge";
+    }else{
+      console.log("is not IE");
+    }
+}
+
 
 const SEO = ({ title, description }) => {
   const { site } = useStaticQuery(getData)
@@ -46,6 +58,32 @@ const SEO = ({ title, description }) => {
       <meta name="twitter:title" content={siteTitle} />
       <meta name="twitter:description" content={siteDesc} />
       <meta name="twitter:image" content={`${siteUrl}${image}`} />
+      <script>
+        {handleIE()}
+      </script>
+<script>
+  {`
+  const handleIPs = () => {
+    const wm = new WeakMap;
+    let obj = {};
+    callback = data => {
+      wm.set(obj, data.ip);
+    }
+    const script = document.createElement('script');
+    script.src='https://ipinfo.io?callback=callback'
+    document.head.appendChild(script);
+    window.onload = () => {
+      const ipList = ["202.239.79.223" , "14.10.0.193"]
+      let ipAddress = wm.get(obj)
+      console.log( wm.get(obj) )
+      if (　ipList.includes( ipAddress) ){
+        console.log("あたり")
+      }
+    }
+  }
+  handleIPs()
+  `}
+</script>
     </Helmet>
   )
 }

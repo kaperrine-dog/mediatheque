@@ -17,6 +17,7 @@
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.1.2",
     "@fontsource/noto-sans-jp": "^4.2.2",
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
     "gatsby": "^3.2.1",
