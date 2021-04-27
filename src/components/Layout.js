@@ -61,11 +61,24 @@ body {
   --primary: rgba(94, 2, 158, 0.92);
   --inActive: #505050;
   --textColor: rgba(30, 30, 30, 1);
-  --parallaxBG: rgba(207, 168, 149, 0.48);
+  --parallaxBG: rgba(149, 199, 207, 0);
   --worksPanelBG: rgba(255,255,255,0.65);
   --blogPanelBG: rgba(255,255,255,0.65);
   --servicesPanelBG: rgba(255,255,255,0.85);
+  #parallaxBGImgLight{
+    display: initial;
+  }
+  #parallaxBGImg{
+    display: none;
+  }
 }
+
+#parallaxBGImgLight{
+    display: none;
+  }
+  #parallaxBGImg{
+    display: initial;
+  }
 
 h1,
 h2 {
