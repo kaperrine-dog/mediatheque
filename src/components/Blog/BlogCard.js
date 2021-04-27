@@ -24,12 +24,14 @@ const BlogItemContent = styled.div`
   }
 
   @media (min-width: 768px) {
+    max-width: calc((100vw - 60px - 90px) / 3);
     margin-bottom: 0;
   }
 
   h2 {
     margin-top: 0;
     margin-bottom: 20px;
+    display: inline-block;
   }
 
   p {
