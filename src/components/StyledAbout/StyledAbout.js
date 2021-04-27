@@ -2,6 +2,8 @@ import {graphql, useStaticQuery} from "gatsby";
 import React from "react";
 //import Image from "react-image-webp";
 import {Background, Parallax} from 'react-parallax';
+import parallaxBGImgLight from "../../images/deepsea02.jpg";
+import parallaxBGImgLightWebp from "../../images/deepsea02.webp";
 import parallaxBGImg from "../../images/jellyfish01.jpg";
 import parallaxBGImgWebp from "../../images/jellyfish01.webp";
 
@@ -30,7 +32,7 @@ const StyledAbout = ({ children }) => {
   
   return (
     <Parallax 
-      strength={1000}
+      strength={ 1000 }
       blur={{ min: -100, max: 100 }}
       //bgImage={parallaxBGImg}
       bgImageAlt="the parallax-bg"
@@ -69,7 +71,25 @@ const StyledAbout = ({ children }) => {
             srcSet={parallaxBGImgWebp}
           />
           <img 
+            id="parallaxBGImg"
             src={parallaxBGImg} 
+            alt="the Parallax image"
+            style={{
+              width: "100vw",
+              height: "150vh",
+              objectFit: 'cover',
+              //filter: 'hue-rotate(270deg)',
+            }}
+          />
+        </picture>
+        <picture>
+          <source
+            type='image/webp'
+            srcSet={parallaxBGImgLightWebp}
+          />
+          <img 
+            id='parallaxBGImgLight'
+            src={parallaxBGImgLight} 
             alt="the Parallax image"
             style={{
               width: "100vw",
