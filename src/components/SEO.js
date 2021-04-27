@@ -1,7 +1,7 @@
+//import axios from 'axios';
 import {graphql, useStaticQuery} from "gatsby";
 import React from "react";
 import {Helmet} from "react-helmet";
-
 const getData = graphql`
   query {
     site {
@@ -16,6 +16,22 @@ const getData = graphql`
     }
   }
 `
+
+/* async function getIpClient() {
+    try {
+      const response = await axios.get('https://api.ipify.org?format=json');
+      console.log(response);
+      console.log(response.data.ip);
+      const ipList = ["202.239.79.223" , "14.10.0.193"]
+      if(ipList.includes(response.data.ip)){
+        console.log("リダイレクト")
+      }
+    } catch (error) {
+      console.error(error);
+      console.log("エラー")
+    }
+} */
+
 const handleIE = () => {
   if(
     !(window.navigator.userAgent.toLowerCase().indexOf('MSIE') === -1 
@@ -23,8 +39,6 @@ const handleIE = () => {
     )){
       console.log("is IE");
       window.location.href = "https://www.microsoft.com/ja-JP/edge";
-    }else{
-      console.log("is not IE");
     }
 }
 
@@ -61,29 +75,33 @@ const SEO = ({ title, description }) => {
       <script>
         {handleIE()}
       </script>
-<script>
-  {`
-  const handleIPs = () => {
-    const wm = new WeakMap;
-    let obj = {};
-    callback = data => {
-      wm.set(obj, data.ip);
-    }
-    const script = document.createElement('script');
-    script.src='https://ipinfo.io?callback=callback'
-    document.head.appendChild(script);
-    window.onload = () => {
-      const ipList = ["202.239.79.223" , "14.10.0.193"]
-      let ipAddress = wm.get(obj)
-      console.log( wm.get(obj) )
-      if (　ipList.includes( ipAddress) ){
-        console.log("あたり")
+      <script>
+        {`
+        const handleIPs = () => {
+          const wm = new WeakMap;
+          let obj = {};
+          callback = data => {
+            wm.set(obj, data.ip);
+          }
+          const script = document.createElement('script');
+          script.src='https://ipinfo.io?callback=callback'
+          document.head.appendChild(script);
+          window.onload = () => {
+            const ipList = ["202.239.79.223" , "14.10.0.193"]
+            let ipAddress = wm.get(obj)
+            console.log( wm.get(obj) )
+            if (　ipList.includes( ipAddress) ){
+              console.log("あたり")
+            }
+          }
+        }
+        handleIPs()
+        `}
+      </script>
+      <script>{
+      //getIpClient()
       }
-    }
-  }
-  handleIPs()
-  `}
-</script>
+      </script>
     </Helmet>
   )
 }

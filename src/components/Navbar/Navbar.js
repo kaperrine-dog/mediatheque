@@ -128,7 +128,6 @@ const NavSocials = styled.div`
 `
 
 const NavLinks = styled.div`
-  background-color: var(--navMenuBG);
   display: flex;
   align-content: center;
   list-style: none;
@@ -293,6 +292,7 @@ const Navbar = () => {
             className={
               isOpen ? `${"navbar-links"} ${"show-nav"}` : `${"navbar-links"}`
             }
+            style={{backgroundColor: isOpen ? 'var(--navMenuBG)' : ''}}
           >
             <ul>
               {links.map((item, index) => {
