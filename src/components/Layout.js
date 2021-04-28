@@ -8,30 +8,32 @@ import Navbar from "./Navbar/Navbar"
 const GlobalStyle = createGlobalStyle`
 :root {
   --background: rgba(3, 3, 30, 0.99);
+  --titleTextShadow: rgba(202, 202, 202, 0.29);
   --headerBG: rgba(35, 35, 35, 0.6);
   --navMenuBG: rgba(84, 84, 84, 0.7);
   --border: #313131;
   --primary: #029a9e;
   --inActive: #505050;
   --textColor: #fff;
-  --parallaxBG: rgba(0,0, 0, 0.5);
+  --parallaxBG: rgba(0,0, 0, 0.15);
   --worksPanelBG: rgba(55,55,55,0.9);
   --blogPanelBG: rgba(55,55,55,0.9);
   --servicesPanelBG: rgba(50,50,50,0.85);
   --menuItem: 1.125rem;
   --transition: 0.3s;
+  --heroH1: 5rem;
   --h1: 2rem;
   --h2: 1.375rem;
   --paddingBorder: 1.875rem;
   --paddingStd: 3.125rem;
   --paddingLarge: 4.688rem;
-  
 
   @media(min-width:768px) {
     --h1: 2.375rem;
     --h2: 1.625rem;
     --paddingStd: 4.688rem;
     --paddingLarge: 7.813rem;
+    --heroH1: 10vw;
   }
   @media(min-width: 1200px) {
     --menuItem: 1.25rem;
@@ -39,12 +41,16 @@ const GlobalStyle = createGlobalStyle`
     --h2: 1.75rem;
     --paddingStd: 5.625rem;
     --paddingLarge: 9.375rem;
+    --heroH1: 10vw;
+  }
+  @media(min-width: 1400px){
+    --heroH1: 140px
   }
 }
 * {
   box-sizing: border-box;
-
 }  
+
 body {
     font-family: 'Heebo','Noto Sans JP', sans-serif;
     margin: 0;
@@ -55,13 +61,14 @@ body {
   }
 .light-mode{
   --background: rgba(241, 241, 241, 1);
+  --titleTextShadow: rgba(135, 135, 135, 0.5);
   --headerBG: rgba(206, 208, 218, 0.60);
   --navMenuBG: rgba(240,240,240,0.7);
   --border: #313131;
   --primary: rgba(94, 2, 158, 0.92);
   --inActive: #505050;
   --textColor: rgba(30, 30, 30, 1);
-  --parallaxBG: rgba(149, 199, 207, 0);
+  --parallaxBG: rgba(109, 162, 170 , 0.25);
   --worksPanelBG: rgba(255,255,255,0.65);
   --blogPanelBG: rgba(255,255,255,0.65);
   --servicesPanelBG: rgba(255,255,255,0.85);
