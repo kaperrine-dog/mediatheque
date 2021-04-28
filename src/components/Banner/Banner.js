@@ -32,6 +32,7 @@ const GridContainer = styled.div`
 
 const HeroImage = styled.div`
   width: 100%;
+  height: fit-content;
   background-color: var(--primary);
   border: none;
   outline: none;
@@ -60,6 +61,7 @@ const TitleArea = styled.div`
 
   @media (min-width: 1200px) {
     grid-column: 1 / 4;
+    grid-row: 1 / 1;
     display: initial;
   }
 `
@@ -69,7 +71,7 @@ const ContentArea = styled.div`
   }
 
   @media (min-width: 1200px) {
-    grid-row: 2 / 3;
+    grid-row: 1 / 3;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
