@@ -80,10 +80,9 @@ const FeaturedWorks = ({ largePadding, id }) => {
         <TitleArea>
           <Title>Displaying your featured works is easy</Title>
           <p>
-            Your featured works are listed here, a great way of showcasing
-            your best items to your users
+            
           </p>
-          <Button text="All Works" link="/works" />
+          <Button text="View All Works" link="/works" />
         </TitleArea>
         <FlexContainer>
           {works.map(({ node }) => {
