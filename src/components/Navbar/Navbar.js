@@ -40,7 +40,7 @@ const NavButton = styled.button`
     background-color: var(--primary);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none !important;
   }
 `
@@ -146,7 +146,7 @@ const NavLinks = styled.div`
   transition: opacity 0.5s ease-in, transform 0.5s ease-in,
   visibility var(--transition) ease-in;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     position: relative;
     top: auto;
     left: auto;
@@ -172,7 +172,7 @@ const NavLinks = styled.div`
     padding: 0;
     margin: 0;
 
-    @media (min-width: 768px) {
+    @media (min-width: 769px) {
       flex-direction: row;
     }
   }
@@ -197,7 +197,7 @@ const NavLinks = styled.div`
       background-color: var(--primary);
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 769px) {
       padding-top: 10px;
       padding-bottom: 18px;
       margin-right: 15px;
@@ -240,7 +240,7 @@ const NavLinks = styled.div`
 const Spacer = styled.div`
   height: 72px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     height: 91px;
   }
 

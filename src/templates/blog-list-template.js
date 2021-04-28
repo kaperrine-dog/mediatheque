@@ -1,10 +1,10 @@
-import React from "react"
 import { graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import React from "react"
 import styled from "styled-components"
+import BlogCard from "../components/Blog/BlogCard"
 import Grid from "../components/Grid/Grid"
 import PageIntro from "../components/PageIntro/PageIntro"
-import BlogCard from "../components/Blog/BlogCard"
 import Seo from "../components/SEO"
 
 const Section = styled.section`
@@ -24,7 +24,7 @@ const FlexItem = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     flex: 0 0 calc(100% / 3);
   }
 `

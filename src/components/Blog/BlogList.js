@@ -1,7 +1,7 @@
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import BlogCard from "./BlogCard"
-import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import BlogCard from "./BlogCard"
 
 const Section = styled.section`
   grid-column: 1 / 4;
@@ -20,7 +20,7 @@ const FlexItem = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     flex: 0 0 calc(100% / 3);
   }
 `

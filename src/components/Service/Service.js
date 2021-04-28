@@ -12,7 +12,7 @@ const ServiceItem = styled.article`
     margin-bottom: 0;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     margin-bottom: 0;
   }
 

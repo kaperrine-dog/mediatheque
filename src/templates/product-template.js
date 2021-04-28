@@ -1,5 +1,5 @@
-import {graphql} from "gatsby";
-import {GatsbyImage} from "gatsby-plugin-image";
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button/Button";
@@ -58,7 +58,7 @@ const ImageGallery = styled.div`
     margin-bottom: 10px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     margin-top: 20px;
     margin-bottom: 20px;
     .image-gallery--item {

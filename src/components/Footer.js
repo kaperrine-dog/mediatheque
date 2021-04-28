@@ -11,7 +11,7 @@ const FooterArea = styled.footer`
 `
 
 const GridContainer = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
@@ -24,7 +24,7 @@ const FooterMenu = styled.div`
   padding-bottom: 40px;
   border-bottom: 1px solid var(--border);
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     border-bottom: none;
     padding-bottom: 0;
   }
@@ -101,7 +101,7 @@ const Copyright = styled.div`
     color: var(--primary);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 1 / 4;
     grid-row: 2 / 3;
   }

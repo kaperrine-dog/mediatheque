@@ -1,4 +1,4 @@
-import {GatsbyImage, getImage} from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import propTypes from "prop-types"
 import React from "react"
@@ -18,7 +18,7 @@ const WorkContent = styled.div`
     margin-bottom: 0;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     margin-bottom: 0;
   }
 

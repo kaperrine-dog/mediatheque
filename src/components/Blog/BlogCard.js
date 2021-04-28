@@ -23,7 +23,7 @@ const BlogItemContent = styled.div`
     margin-bottom: 0;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     max-width: calc((100vw - 60px - 80px) / 3);
     margin-bottom: 0;
   }

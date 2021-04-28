@@ -1,11 +1,11 @@
 import React from "react"
-import {Link} from "react-scroll"
+import { Link } from "react-scroll"
 import styled from "styled-components"
 import Grid from "../Grid/Grid"
 
 const TitleArea = styled.div`
   grid-column: 1 / 4;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 1 / 2;
   }
 `
@@ -17,7 +17,7 @@ const Title = styled.h2`
 
 const ContentArea = styled.div`
   grid-column: 1/4;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 2 / 3;
 
     p {

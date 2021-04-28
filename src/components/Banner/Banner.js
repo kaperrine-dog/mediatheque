@@ -20,7 +20,7 @@ const GridContainer = styled.div`
   grid-gap: 30px;
   grid-template-columns: 100%;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
@@ -36,7 +36,7 @@ const HeroImage = styled.div`
   border: none;
   outline: none;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 1 / 4;
   }
 
@@ -53,7 +53,7 @@ const TitleArea = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 1 / 2;
     display: initial;
   }
@@ -64,7 +64,7 @@ const TitleArea = styled.div`
   }
 `
 const ContentArea = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 3 / 4;
   }
 
@@ -85,7 +85,7 @@ const HeroTitle = styled.h1`
   position: absolute;
   bottom: 29vh;
   right: 0;
-  @media (min-width: 768px){
+  @media (min-width: 769px){
     transform: rotate(0deg);
     position: static;
   }
@@ -106,7 +106,7 @@ const HeroTitleInverted = styled.div`
   position: absolute;
   top: 25vh;
   left: 0;
-  @media (min-width: 768px){
+  @media (min-width: 769px){
     transform: rotate( 180deg );
     position: static;
   }

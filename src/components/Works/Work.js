@@ -7,6 +7,9 @@ import styled from "styled-components"
 const WorkItem = styled.article`
   width: 100%;
   padding: 0 20px;
+  .workImage{
+    width: 100%;
+  }
 `
 
 const WorkContent = styled.div`
@@ -17,7 +20,7 @@ const WorkContent = styled.div`
     margin-bottom: 0;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     margin-bottom: 0;
     max-width: calc((100vw - 60px - 80px) / 3);
   }
@@ -39,7 +42,7 @@ const Work = ({ work }) => {
 
   return (
     <WorkItem>
-      <GatsbyImage image={image} alt="single Work" />
+      <GatsbyImage className="workImage" image={image} alt="single Work" />
       <WorkContent>
         <h2>{name || "Name not listed"}</h2>
         <h3>£ {price || "Call"}</h3>

@@ -12,7 +12,7 @@ const Error404 = styled.section`
 const Title = styled.h1`
   margin-top: 0;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 1 / 2;
   }
 `
@@ -21,13 +21,13 @@ const SubContent = styled.div`
   p {
     margin-bottom: 2.125rem;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 2 / 3;
   }
 `
 
 const SubTitle = styled.h2`
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     margin-top: 0;
   }
 `

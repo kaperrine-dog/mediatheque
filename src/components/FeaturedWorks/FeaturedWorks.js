@@ -29,7 +29,7 @@ const getWorks = graphql`
   }
 `
 const TitleArea = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 1 / 2;
   }
 `
@@ -43,7 +43,7 @@ const FlexContainer = styled.div`
   grid-column: 1/4;
   margin-left: -20px;
   margin-right: -20px;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     grid-column: 2 / 4;
     display: flex;
     justify-content: space-between;
