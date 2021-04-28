@@ -20,6 +20,7 @@
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
+    "filters.css": "^1.0.0",
     "gatsby": "^3.2.1",
     "gatsby-background-image": "^1.5.2",
     "gatsby-plugin-image": "^1.2.1",
