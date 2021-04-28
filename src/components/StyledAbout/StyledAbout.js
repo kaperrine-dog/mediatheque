@@ -2,10 +2,11 @@ import {graphql, useStaticQuery} from "gatsby";
 import React from "react";
 //import Image from "react-image-webp";
 import {Background, Parallax} from 'react-parallax';
-import parallaxBGImgLight from "../../images/deepsea02.jpg";
-import parallaxBGImgLightWebp from "../../images/deepsea02.webp";
 import parallaxBGImg from "../../images/jellyfish01.jpg";
 import parallaxBGImgWebp from "../../images/jellyfish01.webp";
+import parallaxBGImgLight from "../../images/white-abstract.jpg";
+import parallaxBGImgLightWebp from "../../images/white-abstract.webp";
+
 
 const StyledAbout = ({ children }) => {
   const { placeholderImage } = useStaticQuery(
@@ -71,6 +72,7 @@ const StyledAbout = ({ children }) => {
             srcSet={parallaxBGImgWebp}
           />
           <img 
+            className='contrast-10'
             id="parallaxBGImg"
             src={parallaxBGImg} 
             alt="the Parallax image"
