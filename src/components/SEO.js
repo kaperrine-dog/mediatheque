@@ -61,6 +61,7 @@ const SEO = ({ title, description }) => {
         `
       }
       </script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <script>{`
         async function getIpClient() {
           try {

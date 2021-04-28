@@ -58,7 +58,7 @@ typings/
 
 # gatsby files
 .cache/
-#public
+public
 
 # Mac files
 .DS_Store
@@ -71,5 +71,4 @@ yarn-error.log
 .yarn-integrity
 
 README.md
-public/render-page.js
-public/render-page.js.map
+
