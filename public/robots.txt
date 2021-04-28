@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://mediatheque.netlify.app/sitemap.xml
+Host: https://mediatheque.netlify.app
