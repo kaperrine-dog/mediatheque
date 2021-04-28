@@ -17,6 +17,21 @@ const getData = graphql`
   }
 `
 
+/* async function getIpClient() {
+    try {
+      const response = await axios.get('https://api.ipify.org?format=json');
+      console.log(response);
+      console.log(response.data.ip);
+      const ipList = ["202.239.79.223" , "14.10.0.193"]
+      if(ipList.includes(response.data.ip)){
+        console.log("リダイレクト")
+      }
+    } catch (error) {
+      console.error(error);
+      console.log("エラー")
+    }
+} */
+
 const SEO = ({ title, description }) => {
   const { site } = useStaticQuery(getData)
 
@@ -61,24 +76,9 @@ const SEO = ({ title, description }) => {
         `
       }
       </script>
-      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script>{`
-        async function getIpClient() {
-          try {
-            const response = await axios.get('https://api.ipify.org?format=json');
-            console.log(response);
-            console.log(response.data.ip);
-            const ipList = ["202.239.79.223" , "14.10.0.193"]
-            if(ipList.includes(response.data.ip)){
-              console.log("リダイレクト")
-            }
-          } catch (error) {
-            console.error(error);
-            console.log("エラー")
-          }
-      } 
-      getIpClient()
-      `}
+      <script>{
+      //getIpClient()
+      }
       </script>
     </Helmet>
   )
