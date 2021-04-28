@@ -17,32 +17,6 @@ const getData = graphql`
   }
 `
 
-/* async function getIpClient() {
-    try {
-      const response = await axios.get('https://api.ipify.org?format=json');
-      console.log(response);
-      console.log(response.data.ip);
-      const ipList = ["202.239.79.223" , "14.10.0.193"]
-      if(ipList.includes(response.data.ip)){
-        console.log("リダイレクト")
-      }
-    } catch (error) {
-      console.error(error);
-      console.log("エラー")
-    }
-} */
-
-const handleIE = () => {
-  if(
-    !(window.navigator.userAgent.toLowerCase().indexOf('MSIE') === -1 
-    && window.navigator.userAgent.toLowerCase().indexOf('TRIDENT') === -1
-    )){
-      console.log("is IE");
-      window.location.href = "https://www.microsoft.com/ja-JP/edge";
-    }
-}
-
-
 const SEO = ({ title, description }) => {
   const { site } = useStaticQuery(getData)
 
@@ -73,11 +47,37 @@ const SEO = ({ title, description }) => {
       <meta name="twitter:description" content={siteDesc} />
       <meta name="twitter:image" content={`${siteUrl}${image}`} />
       <script>
-        {handleIE()}
-      </script>
-      <script>{
-      //getIpClient()
+        {`
+        const handleIE = () => {
+          if(
+            !(window.navigator.userAgent.toLowerCase().indexOf('MSIE') === -1 
+            && window.navigator.userAgent.toLowerCase().indexOf('TRIDENT') === -1
+            )){
+              console.log("is IE");
+              window.location.href = "https://www.microsoft.com/ja-JP/edge";
+            }
+        }
+        handleIE()
+        `
       }
+      </script>
+      <script>{`
+        async function getIpClient() {
+          try {
+            const response = await axios.get('https://api.ipify.org?format=json');
+            console.log(response);
+            console.log(response.data.ip);
+            const ipList = ["202.239.79.223" , "14.10.0.193"]
+            if(ipList.includes(response.data.ip)){
+              console.log("リダイレクト")
+            }
+          } catch (error) {
+            console.error(error);
+            console.log("エラー")
+          }
+      } 
+      getIpClient()
+      `}
       </script>
     </Helmet>
   )
