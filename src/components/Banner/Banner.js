@@ -42,18 +42,25 @@ const HeroImage = styled.div`
 
   @media (min-width: 1200px) {
     grid-column: 1 / 3;
-    grid-row: 1 / 3;
+    grid-row: 2 / 3;
     margin-bottom: 0;
   }
 `
 
 const TitleArea = styled.div`
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   @media (min-width: 768px) {
     grid-column: 1 / 2;
+    display: initial;
   }
 
   @media (min-width: 1200px) {
-    grid-column: 3 / 4;
+    grid-column: 1 / 4;
+    display: initial;
   }
 `
 const ContentArea = styled.div`
@@ -70,9 +77,39 @@ const ContentArea = styled.div`
 `
 
 const HeroTitle = styled.h1`
-  font-size: var(--h1);
+  font-size: var(--heroH1);
   margin-top: 0;
   margin-bottom: 0;
+  letter-spacing: 0.025em;
+  transform: rotate(270deg);
+  position: absolute;
+  bottom: 29vh;
+  right: 0;
+  @media (min-width: 768px){
+    transform: rotate(0deg);
+    position: static;
+  }
+`
+const HeroTitleInverted = styled.div`
+  transform: rotate(90deg);
+  font-size: var(--heroH1);
+  margin-top: 0;
+  margin-bottom: 0;
+  letter-spacing: 0.025em;
+  font-weight: 900;
+  color: var(--background);
+  -webkit-text-stroke: 1px var(--textColor);
+  text-shadow:0px 0px 0.25rem var(--titleTextShadow), -0px -0px 0.25rem var(--titleTextShadow),
+              -0px 0px 0.25rem var(--titleTextShadow), 0px -0px 0.25rem var(--titleTextShadow),
+              0px 0px 0.25rem var(--titleTextShadow),  0 -0px 0.25rem var(--titleTextShadow),
+              -0px 0 0.25rem var(--titleTextShadow), 0px 0 0.25rem var(--titleTextShadow);
+  position: absolute;
+  top: 25vh;
+  left: 0;
+  @media (min-width: 768px){
+    transform: rotate( 180deg );
+    position: static;
+  }
 `
 
 const HeroSubTitle = styled.h2`
@@ -89,12 +126,13 @@ const Banner = ({ title, info, children }) => {
     <section className="section-padding">
       <HeroContainer className="container">
         <GridContainer>
+          <TitleArea>
+            <HeroTitle>{title}</HeroTitle>
+            <HeroTitleInverted role='headeing'>{title}</HeroTitleInverted>
+          </TitleArea>
           <HeroImage>
             <GatsbyImage image={image} alt="Macbook and iPhone" />
           </HeroImage>
-          <TitleArea>
-            <HeroTitle>{title}</HeroTitle>
-          </TitleArea>
           <ContentArea>
             <HeroSubTitle>{info}</HeroSubTitle>
             {children}
