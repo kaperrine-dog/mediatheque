@@ -1,4 +1,6 @@
+import axios from 'axios'
 import React from "react"
+import {useForm} from 'react-hook-form'
 import styled from "styled-components"
 import Grid from "../Grid/Grid"
 
@@ -76,7 +78,18 @@ const Form = styled.form`
   }
 `
 
+
+
+
 const Contact = () => {
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = (data) => {
+    data['form-name'] = 'contact'
+    axios.post('/', new URLSearchParams(data))
+      .then(postSubmission)
+      .catch(handleError)
+  }
+
   return (
     <Section className="section-padding">
       <Grid>
@@ -89,9 +102,13 @@ const Contact = () => {
             Sed ut arcu efficitur, auctor purus sed, venenatis velit. Etiam
             mauris metus, tempor vel convallis vitae, auctor id risus.
           </p>
-          <Form name="contact" netlify>
-            <input placeholder="Your name" type="text" name="name" />
-            <input placeholder="Your email" type="email" name="email" />
+          <Form name="contact" netlify onSubmit={handleSubmit(onSubmit)} >
+            <label>
+              <input placeholder="お名前" type="text" name="name" ref={register({ required: '必須項目です' })}/>
+            </label>
+            <label>
+              <input placeholder="メールアドレス" type="email" name="email" ref={register({ required: '必須項目です' })}/>
+            </label>
             <textarea
               placeholder="Your message"
               name="message"
