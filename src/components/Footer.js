@@ -141,7 +141,7 @@ const Footer = () => {
             <ul>
               {socials.map((item, index) => {
                 return (
-                  <li>
+                  <li key={index} >
                     <a
                       key={index}
                       href={item.url}
