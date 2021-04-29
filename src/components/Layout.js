@@ -11,6 +11,8 @@ const GlobalStyle = createGlobalStyle`
   --titleTextShadow: rgba(202, 202, 202, 0.29);
   --headerBG: rgba(35, 35, 35, 0);
   --navMenuBG: rgba(84, 84, 84, 0.7);
+  --formBG: rgba(228, 228, 228, 0.9);
+  --formValidationColor: rgba(255, 157, 156, 0.9);
   --border: #313131;
   --primary: #029a9e;
   --inActive: #505050;
@@ -64,6 +66,8 @@ body {
   --titleTextShadow: rgba(135, 135, 135, 0.5);
   --headerBG: rgba(206, 208, 218, 0.60);
   --navMenuBG: rgba(240,240,240,0.7);
+  --formBG: rgba(218, 218, 218, 49%);
+  --formValidationColor: rgba(255, 101, 100, 0.9);
   --border: #313131;
   --primary: rgba(94, 2, 158, 0.92);
   --inActive: #505050;
