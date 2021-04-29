@@ -7,20 +7,6 @@ import Navbar from "./Navbar/Navbar"
 
 const GlobalStyle = createGlobalStyle`
 :root {
-  --background: rgba(3, 3, 30, 0.99);
-  --titleTextShadow: rgba(202, 202, 202, 0.29);
-  --headerBG: rgba(35, 35, 35, 0);
-  --navMenuBG: rgba(84, 84, 84, 0.7);
-  --formBG: rgba(228, 228, 228, 0.9);
-  --formValidationColor: rgba(255, 157, 156, 0.9);
-  --border: #313131;
-  --primary: #029a9e;
-  --inActive: #505050;
-  --textColor: #fff;
-  --parallaxBG: rgba(0,0, 0, 0.15);
-  --worksPanelBG: rgba(55,55,55,0.9);
-  --blogPanelBG: rgba(55,55,55,0.9);
-  --servicesPanelBG: rgba(50,50,50,0.85);
   --menuItem: 1.125rem;
   --transition: 0.3s;
   --heroH1: 5rem;
@@ -33,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   @media(min-width:768px) {
     --h1: 2.375rem;
     --h2: 1.625rem;
-    --paddingStd: 4.688rem;
+    --paddingStd: 3.688rem;
     --paddingLarge: 7.813rem;
     --heroH1: 10vw;
   }
@@ -41,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     --menuItem: 1.25rem;
     --h1: 3.125rem;
     --h2: 1.75rem;
-    --paddingStd: 5.625rem;
+    --paddingStd: 4.625rem;
     --paddingLarge: 9.375rem;
     --heroH1: 10vw;
   }
@@ -61,6 +47,7 @@ body {
     background-color: var(--background);
     color: var(--textColor);
   }
+
 .light-mode{
   --background: rgba(241, 241, 241, 1);
   --titleTextShadow: rgba(135, 135, 135, 0.5);
@@ -76,6 +63,7 @@ body {
   --worksPanelBG: rgba(255,255,255,0.65);
   --blogPanelBG: rgba(255,255,255,0.65);
   --servicesPanelBG: rgba(255,255,255,0.85);
+  --blogCardShadow: rgba(1, 1, 1, 0.6);
   #parallaxBGImgLight{
     display: initial;
   }
@@ -84,12 +72,30 @@ body {
   }
 }
 
-#parallaxBGImgLight{
+.dark-mode{
+  --background: rgba(3, 3, 30, 0.99);
+  --titleTextShadow: rgba(202, 202, 202, 0.29);
+  --headerBG: rgba(35, 35, 35, 0);
+  --navMenuBG: rgba(84, 84, 84, 0.7);
+  --formBG: rgba(228, 228, 228, 0.9);
+  --formValidationColor: rgba(255, 157, 156, 0.9);
+  --border: #313131;
+  --primary: #029a9e;
+  --inActive: #505050;
+  --textColor: #fff;
+  --parallaxBG: rgba(0,0, 0, 0.15);
+  --worksPanelBG: rgba(55,55,55,0.9);
+  --blogPanelBG: rgba(55,55,55,0.9);
+  --servicesPanelBG: rgba(50,50,50,0.85);
+  --blogCardShadow: rgba(255, 255, 255, 0.6);
+  #parallaxBGImgLight{
     display: none;
   }
   #parallaxBGImg{
     display: initial;
   }
+}
+
 
 h1,
 h2 {
@@ -116,7 +122,7 @@ a.btn,
 button.btn {
     color: var(--text-color);
     background-color: transparent;
-    font-family: 'Heebo', sans-serif;
+    font-family: 'Heebo','Noto Sans JP' , sans-serif;
     border: 0;
     text-decoration: none;
     padding: 0;
