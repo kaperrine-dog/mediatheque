@@ -1,9 +1,15 @@
-import axios from 'axios'
-import React from "react"
-import {useForm} from 'react-hook-form'
-import styled from "styled-components"
-import Grid from "../Grid/Grid"
-
+//import {ErrorMessage} from '@hookform/error-message';
+import {yupResolver} from '@hookform/resolvers/yup';
+import axios from "axios";
+import React from "react";
+import {useForm} from 'react-hook-form';
+import styled from "styled-components";
+//import * as yup from 'yup';
+//import {setLocale} from "yup";
+import {BaseYup} from "../Form/BaseYup";
+//import {LocaleJP} from '../Form/LocaleJP';
+import Grid from "../Grid/Grid";
+//setLocale(LocaleJP);
 const Section = styled.section``
 
 const Title = styled.h1`
@@ -32,17 +38,24 @@ const SubTitle = styled.h2`
 `
 
 const Form = styled.form`
+  p{
+    margin: 0;
+    padding: 0;
+    color: var(--formValidationColor);
+    font-weight: bold;
+    min-height:2em;
+  }
   input {
     height: 50px;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.0rem;
 
     @media (min-width: 1200px) {
-      margin-bottom: 1.875rem;
+      margin-bottom: 1.0rem;
     }
   }
   input,
   textarea {
-    background-color: #000;
+    background-color: var(--formBG);
     color: var(--text-color);
     border: none;
     border-bottom: 3px solid var(--inActive);
@@ -52,6 +65,8 @@ const Form = styled.form`
     font-family: "Heebo", sans-serif;
     padding: 15px;
     transition: border-bottom-color 0.3s;
+    resize: vertical;
+    overflow: auto;
 
     &:focus {
       border-bottom-color: var(--primary);
@@ -78,16 +93,49 @@ const Form = styled.form`
   }
 `
 
-
-
+const schema = BaseYup.object().shape({
+  name: BaseYup.string()
+      .min(1)
+      .max(255)
+      .required()
+      .label('お名前'),
+  email: BaseYup.string()
+      .max(255)
+      .email()
+      .required()
+      .label('メールアドレス'),
+  message: BaseYup.string()
+      .max(1024)
+      .required()
+      .label('メッセージ'),
+})
 
 const Contact = () => {
-  const { register, handleSubmit, errors } = useForm()
+  
+  const { 
+    register, 
+    handleSubmit, 
+    formState: { errors },
+    } = useForm({  
+      resolver: yupResolver(schema),
+      mode: 'onChange',
+      options: {
+        reValidateMode: 'onChange',
+        criteriaMode: "firstError",
+        shouldFocusError: true,
+        shouldUnregister: false,
+      }
+  })
+
   const onSubmit = (data) => {
     data['form-name'] = 'contact'
     axios.post('/', new URLSearchParams(data))
-      .then(postSubmission)
-      .catch(handleError)
+      .then( (response) => {
+        console.log(response.data)
+      })
+      .catch( (axiosError) => {
+        console.log(axiosError)
+      })
   }
 
   return (
@@ -95,25 +143,62 @@ const Contact = () => {
       <Grid>
         <Title>Contact.</Title>
         <SubContent>
-          <SubTitle>Looking for more information?</SubTitle>
+          <SubTitle>お問い合わせはこちらまでどうぞ。</SubTitle>
           <p>
-            Aenean pulvinar ligula id elit pulvinar, sit amet semper sem semper.
-            In porttitor ornare libero, eu faucibus tellus elementum sit amet.
-            Sed ut arcu efficitur, auctor purus sed, venenatis velit. Etiam
-            mauris metus, tempor vel convallis vitae, auctor id risus.
+            
           </p>
-          <Form name="contact" netlify onSubmit={handleSubmit(onSubmit)} >
+          <Form netlify onSubmit={handleSubmit(onSubmit)}
+                name="contact" 
+                method="POST" 
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" /> 
+            
             <label>
-              <input placeholder="お名前" type="text" name="name" ref={register({ required: '必須項目です' })}/>
+              <p>
+                {errors.name?.message && 
+                  errors.name?.message
+                }
+              </p>
+              <input 
+                placeholder="お名前" 
+                name="name"
+                type="text"
+                label="お名前"
+                autoComplete="name"
+                {...register("name")}
+              />
             </label>
             <label>
-              <input placeholder="メールアドレス" type="email" name="email" ref={register({ required: '必須項目です' })}/>
+              <p>
+                {errors.email?.message && 
+                  errors.email?.message
+                }
+              </p>
+              <input 
+                placeholder="メールアドレス" 
+                name="email"
+                label="メールアドレス"
+                autoComplete="email"
+                autoCorrect="off"
+                autoCapitalize="off"
+                {...register("email")}
+              />
             </label>
-            <textarea
-              placeholder="Your message"
-              name="message"
-              rows="5"
-            ></textarea>
+              <p>
+                {errors.message?.message && 
+                  errors.message?.message
+                }
+              </p>
+              <textarea
+                placeholder="メッセージ" 
+                name="message"
+                label="メッセージ"
+                {...register("message")}
+                rows="5"
+              />
             <button className="btn" type="submit">
               Send Message
             </button>
