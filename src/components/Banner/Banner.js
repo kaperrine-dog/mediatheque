@@ -18,14 +18,14 @@ const HeroContainer = styled.div``
 const GridContainer = styled.div`
   display: grid;
   grid-gap: 30px;
-  grid-template-columns: 100%;
+  grid-template-columns: 1fr;
 
   @media (min-width: 769px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
   @media (min-width: 1200px) {
-    grid-template-rows: 1fr 0fr;
+    grid-template-rows: 1fr;
     grid-gap: 40px;
   }
 `

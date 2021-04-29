@@ -7,6 +7,22 @@ import styled from "styled-components"
 const BlogItem = styled.article`
   width: 100%;
   padding: 0 20px;
+  position: relative;
+  .blogImage{
+    width: 100%;
+  }
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 90%;
+    height: 100%;
+    background-color: var(--blogCardShadow);
+    filter: blur(20px);
+    transform: translateY(12px) scale(1);
+    mix-blend-mode: multiply;
+  }
 `
 
 const BlogItemContent = styled.div`
@@ -24,8 +40,11 @@ const BlogItemContent = styled.div`
   }
 
   @media (min-width: 769px) {
-    max-width: calc((100vw - 60px - 80px) / 3);
+    max-width: calc((100vw - 60px - 40px) / 2);
     margin-bottom: 0;
+  }
+  @media (min-width: 1000px) {
+    max-width: calc((100vw - 60px - 80px) / 3);
   }
 
   h2 {
@@ -60,7 +79,7 @@ const BlogCard = ({ blog }) => {
         bg="var(--background)"
         to={`/blogs/${slug}`}
       >
-        <GatsbyImage image={image} alt="Single Post" />
+        <GatsbyImage className="blogImage" image={image} alt="Single Post" />
         <BlogItemContent>
           <h2>{title}</h2>
           <Bottom>

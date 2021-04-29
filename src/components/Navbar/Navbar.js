@@ -15,7 +15,7 @@ const NavBar = styled.nav`
   z-index: 5;
   border-bottom: 1px solid var(--border);
   background-color: var(--headerBG);
-  @media (min-width: 769px){
+  @media (min-width: 1000px){
     border: none;
   }
 `
@@ -58,7 +58,7 @@ const NavLogo = styled.div`
   width: 60%;
   @media (max-width: 768x){
   }
-  @media (min-width: 769px){
+  @media (min-width: 1000px){
     width: auto;
     border: none;
   }
@@ -99,8 +99,8 @@ const ThemeSwitch = styled.div`
   @media (max-width: 768x){
     
   }
-  @media (min-width: 769px){
-    width: 70px;
+  @media (min-width: 1000px){
+    width: 85px;
     border: none;
     order: 3;
   }
@@ -120,9 +120,17 @@ const NavSocials = styled.div`
   padding: 0 0 0 1.875rem;
   order: 2;
   z-index: 2;
-  @media (min-width: 769px){
-    justify-content: flex-end;
+  justify-content: flex-end;
+  @media (min-width: 1000px){
+    width: auto;
+    position: absolute;
+    right: 160px;
+    bottom: 0;
+  }
+  @media (min-width: 1200px){
     width: 35%;
+    position: static;
+    right: auto;
   }
   li {
     text-align: center;
@@ -165,7 +173,6 @@ const NavLinks = styled.div`
   visibility var(--transition) ease-in;
 
   @media (min-width: 769px) {
-    width: 35%;
     position: relative;
     top: auto;
     left: auto;
@@ -174,6 +181,16 @@ const NavLinks = styled.div`
     visibility: visible;
     opacity: 1;
     padding: 0;
+  }
+  @media (min-width: 1000px){
+    width: auto;
+    left: 190px;
+    position: absolute;
+  }
+  @media (min-width: 1200px){
+    width: 35%;
+    position: static;
+    left: auto;
   }
 
   &.show-nav {

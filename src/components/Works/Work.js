@@ -22,6 +22,9 @@ const WorkContent = styled.div`
 
   @media (min-width: 769px) {
     margin-bottom: 0;
+    max-width: calc((100vw - 60px - 40px) / 2);
+  }
+  @media (min-width: 1000px) {
     max-width: calc((100vw - 60px - 80px) / 3);
   }
 

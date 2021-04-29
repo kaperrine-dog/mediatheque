@@ -10,6 +10,9 @@ const Container = styled.div`
   box-sizing: content-box;
 
   @media (min-width: 769px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1000px){
     grid-template-columns: 1fr 1fr 1fr;
   }
 `

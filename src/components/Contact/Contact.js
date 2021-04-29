@@ -23,6 +23,9 @@ const Title = styled.h1`
 
 const SubContent = styled.div`
   @media (min-width: 769px) {
+    grid-column: 1 / 4;
+  }
+  @media (min-width: 1000px) {
     grid-column: 2 / 4;
   }
 
@@ -104,6 +107,10 @@ const schema = BaseYup.object().shape({
       .email()
       .required()
       .label('メールアドレス'),
+  url: BaseYup.string()
+      .max(255)
+      .url()
+      .label('URL'),
   message: BaseYup.string()
       .max(1024)
       .required()
@@ -185,6 +192,22 @@ const Contact = () => {
                 autoCorrect="off"
                 autoCapitalize="off"
                 {...register("email")}
+              />
+            </label>
+            <label>
+              <p>
+                {errors.url?.message && 
+                  errors.url?.message
+                }
+              </p>
+              <input 
+                placeholder="URL" 
+                name="url"
+                label="URL"
+                autoComplete="url"
+                autoCorrect="off"
+                autoCapitalize="off"
+                {...register("url")}
               />
             </label>
               <p>

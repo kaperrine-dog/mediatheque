@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import {graphql} from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
@@ -25,6 +25,9 @@ const FlexItem = styled.div`
     margin-bottom: 0;
   }
   @media (min-width: 769px) {
+    flex: 0 0 calc(100% / 2);
+  }
+  @media (min-width: 1000px) {
     flex: 0 0 calc(100% / 3);
   }
 `
