@@ -13,8 +13,11 @@ const NavBar = styled.nav`
   position: fixed;
   width: 100%;
   z-index: 5;
-  background-color: var(--headerBG);
   border-bottom: 1px solid var(--border);
+  background-color: var(--headerBG);
+  @media (min-width: 769px){
+    border: none;
+  }
 `
 
 const NavButton = styled.button`
@@ -28,7 +31,6 @@ const NavButton = styled.button`
   font-weight: 900;
   letter-spacing: -1px;
   z-index: 10;
-
   &::after {
     content: "";
     display: block;
@@ -48,13 +50,18 @@ const NavButton = styled.button`
 const NavLogo = styled.div`
   font-size: 1rem;
   font-weight: 900;
-  width: 60%;
   flex-shrink: 0;
   letter-spacing: -0.5px;
   padding: 7px 0;
   z-index: 2;
   border-bottom: 1px solid var(--border);
-
+  width: 60%;
+  @media (max-width: 768x){
+  }
+  @media (min-width: 769px){
+    width: auto;
+    border: none;
+  }
   @media (min-width: 1200px) {
     font-size: 1rem;
     padding: 12px 0;
@@ -81,7 +88,6 @@ const NavLogo = styled.div`
 `
 
 const ThemeSwitch = styled.div`
-  width: 40%;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -89,6 +95,15 @@ const ThemeSwitch = styled.div`
   align-items: flex-end;
   border-bottom: 1px solid var(--border);
   z-index: 2;
+  width: 40%;
+  @media (max-width: 768x){
+    
+  }
+  @media (min-width: 769px){
+    width: 70px;
+    border: none;
+    order: 3;
+  }
 `
 
 const NavCenter = styled.div`
@@ -105,7 +120,10 @@ const NavSocials = styled.div`
   padding: 0 0 0 1.875rem;
   order: 2;
   z-index: 2;
-
+  @media (min-width: 769px){
+    justify-content: flex-end;
+    width: 35%;
+  }
   li {
     text-align: center;
     font-size: 1.5rem;
@@ -147,11 +165,11 @@ const NavLinks = styled.div`
   visibility var(--transition) ease-in;
 
   @media (min-width: 769px) {
+    width: 35%;
     position: relative;
     top: auto;
     left: auto;
     transform: translate(0);
-    width: auto;
     height: auto;
     visibility: visible;
     opacity: 1;
@@ -162,6 +180,8 @@ const NavLinks = styled.div`
     visibility: visible;
     opacity: 1;
     transform: translateX(0);
+    position: absolute;
+    z-index: 9;
   }
 
   ul {

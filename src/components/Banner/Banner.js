@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const getImages = graphql`
   query HeroImage {
-    fluid: file(relativePath: { eq: "whiteRose.jpg" }) {
+    fluid: file(relativePath: { eq: "deepsea01.jpg" }) {
       childImageSharp {
         gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
       }
@@ -25,20 +25,20 @@ const GridContainer = styled.div`
   }
 
   @media (min-width: 1200px) {
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 0fr;
     grid-gap: 40px;
   }
 `
 
 const HeroImage = styled.div`
   width: 100%;
-  height: fit-content;
+  //height: fit-content;
   background-color: var(--primary);
   border: none;
   outline: none;
-
+  grid-column: 1 / 4;
   @media (min-width: 769px) {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
   }
 
   @media (min-width: 1200px) {
@@ -55,7 +55,7 @@ const TitleArea = styled.div`
   align-items: center;
   position: relative;
   @media (min-width: 769px) {
-    grid-column: 1 / 2;
+    grid-column: 1 / 4;
     display: initial;
   }
 
@@ -66,6 +66,7 @@ const TitleArea = styled.div`
   }
 `
 const ContentArea = styled.div`
+  grid-column: 1 / 4;
   @media (min-width: 769px) {
     grid-column: 3 / 4;
   }
@@ -133,7 +134,7 @@ const Banner = ({ title, info, children }) => {
             <HeroTitleInverted role='headeing'>{title}</HeroTitleInverted>
           </TitleArea>
           <HeroImage>
-            <GatsbyImage image={image} alt="Macbook and iPhone" />
+            <GatsbyImage image={image} alt="hero image" />
           </HeroImage>
           <ContentArea>
             <HeroSubTitle>{info}</HeroSubTitle>

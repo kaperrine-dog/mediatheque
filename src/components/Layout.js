@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
 :root {
   --background: rgba(3, 3, 30, 0.99);
   --titleTextShadow: rgba(202, 202, 202, 0.29);
-  --headerBG: rgba(35, 35, 35, 0.6);
+  --headerBG: rgba(35, 35, 35, 0);
   --navMenuBG: rgba(84, 84, 84, 0.7);
   --border: #313131;
   --primary: #029a9e;
