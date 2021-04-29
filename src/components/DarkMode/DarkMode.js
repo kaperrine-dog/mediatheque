@@ -42,7 +42,8 @@ const Toggle = styled.span`
   width: 16px;
   height: 16px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: #d4d4d4;
+  border-bottom: 1px solid rgba(100,100,100,1.0);
   position: absolute;
   top: 0;
   left: 0;
@@ -58,7 +59,7 @@ const IndicatorDark = styled.span`
   left: 0;
   height: 16px;
   width: 24px;
-  background-color: #ffc400;
+  background-color: rgba(132, 221, 255, 1);
   z-index: 1;
 `
 
@@ -68,7 +69,7 @@ const IndicatorLight = styled.span`
   right: 0;
   height: 16px;
   width: 24px;
-  background-color: green;
+  background-color: rgba(80, 76, 255, 1);
   z-index: 1;
 `
 
@@ -78,19 +79,20 @@ const CurrentMode = styled.p`
 `
 
 const DarkMode = () => {
+  document.body.classList.add("light-mode")
   const [darkMode, toggleDarkMode] = useState(false)
   const changeMode = () => {
     toggleDarkMode(darkMode => !darkMode)
-    document.body.classList.toggle("light-mode")
+    document.body.classList.toggle("dark-mode")
   }
   return (
     <>
       <ThemeSelect>
-        <CurrentMode>{darkMode ? `${"Ice"}` : `${"DeepSea"}`}</CurrentMode>
+        <CurrentMode>{darkMode ? `${"DeepSea"}` : `${"Iceage"}`}</CurrentMode>
         <SwitchContainer>
           <Switch
             onClick={changeMode}
-            className={darkMode ? `${"true"}` : `${"false"}`}
+            className={darkMode ? `${"false"}` : `${"true"}`}
           >
             <IndicatorDark />
             <Toggle />
