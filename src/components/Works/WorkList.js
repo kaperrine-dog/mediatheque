@@ -16,7 +16,6 @@ const FlexContainer = styled.div`
 const FlexItem = styled.div`
   width: 100%;
   margin-bottom: 40px;
-
   &:last-child {
     margin-bottom: 0;
   }
