@@ -5,8 +5,6 @@ import BlogCard from "./BlogCard"
 
 const Section = styled.section`
   grid-column: 1 / 4;
-  margin-left: -20px;
-  margin-right: -20px;
 `
 const FlexContainer = styled.div`
   display: flex;
@@ -23,7 +21,7 @@ const FlexItem = styled.div`
   @media (min-width: 769px) {
     flex: 0 0 calc(100% / 2);
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 1200px) {
     flex: 0 0 calc(100% / 3);
   }
 `
@@ -33,7 +31,7 @@ const getPosts = graphql`
     posts: allContentfulPosts(sort: { fields: published, order: DESC }) {
       edges {
         node {
-          published(formatString: "MMMM Do, YYYY")
+          published(formatString: "Y年MM月DD日")
           title
           slug
           postId: contentful_id

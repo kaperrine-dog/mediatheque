@@ -2,11 +2,11 @@ import {graphql} from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
-import BlogCard from "../components/Blog/BlogCard"
-import Grid from "../components/Grid/Grid"
-import PageIntro from "../components/PageIntro/PageIntro"
-import Seo from "../components/SEO"
-
+import BlogCard from "../components/Blog/BlogCard.js"
+import BlogHeader from "../components/Blog/BlogHeader.js"
+import Grid from "../components/Grid/Grid.js"
+import PageIntro from "../components/PageIntro/PageIntro.js"
+import Seo from "../components/SEO.js"
 const Section = styled.section`
   grid-column: 1 / 4;
   margin-left: -20px;
@@ -20,6 +20,15 @@ const FlexContainer = styled.div`
 const FlexItem = styled.div`
   width: 100%;
   margin-bottom: 40px;
+  @media (min-width: 769px){
+    margin-bottom: 60px;
+  }
+  @media (min-width: 1000px){
+    margin-bottom: 60px;
+  }
+  @media (min-width: 1300px){
+    margin-bottom: 60px;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -27,7 +36,10 @@ const FlexItem = styled.div`
   @media (min-width: 769px) {
     flex: 0 0 calc(100% / 2);
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 992px) {
+    flex: 0 0 calc(100% / 2);
+  }
+  @media (min-width: 1300px) {
     flex: 0 0 calc(100% / 3);
   }
 `
@@ -70,6 +82,7 @@ const Blog = props => {
   return (
     <>
       <Seo title="Blogs" />
+      <BlogHeader></BlogHeader>
       <section className="section-padding">
         <Grid>
           <PageIntro
@@ -142,7 +155,8 @@ export const query = graphql`
           slug
           title
           postId: contentful_id
-          published(formatString: "MMMM Do, YYYY")
+          introduction
+          published(formatString: "Y年MM月DD日")
           images {
             gatsbyImageData(width: 600, formats: [AUTO, WEBP])
           }
