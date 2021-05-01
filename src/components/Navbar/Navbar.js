@@ -9,7 +9,7 @@ import DarkMode from "../DarkMode/DarkMode"
 //import BackgroundImage from 'gatsby-background-image'
 
 const NavBar = styled.nav`
-  padding: 0 1.875rem;
+  padding: 0.5rem 1.875rem;
   position: fixed;
   width: 100%;
   z-index: 5;
@@ -110,7 +110,7 @@ const NavCenter = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 `
 
@@ -125,7 +125,9 @@ const NavSocials = styled.div`
     width: auto;
     position: absolute;
     right: 160px;
-    bottom: 0;
+    bottom: 0px;
+    height: 100%;
+
   }
   @media (min-width: 1200px){
     width: 35%;
@@ -137,11 +139,13 @@ const NavSocials = styled.div`
     font-size: 1.5rem;
     margin-right: 1rem;
     list-style: none;
+    padding: 18px 0 15px;
 
     a {
       color: var(--text-color);
       transition: var(--transition);
-
+      display: flex;
+      align-items: center;
       &:hover {
         color: var(--primary);
       }
@@ -275,14 +279,16 @@ const NavLinks = styled.div`
 `
 
 const Spacer = styled.div`
-  height: 72px;
+  height: 125px;
 
   @media (min-width: 769px) {
-    height: 91px;
+    height: 125px;
   }
-
+  @media (min-width: 1000px) {
+    height: 65px;
+  }
   @media (min-width: 1200px) {
-    height: 113px;
+    height: 80px;
   }
 `
 
