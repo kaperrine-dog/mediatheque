@@ -4,23 +4,27 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import {renderRichText} from "gatsby-source-contentful/rich-text"
 import React from "react"
 import styled from "styled-components"
+import BlogHeader from "../components/Blog/BlogHeader"
 import Grid from "../components/Grid/Grid"
 import Seo from "../components/SEO"
-
+import Sidebar from "../components/Sidebar/Sidebar.js"
 
 const DetailArea = styled.div`
   grid-column: 1 / 1;
 
   h2 {
     margin-top: 0;
+    position: sticky;
   }
 
   p {
     margin-bottom: 40px;
   }
-
+  @media (min-width: 1000px) {
+    grid-column: 3 / 4;
+  }
   @media (min-width: 1200px) {
-    grid-column: 1 / 2;
+    grid-column: 3 / 4;
   }
 `
 
@@ -28,10 +32,12 @@ const ContentArea = styled.div`
   grid-column: 1 / 4;
 
   @media (min-width: 1000px) {
-    grid-column: 2 / 4;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
   }
   @media (min-width: 1200px) {
-    grid-column: 2 / 4;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
   }
   h1 {
     margin-top: 0;
@@ -83,15 +89,9 @@ const Blog = ({ data }) => {
   return (
     <>
       <Seo title={title} />
+      <BlogHeader></BlogHeader>
       <section className="section-padding">
         <Grid>
-          <DetailArea>
-            <h2>{introduction}</h2>
-            <p>Published on - {published}</p>
-            <AniLink className="btn" cover bg="var(--background)" to="/blogs">
-              Back to Blogs
-            </AniLink>
-          </DetailArea>
           <ContentArea>
             <h1>{title}</h1>
               <GatsbyImage
@@ -100,6 +100,14 @@ const Blog = ({ data }) => {
               alt="Placeholder" />
             <article>{renderRichText(richText, options)}</article>
           </ContentArea>
+          <DetailArea>
+            <h2>{introduction}</h2>
+            <p>Published on - {published}</p>
+            <AniLink className="btn" cover bg="var(--background)" to="/blogs">
+              Back to Blogs
+            </AniLink>
+            <Sidebar/>
+          </DetailArea>
         </Grid>
       </section>
     </>
@@ -111,7 +119,7 @@ export const query = graphql`
     post: contentfulPosts(slug: { eq: $slug }) {
       title
       introduction
-      published(formatString: "MMMM Do YYYY")
+      published(formatString: "Y年MM月DD日")
       images {
         fluid {
           ...GatsbyContentfulFluid
