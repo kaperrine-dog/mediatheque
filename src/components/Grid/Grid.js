@@ -4,7 +4,7 @@ import styled from "styled-components"
 const Container = styled.div`
   display: grid;
   grid-gap: 40px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   box-sizing: content-box;
@@ -14,6 +14,9 @@ const Container = styled.div`
   }
   @media (min-width: 1000px){
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (min-width: 1200px){
+    grid-gap: 60px;
   }
 `
 
