@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   --paddingBorder: 1.875rem;
   --paddingStd: 3.125rem;
   --paddingLarge: 4.688rem;
+  --blogCardBorderRadius: 20px;
 
   @media(min-width:768px) {
     --h1: 2.375rem;
@@ -25,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
   @media(min-width: 1200px) {
     --menuItem: 1.25rem;
-    --h1: 3.125rem;
+    --h1: 2.125rem;
     --h2: 1.75rem;
     --paddingStd: 4.625rem;
     --paddingLarge: 9.375rem;
@@ -52,7 +53,7 @@ body {
   --background: rgba(241, 241, 241, 1);
   --titleTextShadow: rgba(135, 135, 135, 0.5);
   --headerBG: rgba(206, 208, 218, 0.60);
-  --navMenuBG: rgba(240,240,240,0.7);
+  --navMenuBG: rgba(240,240,240,0.5);
   --formBG: rgba(218, 218, 218, 49%);
   --formValidationColor: rgba(255, 101, 100, 0.9);
   --border: #313131;
@@ -64,12 +65,15 @@ body {
   --blogPanelBG: rgba(255,255,255,0.65);
   --servicesPanelBG: rgba(255,255,255,0.85);
   --blogCardShadow: rgba(1, 1, 1, 0.6);
+  --worksCardShadow: rgba(1, 1, 1, 0.6);
   #parallaxBGImgLight{
     display: initial;
   }
   #parallaxBGImg{
     display: none;
   }
+  --neumorphismShadow: #606060;
+  --neumorphizmLight: rgba(255,255,255,0.99);
 }
 
 .dark-mode{
@@ -84,16 +88,19 @@ body {
   --inActive: #505050;
   --textColor: #fff;
   --parallaxBG: rgba(0,0, 0, 0.15);
-  --worksPanelBG: rgba(55,55,55,0.9);
-  --blogPanelBG: rgba(55,55,55,0.9);
-  --servicesPanelBG: rgba(50,50,50,0.85);
-  --blogCardShadow: rgba(255, 255, 255, 0.6);
+  --worksPanelBGDark: rgba(30,30,50, 0.999);
+  --blogPanelBGDark: rgba(30,30,50, 0.999);
+  --servicesPanelBG: rgba(30,30,50, 0.999);
+  --blogCardShadowDark: rgba(180, 180, 180, 0.5);
+  --worksCardShadow: rgba(180, 180, 180, 0.5);
   #parallaxBGImgLight{
     display: none;
   }
   #parallaxBGImg{
     display: initial;
   }
+  --neumorphismShadow: #606060;
+  --neumorphizmLight: rgba(50, 50, 50, 0.99);
 }
 
 
@@ -117,7 +124,10 @@ h2 {
   font-size: var(--h2);
   font-weight: 500;
 }
-
+p{
+  line-height: 1.5em;
+  margin: 0;
+}
 a.btn,
 button.btn {
     color: var(--text-color);
@@ -144,6 +154,7 @@ button.btn {
       right: 0;
       bottom: 8px;
       background-color: var(--primary);
+      margin: 0 auto;
     }
 
     &:focus {
@@ -166,7 +177,7 @@ button.btn {
   }
 
   .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
   }
