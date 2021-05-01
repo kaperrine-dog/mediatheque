@@ -1,5 +1,5 @@
-import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import {graphql} from "gatsby";
+import {GatsbyImage} from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button/Button";
@@ -81,10 +81,10 @@ const FaqBlock = styled.div`
 
 
 
-const productTemplate = ({ data }) => {
+const workTemplate = ({ data }) => {
   const {
     name,
-    price,
+    introduction,
     description: { description },
     images,
     url,
@@ -108,7 +108,7 @@ const productTemplate = ({ data }) => {
         </ImageLinkArea>
         <ContentArea>
           <h1>{name}</h1>
-          <h2>£{price}</h2>
+          <h2>{introduction}</h2>
           <p>{description}</p>
           <Button text="Enquire Now" link="/contact" />
           <ImageGallery>
@@ -143,7 +143,7 @@ export const query = graphql`
   query($slug: String) {
     product: contentfulWorks(slug: { eq: $slug }) {
       name
-      price
+      introduction
       description {
         description
       }
@@ -162,4 +162,4 @@ export const query = graphql`
   }
 `
 
-export default productTemplate
+export default workTemplate
