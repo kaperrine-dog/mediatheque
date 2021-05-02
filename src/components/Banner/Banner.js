@@ -49,7 +49,7 @@ const HeroImage = styled.div`
 `
 
 const TitleArea = styled.div`
-  height: 80vh;
+  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,12 +57,14 @@ const TitleArea = styled.div`
   @media (min-width: 769px) {
     grid-column: 1 / 4;
     display: initial;
+    top: 20vh;
   }
 
   @media (min-width: 1200px) {
     grid-column: 1 / 4;
     grid-row: 1 / 1;
     display: initial;
+    top: 15vh;
   }
 `
 const ContentArea = styled.div`
@@ -80,6 +82,7 @@ const ContentArea = styled.div`
 `
 
 const HeroTitle = styled.h1`
+  font-family: 'Heebo','Noto Sans JP' , sans-serif;
   font-size: var(--heroH1);
   margin-top: 0;
   margin-bottom: 0;
@@ -94,6 +97,7 @@ const HeroTitle = styled.h1`
   }
 `
 const HeroTitleInverted = styled.div`
+  font-family: 'Heebo','Noto Sans JP' , sans-serif;
   transform: rotate(90deg);
   font-size: var(--heroH1);
   margin-top: 0;
