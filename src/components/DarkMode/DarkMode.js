@@ -79,20 +79,6 @@ const CurrentMode = styled.p`
 `
 
 const DarkMode = () => {
-  //init
-  //document.body.classList.add("light-mode")
-
-  //const [darkMode, toggleDarkMode, handleDarkMode ] = useState(false)
-  const loadFunc = () => {
-    if( /* darkMode && */ localStorage.getItem("darkMode") === "on"  ){
-      document.body.classList.add("dark-mode") 
-      return !darkMode
-    }else if( /* !darkMode && */ localStorage.getItem("darkMode") === "off" ){
-      document.body.classList.remove("dark-mode") 
-      return !darkMode
-    }
-  } 
-
 
   const [darkMode, setDarkMode] = React.useState(
     localStorage.getItem("darkMode") === "on" ? true : false
@@ -107,12 +93,15 @@ const DarkMode = () => {
     localStorage.setItem("darkMode", "off");
     setDarkMode(false);
   };
-  window.onload = () => {
+
+  React.useEffect(() => {
     localStorage.getItem("darkMode") === "on" && (
       document.body.classList.add("dark-mode")
     )
-  }
-
+    return () => {
+    }
+  } )
+  
   return (
     <>
       <ThemeSelect>
