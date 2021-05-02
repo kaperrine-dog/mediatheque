@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import styled from "styled-components"
 
 const ThemeSelect = styled.div`
@@ -79,19 +79,49 @@ const CurrentMode = styled.p`
 `
 
 const DarkMode = () => {
-  document.body.classList.add("light-mode")
-  const [darkMode, toggleDarkMode] = useState(false)
-  const changeMode = () => {
-    toggleDarkMode(darkMode => !darkMode)
-    document.body.classList.toggle("dark-mode")
+  //init
+  //document.body.classList.add("light-mode")
+
+  //const [darkMode, toggleDarkMode, handleDarkMode ] = useState(false)
+  const loadFunc = () => {
+    if( /* darkMode && */ localStorage.getItem("darkMode") === "on"  ){
+      document.body.classList.add("dark-mode") 
+      return !darkMode
+    }else if( /* !darkMode && */ localStorage.getItem("darkMode") === "off" ){
+      document.body.classList.remove("dark-mode") 
+      return !darkMode
+    }
+  } 
+
+
+  const [darkMode, setDarkMode] = React.useState(
+    localStorage.getItem("darkMode") === "on" ? true : false
+  );
+  const handleDarkModeOn = () => {
+    document.body.classList.add("dark-mode") 
+    localStorage.setItem("darkMode", "on");
+    setDarkMode(true);
+  };
+  const handleDarkModeOff = () => {
+    document.body.classList.remove("dark-mode") 
+    localStorage.setItem("darkMode", "off");
+    setDarkMode(false);
+  };
+  window.onload = () => {
+    localStorage.getItem("darkMode") === "on" && (
+      document.body.classList.add("dark-mode")
+    )
   }
+
   return (
     <>
       <ThemeSelect>
-        <CurrentMode>{darkMode ? `${"DeepSea"}` : `${"Iceage"}`}</CurrentMode>
+        <CurrentMode>
+          {darkMode ? `${"DeepSea"}` : `${"Iceage"}`}
+        </CurrentMode>
         <SwitchContainer>
           <Switch
-            onClick={changeMode}
+            onClick={darkMode ? ( handleDarkModeOff ) : ( handleDarkModeOn ) }
             className={darkMode ? `${"false"}` : `${"true"}`}
           >
             <IndicatorDark />
