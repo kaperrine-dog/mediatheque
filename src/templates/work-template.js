@@ -108,11 +108,11 @@ const workTemplate = ({ data }) => {
         </ImageLinkArea>
         <ContentArea>
           <h1>{name}</h1>
-          <h2>{introduction}</h2>
+          <h2>{introduction && introduction}</h2>
           <p>{description}</p>
           <Button text="Enquire Now" link="/contact" />
           <ImageGallery>
-            {productImages.map((item, index) => {
+            {productImages && productImages.map((item, index) => {
               return (
                 <GatsbyImage
                   image={item.gatsbyImageData}
@@ -123,7 +123,7 @@ const workTemplate = ({ data }) => {
             })}
           </ImageGallery>
           <FaqBlock>
-            {faq.map((item, index) => {
+            { faq && faq.map((item, index) => {
               return (
                 <Faq
                   key={index}
