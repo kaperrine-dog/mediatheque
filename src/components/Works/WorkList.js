@@ -2,18 +2,18 @@ import React, {Component} from "react"
 import styled from "styled-components"
 import Work from "./Work"
 
-const Section = styled.section`
+const StyledSection = styled.section`
   grid-column: 1 / 4;
   margin-left: -20px;
   margin-right: -20px;
 `
 
-const FlexContainer = styled.div`
+const StyledFlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
 
-const FlexItem = styled.div`
+const StyledFlexItem = styled.div`
   width: 100%;
   margin-bottom: 40px;
   &:last-child {
@@ -41,17 +41,21 @@ export default class WorkList extends Component {
   }
   render() {
     return (
-      <Section>
-        <FlexContainer>
-          {this.state.sortedWorks.map(({ node, index}) => {
+      <StyledSection>
+        <StyledFlexContainer>
+          {this.state.sortedWorks.map(({ node }, index) => {
             return (
-              <FlexItem>
-                <Work key={index /* node.contentful_id */} work={node} />
-              </FlexItem>
+              <StyledFlexItem
+              key={node.workId}
+              >
+                <Work 
+                  key={node.workId /* node.contentful_id */} 
+                  work={node} />
+              </StyledFlexItem>
             )
           })}
-        </FlexContainer>
-      </Section>
+        </StyledFlexContainer>
+      </StyledSection>
     )
   }
 }

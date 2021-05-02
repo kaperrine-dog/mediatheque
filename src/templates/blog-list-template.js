@@ -7,17 +7,23 @@ import BlogHeader from "../components/Blog/BlogHeader.js"
 import Grid from "../components/Grid/Grid.js"
 import PageIntro from "../components/PageIntro/PageIntro.js"
 import Seo from "../components/SEO.js"
-const Section = styled.section`
+const StyledSection = styled.section`
   grid-column: 1 / 4;
   margin-left: -20px;
   margin-right: -20px;
 `
-const FlexContainer = styled.div`
+const StyledFlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  .blogCardEven{
+  }
+  .blogCardOdd{
+  }
+  .FlexItem{
+  }
 `
 
-const FlexItem = styled.div`
+const StyledFlexItem = styled.div`
   width: 100%;
   margin-bottom: 40px;
   @media (min-width: 769px){
@@ -29,7 +35,6 @@ const FlexItem = styled.div`
   @media (min-width: 1300px){
     margin-bottom: 60px;
   }
-
   &:last-child {
     margin-bottom: 0;
   }
@@ -44,7 +49,7 @@ const FlexItem = styled.div`
   }
 `
 
-const Pagination = styled.div`
+const StyledPagination = styled.div`
   grid-column: 1 / 4;
   text-align: right;
 
@@ -90,18 +95,24 @@ const Blog = props => {
             subTitle="A simple blog system that will allow you to update your followers with recent news"
             paragraph="Aliquam tempus libero nec quam aliquam fringilla. Suspendisse potenti. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In quis ipsum magna."
           />
-          <Section>
-            <FlexContainer>
-              {data.post.edges.map(({ node }) => {
+          <StyledSection>
+            <StyledFlexContainer>
+              {data.post.edges.map(({ node }, index ) => {
                 return (
-                  <FlexItem>
-                    <BlogCard key={node.id} blog={node} />
-                  </FlexItem>
+                  <StyledFlexItem
+                    className={ index % 3 === 0 ? "FlexItem blogCard3n" : "FlexItem blogCard" }
+                  >
+                    <BlogCard 
+                      key={node.postId}
+                      blog={node}
+                    />
+                  </StyledFlexItem>
                 )
+                
               })}
-            </FlexContainer>
-          </Section>
-          <Pagination>
+            </StyledFlexContainer>
+          </StyledSection>
+          <StyledPagination>
             {!isFirst && (
               <AniLink
                 className="btn"
@@ -136,7 +147,7 @@ const Blog = props => {
                 Next
               </AniLink>
             )}
-          </Pagination>
+          </StyledPagination>
         </Grid>
       </section>
     </>
