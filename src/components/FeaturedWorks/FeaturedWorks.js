@@ -15,7 +15,7 @@ const getWorks = graphql`
         node {
           name
           introduction
-          contentful_id
+          workId: contentful_id
           slug
           description {
             description
