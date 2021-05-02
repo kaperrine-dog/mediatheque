@@ -74,12 +74,28 @@ const ImageGallery = styled.div`
     }
   }
 `
+const StyledIntroduction = styled.p`
+  
+`
+const StyledURL = styled.span`
+  cursor: pointer;
+  
+`
 
 const FaqBlock = styled.div`
   margin-top: 40px;
+  
 `
 
-
+const deleteAllCookies = () => {
+  const cookies = document.cookie.split(';')
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i]
+    const eqPos = cookie.indexOf('=')
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie
+    document.cookie = name + '=;max-age=0'
+  }
+}
 
 const workTemplate = ({ data }) => {
   const {
@@ -91,7 +107,7 @@ const workTemplate = ({ data }) => {
     faq,
   } = data.product
 
-  console.log(images)
+  
   const [mainImage, ...productImages] = images
   return <>
     <Seo title={name} />
@@ -108,7 +124,19 @@ const workTemplate = ({ data }) => {
         </ImageLinkArea>
         <ContentArea>
           <h1>{name}</h1>
-          <h2>{introduction && introduction}</h2>
+          <StyledURL
+            onClick ={
+              () => {
+                {deleteAllCookies()}
+                window.location.href = `http://${url}`
+              }
+            }
+            >
+          {url && url}
+          </StyledURL>
+          <StyledIntroduction>
+            {introduction && introduction}
+          </StyledIntroduction>
           <p>{description}</p>
           <Button text="Enquire Now" link="/contact" />
           <ImageGallery>
@@ -126,7 +154,7 @@ const workTemplate = ({ data }) => {
             { faq && faq.map((item, index) => {
               return (
                 <Faq
-                  key={index}
+                  key={item.id}
                   title={item.title}
                   description={item.description}
                 />
