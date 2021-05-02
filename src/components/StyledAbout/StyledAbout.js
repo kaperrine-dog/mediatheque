@@ -72,7 +72,7 @@ const StyledAbout = ({ children }) => {
             srcSet={parallaxBGImgWebp}
           />
           <img 
-            className='contrast-10'
+            className='contrast-10 parallaxBGImgDark'
             id="parallaxBGImg"
             src={parallaxBGImg} 
             alt="the Parallax image"
@@ -91,6 +91,7 @@ const StyledAbout = ({ children }) => {
           />
           <img 
             id='parallaxBGImgLight'
+            className="parallaxBGImgLight"
             src={parallaxBGImgLight} 
             alt="the Parallax image"
             style={{

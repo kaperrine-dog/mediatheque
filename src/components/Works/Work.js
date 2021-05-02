@@ -11,8 +11,8 @@ const StyledWorkItem = styled.article`
   min-width: 325px; 
   max-width: 500px;
   border-radius: var(--itemCardBorderRadius);
-  background: var(--background);
-  background: var(--itemPanelBGDark);
+  //background: var(--background);
+  //background: var(--itemPanelBGDark);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
                 20px -20px 40px var(--neumorphizmLight);
   
@@ -52,6 +52,16 @@ const StyledWorkItem = styled.article`
     transform: translateY(10px) scale(1);
     mix-blend-mode: multiply;
   }
+  .linkOnAImage{
+    @media (min-width: 1200px){
+      &:hover{
+        img{
+          filter: grayscale(100);
+          transition: filter 0.2s ease-in-out;
+        }
+      }
+    }
+  }
 `
 
 const StyledWorkContent = styled.div`
@@ -88,9 +98,6 @@ const StyledWorksIntro = styled.p`
   overflow: hidden;
 `
 
-const StyledURL = styled.span`
-  
-`
 
 const Work = ({ work }) => {
   const { name, slug, images, introduction, url, workId } = work
@@ -100,7 +107,17 @@ const Work = ({ work }) => {
   return (
     <StyledWorkItem>
       <h2>{name || "Name not listed"}</h2>
-      <GatsbyImage className="workImage" image={image} alt={introduction} />
+      <AniLink
+        swipe
+        direction="up"
+        bg="var(--background)" 
+        entryOffset={80}
+        duration={0.75}
+        to={`/works/${slug}`} 
+        className="btnSolid linkOnAImage"
+      >
+        <GatsbyImage className="workImage" image={image} alt={introduction} />
+      </AniLink>
       <StyledWorkContent>
         {/* <h3>£ { || "Call"}</h3> */}
         <StyledWorksIntro>{introduction && introduction}</StyledWorksIntro>

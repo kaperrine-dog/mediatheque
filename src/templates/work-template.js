@@ -2,8 +2,8 @@ import {graphql} from "gatsby";
 import {GatsbyImage} from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
+import Accordion from "../components/Accordion";
 import Button from "../components/Button/Button";
-import Faq from "../components/Faq";
 import Grid from "../components/Grid/Grid";
 import Seo from "../components/SEO";
 
@@ -82,7 +82,7 @@ const StyledURL = styled.span`
   
 `
 
-const FaqBlock = styled.div`
+const AccordionBlock = styled.div`
   margin-top: 40px;
   
 `
@@ -150,17 +150,17 @@ const workTemplate = ({ data }) => {
               );
             })}
           </ImageGallery>
-          <FaqBlock>
+          <AccordionBlock>
             { faq && faq.map((item, index) => {
               return (
-                <Faq
+                <Accordion
                   key={item.id}
                   title={item.title}
                   description={item.description}
                 />
               )
             })}
-          </FaqBlock>
+          </AccordionBlock>
         </ContentArea>
       </Grid>
     </section>

@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import styled from "styled-components"
 
-const FaqItem = styled.article`
+const AccordionItem = styled.article`
   &.acd-open {
     .indicator {
       &:before {
@@ -14,7 +14,7 @@ const FaqItem = styled.article`
   }
 `
 
-const FaqTitle = styled.div`
+const AccordionTitle = styled.div`
   color: var(--text-color);
   padding: 14px 15px;
   background-color: var(--background);
@@ -68,11 +68,11 @@ const FaqTitle = styled.div`
   }
 `
 
-const FaqDesc = styled.div`
+const AccordionDesc = styled.div`
   padding: 20px 15px;
 `
 
-const Faq = ({ title, description }) => {
+const Accordion = ({ title, description }) => {
   const [showInfo, setInfo] = useState(false)
 
   const toggleInfo = () => {
@@ -80,14 +80,14 @@ const Faq = ({ title, description }) => {
   }
 
   return (
-    <FaqItem className={showInfo ? `${"acd-open"}` : `${"acd-closed"}`}>
-      <FaqTitle onClick={toggleInfo}>
+    <AccordionItem className={showInfo ? `${"acd-open"}` : `${"acd-closed"}`}>
+      <AccordionTitle onClick={toggleInfo}>
         <span>{title}</span>
         <span className="indicator"></span>
-      </FaqTitle>
-      {showInfo && <FaqDesc>{description}</FaqDesc>}
-    </FaqItem>
+      </AccordionTitle>
+      {showInfo && <AccordionDesc>{description}</AccordionDesc>}
+    </AccordionItem>
   )
 }
 
-export default Faq
+export default Accordion

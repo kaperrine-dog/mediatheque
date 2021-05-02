@@ -37,6 +37,29 @@ const GlobalStyle = createGlobalStyle`
   @media(min-width: 1400px){
     --heroH1: 140px;
   }
+  //LightMode
+  --background: rgba(241, 241, 241, 1);
+  --titleTextShadow: rgba(135, 135, 135, 0.5);
+  --headerBG: rgba(206, 208, 218, 0.60);
+  --navMenuBG: rgba(240,240,240,0.5);
+  --formBG: rgba(218, 218, 218, 49%);
+  --formValidationColor: rgba(255, 101, 100, 0.9);
+  --border: #313131;
+  --primary: rgba(56, 29, 123, 0.92);
+  --inActive: #505050;
+  --textColor: rgba(30, 30, 30, 1);
+  --parallaxBG: rgba(255, 255, 255, 0.25);
+  --itemPanelBG: rgba(255,255,255,0.65);
+  --servicesPanelBG: rgba(255,255,255,0.85);
+  --itemCardShadow: rgba(1, 1, 1, 0.6);
+  #parallaxBGImgLight{
+    display: initial;
+  }
+  #parallaxBGImg{
+    display: none;
+  }
+  --neumorphismShadow: #606060;
+  --neumorphizmLight: rgba(255,255,255,0.99);
 }
 * {
   box-sizing: border-box;
@@ -52,28 +75,7 @@ body {
   }
 
 .light-mode{
-  --background: rgba(241, 241, 241, 1);
-  --titleTextShadow: rgba(135, 135, 135, 0.5);
-  --headerBG: rgba(206, 208, 218, 0.60);
-  --navMenuBG: rgba(240,240,240,0.5);
-  --formBG: rgba(218, 218, 218, 49%);
-  --formValidationColor: rgba(255, 101, 100, 0.9);
-  --border: #313131;
-  --primary: rgba(56, 29, 123, 0.92);
-  --inActive: #505050;
-  --textColor: rgba(30, 30, 30, 1);
-  --parallaxBG: rgba(109, 162, 170 , 0.25);
-  --itemPanelBG: rgba(255,255,255,0.65);
-  --servicesPanelBG: rgba(255,255,255,0.85);
-  --itemCardShadow: rgba(1, 1, 1, 0.6);
-  #parallaxBGImgLight{
-    display: initial;
-  }
-  #parallaxBGImg{
-    display: none;
-  }
-  --neumorphismShadow: #606060;
-  --neumorphizmLight: rgba(255,255,255,0.99);
+
 }
 
 .dark-mode{
