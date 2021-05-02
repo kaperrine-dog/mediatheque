@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import styled from "styled-components"
 
 const FaqItem = styled.article`
-  &.faq-open {
+  &.acd-open {
     .indicator {
       &:before {
         left: 19px;
@@ -17,7 +17,7 @@ const FaqItem = styled.article`
 const FaqTitle = styled.div`
   color: var(--text-color);
   padding: 14px 15px;
-  background-color: #272727;
+  background-color: var(--background);
   position: relative;
   margin-bottom: 5px;
 
@@ -80,9 +80,9 @@ const Faq = ({ title, description }) => {
   }
 
   return (
-    <FaqItem className={showInfo ? `${"faq-open"}` : `${"faq-closed"}`}>
+    <FaqItem className={showInfo ? `${"acd-open"}` : `${"acd-closed"}`}>
       <FaqTitle onClick={toggleInfo}>
-        <h2>{title}</h2>
+        <span>{title}</span>
         <span className="indicator"></span>
       </FaqTitle>
       {showInfo && <FaqDesc>{description}</FaqDesc>}
