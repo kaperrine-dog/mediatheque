@@ -7,13 +7,13 @@ import styled from "styled-components"
 const StyledBlogItem = styled.article`
   width: 100%;
   margin: auto auto;
-  padding: 20px 20px;
+  padding: 40px 35px;
   position: relative;
   min-width: 325px; 
   max-width: 500px;
-  border-radius: var(--blogCardBorderRadius);
+  border-radius: var(--itemCardBorderRadius);
   background: var(--background);
-  background: var(--blogPanelBGDark);
+  background: var(--itemPanelBGDark);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
                 20px -20px 40px var(--neumorphizmLight);
 
@@ -24,11 +24,11 @@ const StyledBlogItem = styled.article`
   @media (min-width: 992px){
     max-width: 400px;
   }
-  @media (min-width: 1200px){
-    padding: 20px 20px;
+  @media (min-width: 1300px){
+    padding: 40px 35px;
   }
   @media (min-width: 1400px){
-    padding: 40px 20px;
+    padding: 40px 35px;
   }
   .btn{
     &:after{
@@ -37,8 +37,8 @@ const StyledBlogItem = styled.article`
   }
   .blogImage{
     width: 100%;
-    height: 250px;
-    border-radius: var(--blogCardBorderRadius);
+    height: 200px;
+    border-radius: var(--itemCardBorderRadius);
   }
   &:before{
     content: '';
@@ -47,17 +47,22 @@ const StyledBlogItem = styled.article`
     z-index: -1;
     width: 90%;
     height: 90%;
-    background-color: var(--blogCardShadowDark);
+    background-color: var(--itemCardShadowDark);
     filter: blur(20px);
     transform: translateY(10px) scale(1);
     mix-blend-mode: multiply;
   }
 `
+const StyledBlogCardTitle = styled.h2`
+  margin: 0 0 20px;
+  padding: 0 0px;
+  display: inline-block;
+`
 
 const StyledBlogItemContent = styled.div`
   //background-color: var(--blogPanelBG);
   //border-top: 3px solid var(--primary);
-  padding: 1.5rem 1.25rem 0;
+  padding: 1.5rem 0 0;
   min-height: 20rem;
   display: flex;
   justify-content: space-between;
@@ -74,12 +79,6 @@ const StyledBlogItemContent = styled.div`
   }
   @media (min-width: 1300px) {
     max-width: calc((100vw - 60px - 80px) / 3);
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    display: inline-block;
   }
 `
 const StyledBottom = styled.div`
@@ -109,14 +108,20 @@ const BlogCard = ({ blog }) => {
   return (
     <StyledBlogItem>
       <AniLink
-        className="btn"
+        className="btnSolid"
         cover
+        direction="up"
+        //swipe
+        //entryOffset={100}
+        duration={1}
         bg="var(--background)"
         to={`/blogs/${slug}`}
-      >
+        >
+        <StyledBlogCardTitle>
+          {title}
+        </StyledBlogCardTitle>
         <GatsbyImage className="blogImage" image={image} alt="Single Post" />
         <StyledBlogItemContent>
-          <h2>{title}</h2>
           <StyledBlogIntro>
               {introduction}
           </StyledBlogIntro>
