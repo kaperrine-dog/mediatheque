@@ -51,7 +51,7 @@ const BlogList = () => {
         {posts.edges.map(({ node }) => {
           return (
             <FlexItem>
-              <BlogCard key={node.id} blog={node} />
+              <BlogCard key={node.postId} blog={node} />
             </FlexItem>
           )
         })}
