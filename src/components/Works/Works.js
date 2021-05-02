@@ -8,9 +8,10 @@ const getWorks = graphql`
       edges {
         node {
           name
-          contentful_id
+          workId: contentful_id
           slug
           introduction
+          url
           description {
             description
           }
