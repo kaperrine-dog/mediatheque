@@ -15,6 +15,7 @@ const Title = styled.h1`
   margin: 2rem 0 0;
   @media (min-width: 769px){
     margin-bottom: 2.125rem;
+    text-indent: 0.75em;
   }
 `
 
