@@ -52,11 +52,11 @@ const GlobalStyle = createGlobalStyle`
   --itemPanelBG: rgba(255,255,255,0.65);
   --servicesPanelBG: rgba(255,255,255,0.85);
   --itemCardShadow: rgba(1, 1, 1, 0.6);
-  #parallaxBGImgLight{
-    display: initial;
-  }
-  #parallaxBGImg{
+  .parallaxBGImgDark{
     display: none;
+  }
+  .parallaxBGImgLight{
+    display: initial;
   }
   --neumorphismShadow: #606060;
   --neumorphizmLight: rgba(255,255,255,0.99);
@@ -93,10 +93,10 @@ body {
   --itemPanelBGDark: rgba(30,30,50, 0.999);
   --servicesPanelBG: rgba(30,30,50, 0.999);
   --itemCardShadowDark: rgba(180, 180, 180, 0.5);
-  #parallaxBGImgLight{
+  .parallaxBGImgLight{
     display: none;
   }
-  #parallaxBGImg{
+  .parallaxBGImgDark{
     display: initial;
   }
   --neumorphismShadow: #606060;

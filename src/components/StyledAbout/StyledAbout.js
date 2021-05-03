@@ -1,22 +1,29 @@
 import {graphql, useStaticQuery} from "gatsby";
+import {GatsbyImage, getImage} from "gatsby-plugin-image";
+//import {BgImage} from 'gbimage-bridge';
 import React from "react";
 //import Image from "react-image-webp";
 import {Background, Parallax} from 'react-parallax';
-import parallaxBGImg from "../../images/jellyfish01.jpg";
-import parallaxBGImgWebp from "../../images/jellyfish01.webp";
-import parallaxBGImgLight from "../../images/white-abstract.jpg";
-import parallaxBGImgLightWebp from "../../images/white-abstract.webp";
 
 
 const StyledAbout = ({ children }) => {
-  const { placeholderImage } = useStaticQuery(
+  const { placeholderImageDark, placeholderImageLight } = useStaticQuery(
     graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "jellyfish01.jpg" }) {
+        placeholderImageLight: file(relativePath: { eq: "whiteAbstract.jpg" }) {
           childImageSharp {
             gatsbyImageData(
-              width: 1920
-              placeholder: BLURRED
+              
+              placeholder: TRACED_SVG
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
+        }
+        placeholderImageDark: file(relativePath: { eq: "jellyfish01.jpg" }) {
+          childImageSharp {
+            gatsbyImageData(
+              
+              placeholder: TRACED_SVG
               formats: [AUTO, WEBP, AVIF]
             )
           }
@@ -25,34 +32,38 @@ const StyledAbout = ({ children }) => {
     `
   )
 
-  //const image = getImage(placeholderImage)
-  //const bgImage = convertToBgImage(image)
-  //console.log(DarkMode)
-  //console.log(image)
-  //console.log(bgImage)
-  
+  const bgImageLight = getImage(placeholderImageLight)
+  //const bgImageLight = convertToBgImage(imageLight)
+  const bgImageDark = getImage(placeholderImageDark)
+  //const bgImageDark = convertToBgImage(imageDark)
+
+  console.log(bgImageLight)
+  console.log(bgImageDark)
+
   return (
     <Parallax 
       strength={ 1000 }
       blur={{ min: -100, max: 100 }}
-      //bgImage={parallaxBGImg}
-      bgImageAlt="the parallax-bg"
       style={{
         width: "100vw",
         height: "auto",
       }}
-      bgImageStyle={{
+/*       bgImageStyle={{
         width: "100vw",
         height: "150vh",
         objectFit: 'cover',
+      }} */
+      bgStyle={{ 
+        width: "100vw",
+        height: "150vh",
       }}
     /* Tag="section" {...bgImage} */
     >
       <Background 
-        style={{ 
+        className='reactParallaxBG'
+        bgStyle={{ 
           width: "100vw",
-          height: "150vh"
-          //backgroundColor: "rgba(0,0,0,0.5)" 
+          height: "150vh",
         }}
         >
 {/*         <Image
@@ -66,44 +77,35 @@ const StyledAbout = ({ children }) => {
             //filter: 'hue-rotate(270deg)',
           }}
         /> */}
-        <picture>
-          <source
-            type='image/webp'
-            srcSet={parallaxBGImgWebp}
-          />
-          <img 
-            className='contrast-10 parallaxBGImgDark'
-            id="parallaxBGImg"
-            src={parallaxBGImg} 
-            alt="the Parallax image"
-            style={{
-              width: "100vw",
-              height: "150vh",
-              objectFit: 'cover',
-              //filter: 'hue-rotate(270deg)',
-            }}
-          />
-        </picture>
-        <picture>
-          <source
-            type='image/webp'
-            srcSet={parallaxBGImgLightWebp}
-          />
-          <img 
-            id='parallaxBGImgLight'
-            className="parallaxBGImgLight"
-            src={parallaxBGImgLight} 
-            alt="the Parallax image"
-            style={{
-              width: "100vw",
-              height: "150vh",
-              objectFit: 'cover',
-              //filter: 'hue-rotate(270deg)',
-            }}
-          />
-        </picture>
+        
+        <GatsbyImage
+          imgClassName='contrast-10'
+          className="parallaxBGImgDark"
+          image={bgImageDark} 
+          alt="the Parallax image dark"
+          imgStyle={{
+            width: "100vw",
+            height: "150vh",
+            objectFit: 'cover',
+            //filter: 'hue-rotate(270deg)',
+          }}
+        />
+        <GatsbyImage
+          //imgClassName='parallaxBGImgLight'
+          className="parallaxBGImgLight"
+          image={bgImageLight} 
+          alt="the Parallax image light"
+
+          imgStyle={{
+            width: "100vw",
+            height: "150vh",
+            objectFit: 'cover',
+            //filter: 'hue-rotate(270deg)',
+          }}
+        />
+
       </Background>
-          {children}
+        {children}
     </Parallax>
   )
 }
