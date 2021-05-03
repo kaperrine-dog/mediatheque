@@ -85,10 +85,10 @@ const FeaturedWorks = ({ largePadding, id }) => {
           <Button text="View All Works" link="/works" />
         </TitleArea>
         <FlexContainer>
-          {works.map(({ node }) => {
+          {works.map(({ node }, index) => {
             return (
-              <FlexItem>
-                <Work key={node.contentful_id} work={node} />
+              <FlexItem key={index}>
+                <Work key={node.workId} work={node} />
               </FlexItem>
             )
           })}
