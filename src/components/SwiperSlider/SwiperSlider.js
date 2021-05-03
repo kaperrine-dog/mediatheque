@@ -116,13 +116,16 @@ const StyledSwiperSliderWrapper = styled.div`
 
 const StyledSwperSliderImage = styled.div`
 	.swiperSliderImage{
-    width: 100vw;
-    height: 70vh;
+    width: 100%;
+    height: 70%;
     object-fit: cover;
     object-position: center;
-    filter: hue-rotate(170deg);
-    -webkit-filter: hue-rotate(170deg);
+    //filter: hue-rotate(170deg);
+    //-webkit-filter: hue-rotate(170deg);
     z-index: 1;
+		img{
+			width: 100%;
+		}
   }
 `
 const StyledImageOverlay = styled.div`
@@ -135,6 +138,7 @@ const StyledImageOverlay = styled.div`
 	bottom: 0;
 	margin: 0;
 	background: var(--background);
+	opacity: 0.3;
 	z-index: 2;
 `
 export default SwiperSlider
