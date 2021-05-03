@@ -6,7 +6,7 @@ import Grid from "../Grid/Grid"
 const StyledServiceItem = styled.article`
   //background-color: var(--servicesPanelBG);
   //border-top: 3px solid var(--primary);
-  padding: 2.5rem 1.25rem;
+  padding: 2.25rem 2.25rem;
   border-radius: var(--itemCardBorderRadius);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
                 20px -20px 40px var(--neumorphizmLight);
