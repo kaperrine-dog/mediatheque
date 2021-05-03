@@ -3,10 +3,13 @@ import styled from "styled-components"
 import services from "../../constants/services"
 import Grid from "../Grid/Grid"
 
-const ServiceItem = styled.article`
-  background-color: var(--servicesPanelBG);
-  border-top: 3px solid var(--primary);
+const StyledServiceItem = styled.article`
+  //background-color: var(--servicesPanelBG);
+  //border-top: 3px solid var(--primary);
   padding: 2.5rem 1.25rem;
+  border-radius: var(--itemCardBorderRadius);
+  box-shadow:  -20px 20px 40px var(--neumorphismShadow),
+                20px -20px 40px var(--neumorphizmLight);
 
   &:last-child {
     margin-bottom: 0;
@@ -37,10 +40,10 @@ const Service = props => {
       <Grid>
         {services.map((item, index) => {
           return (
-            <ServiceItem key={index}>
+            <StyledServiceItem key={index}>
               <h2>{item.title}</h2>
               <p>{item.text}</p>
-            </ServiceItem>
+            </StyledServiceItem>
           )
         })}
       </Grid>
