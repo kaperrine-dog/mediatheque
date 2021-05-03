@@ -138,7 +138,7 @@ const StyledImageOverlay = styled.div`
 	bottom: 0;
 	margin: 0;
 	background: var(--background);
-	opacity: 0.3;
+	opacity: 0;
 	z-index: 2;
 `
 export default SwiperSlider
