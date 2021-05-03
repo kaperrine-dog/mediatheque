@@ -1,8 +1,8 @@
 import {graphql, useStaticQuery} from "gatsby"
-import {GatsbyImage, getImage} from "gatsby-plugin-image"
+import {getImage} from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
-
+import Network from "../Network/Network.js"
 const getImages = graphql`
   query HeroImage {
     fluid: file(relativePath: { eq: "deepsea01.jpg" }) {
@@ -13,7 +13,9 @@ const getImages = graphql`
   }
 `
 
-const HeroContainer = styled.div``
+const HeroContainer = styled.div`
+
+`
 
 const GridContainer = styled.div`
   display: grid;
@@ -32,8 +34,14 @@ const GridContainer = styled.div`
 
 const HeroImage = styled.div`
   width: 100%;
+  height: 100%;
+  min-height: 500px;
+  @media (min-width: 769px) {
+    min-height: 70vh; 
+  }
   //height: fit-content;
-  background-color: var(--primary);
+  //background-color: var(--primary);
+  git 
   border: none;
   outline: none;
   grid-column: 1 / 4;
@@ -138,7 +146,8 @@ const Banner = ({ title, info, children }) => {
             <HeroTitleInverted role='headeing'>{title}</HeroTitleInverted>
           </TitleArea>
           <HeroImage>
-            <GatsbyImage image={image} alt="hero image" />
+            <Network/>
+{/*             <GatsbyImage image={image} alt="hero image" /> */}
           </HeroImage>
           <ContentArea>
             <HeroSubTitle>{info}</HeroSubTitle>
