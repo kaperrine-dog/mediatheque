@@ -2,6 +2,20 @@ import React, {useState} from "react"
 import styled from "styled-components"
 
 const AccordionItem = styled.article`
+  border-radius: var(--itemCardBorderRadius);
+  background: var(--background);
+  background: var(--itemPanelBGDark);
+  box-shadow:  -20px 20px 40px var(--neumorphismShadow),
+                20px -20px 40px var(--neumorphizmLight);
+
+  .accordionDesc{
+    padding: 0 20px;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    overflow-y: hidden;
+  }
   &.acd-open {
     .indicator {
       &:before {
@@ -11,15 +25,58 @@ const AccordionItem = styled.article`
         right: 19px;
       }
     }
+    .accordionDesc{
+      padding: 20px 20px;
+      height: auto;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.3s;
+      overflow-y: visible;
+    }
+  }
+  &.acd-close{
+    
   }
 `
 
 const AccordionTitle = styled.div`
+  border-top: 1px solid var(--neumorphizmLight) 90%;
+  border-radius: var(--itemCardBorderRadius);
   color: var(--text-color);
-  padding: 14px 15px;
+  padding: 14px 20px;
   background-color: var(--background);
   position: relative;
   margin-bottom: 5px;
+
+  .indicator {
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 3px;
+      background-color: var(--primary);
+      top: 50%;
+    }
+    &:before {
+      left: 20px;
+      transform: rotate(45deg);
+      transition: left 0.1s;
+    }
+
+    &:after {
+      right: 20px;
+      transform: rotate(-45deg);
+      transition: right 0.1s;
+    }
+  }
 
   @media (hover: hover) {
     &:hover {
@@ -36,40 +93,10 @@ const AccordionTitle = styled.div`
     }
   }
 
-  .indicator {
-    width: 50px;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-
-    &:before,
-    &:after {
-      position: absolute;
-      content: "";
-      display: inline-block;
-      width: 12px;
-      height: 3px;
-      background-color: var(--primary);
-      top: 50%;
-    }
-    &:before {
-      left: 15px;
-      transform: rotate(45deg);
-      transition: left 0.1s;
-    }
-
-    &:after {
-      right: 15px;
-      transform: rotate(-45deg);
-      transition: right 0.1s;
-    }
-  }
 `
 
 const AccordionDesc = styled.div`
-  padding: 20px 15px;
+  
 `
 
 const Accordion = ({ title, description }) => {
@@ -80,12 +107,12 @@ const Accordion = ({ title, description }) => {
   }
 
   return (
-    <AccordionItem className={showInfo ? `${"acd-open"}` : `${"acd-closed"}`}>
+    <AccordionItem className={showInfo ? `${"acd-open"}` : `${"acd-close"}`}>
       <AccordionTitle onClick={toggleInfo}>
         <span>{title}</span>
         <span className="indicator"></span>
       </AccordionTitle>
-      {showInfo && <AccordionDesc>{description}</AccordionDesc>}
+      {<AccordionDesc className="accordionDesc">{description}</AccordionDesc>}
     </AccordionItem>
   )
 }
