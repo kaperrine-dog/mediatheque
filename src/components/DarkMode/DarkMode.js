@@ -81,25 +81,24 @@ const CurrentMode = styled.p`
 const DarkMode = () => {
 
   const [darkMode, setDarkMode] = React.useState(
-    localStorage.getItem("darkMode") === "on" ? true : false
+    typeof window !== 'undefined' && localStorage.getItem("darkMode") === "on" ? true : false
+
   );
   const handleDarkModeOn = () => {
     document.body.classList.add("dark-mode") 
-    localStorage.setItem("darkMode", "on");
+    typeof window !== 'undefined' && localStorage.setItem("darkMode", "on");
     setDarkMode(true);
   };
   const handleDarkModeOff = () => {
     document.body.classList.remove("dark-mode") 
-    localStorage.setItem("darkMode", "off");
+    typeof window !== 'undefined' && localStorage.setItem("darkMode", "off");
     setDarkMode(false);
   };
 
   React.useEffect(() => {
-    localStorage.getItem("darkMode") === "on" && (
+    typeof window !== 'undefined' && localStorage.getItem("darkMode") === "on" && (
       document.body.classList.add("dark-mode")
     )
-    return () => {
-    }
   } )
   
   return (
