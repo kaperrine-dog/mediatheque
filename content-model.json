@@ -124,8 +124,8 @@
           }
         },
         {
-          "id": "faq",
-          "name": "faq",
+          "id": "accordion",
+          "name": "accordion",
           "type": "Object",
           "localized": false,
           "required": false,
@@ -397,7 +397,7 @@
           "widgetNamespace": "builtin"
         },
         {
-          "fieldId": "faq",
+          "fieldId": "accordion",
           "widgetId": "objectEditor",
           "widgetNamespace": "builtin"
         }
