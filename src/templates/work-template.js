@@ -2,29 +2,36 @@ import {graphql} from "gatsby";
 import {GatsbyImage} from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
-import Accordion from "../components/Accordion";
+import Accordion from "../components/Accordion/Accordion";
 import Button from "../components/Button/Button";
 import Grid from "../components/Grid/Grid";
 import Seo from "../components/SEO";
+import SwiperSlider from "../components/SwiperSlider/SwiperSlider.js";
 
-const ImageLinkArea = styled.a`
+const ImageLinkArea = styled.div`
   grid-column: 1 / 4;
   height: fit-content;
+  cursor: pointer;
   .main-image {
-    border-bottom: 3px solid var(--primary);
+    //border-bottom: 3px solid var(--primary);
   }
   @media (min-width: 765px){
-    grid-column: 1 / 2;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
   }
   @media (min-width: 1000px) {
-    grid-column: 1 / 2;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
   }
 `
 
 const ContentArea = styled.div`
   grid-column: 1 / 4;
+  @media (min-width: 765px){
+    grid-column: 1 / 3;
+  }
   @media (min-width: 1000px) {
-    grid-column: 2 / 4;
+    grid-column: 1 / 3;
   }
 
   h1 {
@@ -51,8 +58,8 @@ const ImageGallery = styled.div`
   justify-content: space-between;
   margin-top: 30px;
   margin-bottom: 30px;
-
   .image-gallery--item {
+    //aspect-ratio: 16 / 9;
     flex: 0 0 calc(50% - 10px);
     margin-top: 10px;
     margin-bottom: 10px;
@@ -65,11 +72,13 @@ const ImageGallery = styled.div`
       flex-basis: calc((100% / 3) - 40px);
       margin-top: 20px;
       margin-bottom: 20px;
+      
     }
   }
 
   @media (min-width: 1200px) {
     .image-gallery--item {
+      
       flex-basis: calc(50% - 20px);
     }
   }
@@ -104,19 +113,22 @@ const workTemplate = ({ data }) => {
     description: { description },
     images,
     url,
-    faq,
-  } = data.product
+    accordion,
+  } = data.work
 
-  
-  const [mainImage, ...productImages] = images
+  const linkToOtherSites = () => {
+    deleteAllCookies()
+    window.location.href = `http://${url}/index.html`
+  }
+
+  const [mainImage, ...workImages] = images
   return <>
     <Seo title={name} />
     <section className="section-padding">
       <Grid>
-        
         <ImageLinkArea
-          href={ url }
-        >
+          onClick= { linkToOtherSites }
+          >
           <GatsbyImage 
             image={mainImage.gatsbyImageData} 
             className="main-image" 
@@ -125,12 +137,7 @@ const workTemplate = ({ data }) => {
         <ContentArea>
           <h1>{name}</h1>
           <StyledURL
-            onClick ={
-              () => {
-                {deleteAllCookies()}
-                window.location.href = `http://${url}`
-              }
-            }
+            onClick ={ linkToOtherSites }
             >
           {url && url}
           </StyledURL>
@@ -139,19 +146,22 @@ const workTemplate = ({ data }) => {
           </StyledIntroduction>
           <p>{description}</p>
           <Button text="Enquire Now" link="/contact" />
+          <SwiperSlider
+            images = { images }
+            />
           <ImageGallery>
-            {productImages && productImages.map((item, index) => {
+            {workImages && workImages.map((item, index) => {
               return (
                 <GatsbyImage
                   image={item.gatsbyImageData}
                   className="image-gallery--item"
-                  key={index}
-                  alt="Single product" />
+                  key={item.workImageId}
+                  alt={item.title} />
               );
             })}
           </ImageGallery>
           <AccordionBlock>
-            { faq && faq.map((item, index) => {
+            { accordion && accordion.map((item, index) => {
               return (
                 <Accordion
                   key={item.id}
@@ -169,21 +179,25 @@ const workTemplate = ({ data }) => {
 
 export const query = graphql`
   query($slug: String) {
-    product: contentfulWorks(slug: { eq: $slug }) {
+    work: contentfulWorks(slug: { eq: $slug }) {
       name
       introduction
       description {
         description
       }
-      faq {
+      accordion {
         title
         description
+        id
       }
       images {
         fluid {
           ...GatsbyContentfulFluid_tracedSVG
         }
         gatsbyImageData
+        description
+        title
+        workImageId: contentful_id
       }
       url
     }
