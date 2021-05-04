@@ -46,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
   --formValidationColor: rgba(255, 101, 100, 0.9);
   --border: #313131;
   --primary: rgba(56, 29, 123, 0.92);
+  --secondary: rgba(22, 25, 157, 0.98);
   --inActive: #505050;
   --textColor: rgba(30, 30, 30, 1);
   --parallaxBG: rgba(255, 255, 255, 0.25);
@@ -87,6 +88,7 @@ body {
   --formValidationColor: rgba(255, 157, 156, 0.9);
   --border: #313131;
   --primary: #029a9e;
+  --secondary: rgba(190, 142, 0, 1);
   --inActive: #505050;
   --textColor: #fff;
   --parallaxBG: rgba(0,0, 0, 0.15);
