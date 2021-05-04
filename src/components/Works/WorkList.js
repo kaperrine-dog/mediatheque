@@ -3,9 +3,15 @@ import styled from "styled-components"
 import Work from "./Work"
 
 const StyledSection = styled.section`
-  grid-column: 1 / 4;
-  margin-left: -20px;
-  margin-right: -20px;
+  margin: auto;
+  width: calc(100vw - var(--paddingBorder) * 2);
+  @media (min-width: 769px){
+    width: 100%;
+    grid-column: 1 / 4;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
 `
 
 const StyledFlexContainer = styled.div`
