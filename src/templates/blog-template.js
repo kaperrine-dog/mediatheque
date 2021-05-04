@@ -124,7 +124,11 @@ export const query = graphql`
         fluid {
           ...GatsbyContentfulFluid
         }
-        gatsbyImageData
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: TRACED_SVG
+          formats: [AUTO, WEBP]
+        )
       }
       richText {
         raw
