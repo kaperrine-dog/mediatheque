@@ -5,10 +5,14 @@ import React from "react"
 import styled from "styled-components"
 
 const StyledWorkItem = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
-  padding: 0 20px;
+  padding: 20px 20px;
   position: relative;
-  min-width: 325px; 
+  //min-width: 325px; 
   max-width: 500px;
   border-radius: var(--itemCardBorderRadius);
   //background: var(--background);
@@ -19,6 +23,7 @@ const StyledWorkItem = styled.article`
   @media (min-width: 769px){
     margin: auto;
     max-width: 350px;
+    min-height: 510px;
   }
   @media (min-width: 992px){
     max-width: 400px;
@@ -30,6 +35,9 @@ const StyledWorkItem = styled.article`
     padding: 40px 35px;
   }
   h2 {
+    height: 2.25em;
+    line-height: 1.25em;
+    font-size: 18px;
     margin: 0 0 20px;
     padding: 0 0 0;
     display: inline-block;
@@ -39,6 +47,9 @@ const StyledWorkItem = styled.article`
     width: 100%;
     height: 200px;
     border-radius: var(--itemCardBorderRadius);
+    img{
+      object-position: 50% 0;
+    }
   }
   &:before{
     content: '';
