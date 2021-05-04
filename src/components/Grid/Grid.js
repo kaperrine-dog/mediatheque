@@ -4,11 +4,12 @@ import styled from "styled-components"
 const Container = styled.div`
   display: grid;
   grid-gap: 40px;
+  width: 100%;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   box-sizing: content-box;
-
+  grid-template-columns: 1fr;
   @media (min-width: 769px) {
     grid-template-columns: 1fr 1fr;
   }
