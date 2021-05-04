@@ -18,11 +18,12 @@ const AccordionItem = styled.article`
   }
   &.acd-open {
     .indicator {
+      transform: rotate(0deg);
       &:before {
-        left: 19px;
+        //left: 19px;
       }
       &:after {
-        right: 19px;
+        //right: 19px;
       }
     }
     .accordionDesc{
@@ -55,6 +56,8 @@ const AccordionTitle = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
+    transform: rotate( 180deg );
+    transition: transform 0.3s;
     &:before,
     &:after {
       position: absolute;
@@ -66,13 +69,13 @@ const AccordionTitle = styled.div`
       top: 50%;
     }
     &:before {
-      left: 20px;
+      left: 22px;
       transform: rotate(45deg);
       transition: left 0.1s;
     }
 
     &:after {
-      right: 20px;
+      right: 22px;
       transform: rotate(-45deg);
       transition: right 0.1s;
     }
@@ -96,7 +99,7 @@ const AccordionTitle = styled.div`
 `
 
 const AccordionDesc = styled.div`
-  
+  //background-color: var(--background);
 `
 
 const Accordion = ({ title, description }) => {
