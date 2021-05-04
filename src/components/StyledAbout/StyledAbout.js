@@ -13,7 +13,7 @@ const StyledAbout = ({ children }) => {
         placeholderImageLight: file(relativePath: { eq: "whiteAbstract.jpg" }) {
           childImageSharp {
             gatsbyImageData(
-              
+              layout: FULL_WIDTH
               placeholder: TRACED_SVG
               formats: [AUTO, WEBP, AVIF]
             )
@@ -22,7 +22,7 @@ const StyledAbout = ({ children }) => {
         placeholderImageDark: file(relativePath: { eq: "jellyfish01.jpg" }) {
           childImageSharp {
             gatsbyImageData(
-              
+              layout: FULL_WIDTH
               placeholder: TRACED_SVG
               formats: [AUTO, WEBP, AVIF]
             )
