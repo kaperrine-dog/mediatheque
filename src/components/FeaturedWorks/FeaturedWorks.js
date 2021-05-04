@@ -21,7 +21,10 @@ const getWorks = graphql`
             description
           }
           images {
-            gatsbyImageData(width: 600, formats: [AUTO, WEBP])
+            gatsbyImageData(
+              width: 600
+              formats: [AUTO, WEBP]
+              )
           }
         }
       }
