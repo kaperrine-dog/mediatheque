@@ -4,22 +4,26 @@ import React from "react";
 import styled from "styled-components";
 import Accordion from "../components/Accordion/Accordion";
 import Button from "../components/Button/Button";
+import {deleteAllCookies} from '../components/Common/Common.js';
 import Grid from "../components/Grid/Grid";
 import Seo from "../components/SEO";
 import SwiperSlider from "../components/SwiperSlider/SwiperSlider.js";
 
 const ImageLinkArea = styled.div`
-  grid-column: 1 / 4;
-  height: fit-content;
+  grid-column: 1 / 1;
+  grid-row: 4 / 5;
   cursor: pointer;
   .main-image {
     //border-bottom: 3px solid var(--primary);
   }
-  @media (min-width: 765px){
+  width: 100%;
+  @media (min-width: 769px){
+    width: 100%;
     grid-column: 3 / 4;
     grid-row: 1 / 2;
   }
   @media (min-width: 1000px) {
+    height: fit-content;
     grid-column: 3 / 4;
     grid-row: 1 / 2;
   }
@@ -27,10 +31,13 @@ const ImageLinkArea = styled.div`
 
 const ContentArea = styled.div`
   grid-column: 1 / 4;
-  @media (min-width: 765px){
-    grid-column: 1 / 3;
+  width: 100%;
+  @media (min-width: 769px){
+    width: 100%;
+    grid-column: 1 / 2;
   }
   @media (min-width: 1000px) {
+    width: 100%;
     grid-column: 1 / 3;
   }
 
@@ -96,15 +103,6 @@ const AccordionBlock = styled.div`
   
 `
 
-const deleteAllCookies = () => {
-  const cookies = document.cookie.split(';')
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i]
-    const eqPos = cookie.indexOf('=')
-    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie
-    document.cookie = name + '=;max-age=0'
-  }
-}
 
 const workTemplate = ({ data }) => {
   const {
@@ -118,7 +116,7 @@ const workTemplate = ({ data }) => {
 
   const linkToOtherSites = () => {
     deleteAllCookies()
-    window.location.href = `http://${url}/index.html`
+    window.location.href = `http://${url}/`
   }
 
   const [mainImage, ...workImages] = images
@@ -146,6 +144,7 @@ const workTemplate = ({ data }) => {
           </StyledIntroduction>
           <p>{description}</p>
           <Button text="Enquire Now" link="/contact" />
+
           <SwiperSlider
             images = { images }
             />
@@ -194,7 +193,12 @@ export const query = graphql`
         fluid {
           ...GatsbyContentfulFluid_tracedSVG
         }
-        gatsbyImageData
+        gatsbyImageData(
+          
+          placeholder: TRACED_SVG
+          formats: [AUTO, WEBP]
+        )
+        
         description
         title
         workImageId: contentful_id
