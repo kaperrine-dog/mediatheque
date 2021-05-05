@@ -43,7 +43,7 @@ const StyledWorkItem = styled.article`
     display: inline-block;
   }
   .workImage{
-    margin: 0 0 20px;
+    margin: 0 0 0px;
     width: 100%;
     height: 200px;
     border-radius: var(--itemCardBorderRadius);
@@ -64,6 +64,7 @@ const StyledWorkItem = styled.article`
     mix-blend-mode: multiply;
   }
   .linkOnAImage{
+    padding: 5px 4px 0;
     @media (min-width: 1200px){
       &:hover{
         img{
@@ -83,6 +84,7 @@ const StyledWorkContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   //padding: 2.5rem 1.25rem;
+  margin: 20px 0 0;
   span{
     //padding: 0 0 6px;
   }
@@ -125,7 +127,7 @@ const Work = ({ work }) => {
         entryOffset={80}
         duration={0.75}
         to={`/works/${slug}`} 
-        className="btnSolid linkOnAImage"
+        className="btnImage linkOnAImage"
       >
         <GatsbyImage className="workImage" image={image} alt={introduction} />
       </AniLink>
