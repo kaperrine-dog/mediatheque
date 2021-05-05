@@ -133,21 +133,26 @@ const workTemplate = ({ data }) => {
           />
         </ImageLinkArea>
         <ContentArea>
-          <h1>{name}</h1>
+          <h1>{ name }</h1>
+          { url &&
           <StyledURL
             onClick ={ linkToOtherSites }
             >
-          {url && url}
+              { url }
           </StyledURL>
+          }
+          { introduction && 
           <StyledIntroduction>
-            {introduction && introduction}
+            {introduction}
           </StyledIntroduction>
-          <p>{description}</p>
+          }
+          <p>{ description }</p>
           <Button text="Enquire Now" link="/contact" />
 
           <SwiperSlider
             images = { images }
             />
+          
           <ImageGallery>
             {workImages && workImages.map((item, index) => {
               return (
@@ -159,8 +164,10 @@ const workTemplate = ({ data }) => {
               );
             })}
           </ImageGallery>
+          
+          { accordion && 
           <AccordionBlock>
-            { accordion && accordion.map((item, index) => {
+            { accordion.map((item, index) => {
               return (
                 <Accordion
                   key={item.id}
@@ -170,6 +177,7 @@ const workTemplate = ({ data }) => {
               )
             })}
           </AccordionBlock>
+          }
         </ContentArea>
       </Grid>
     </section>
