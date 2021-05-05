@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const TitleArea = styled.div`
-  grid-column: 1 / 4;
+  grid-column: 1 / 1;
   @media (min-width: 769px) {
     grid-column: 1 / 4;
   }
@@ -20,7 +20,7 @@ const Title = styled.h1`
 `
 
 const ContentArea = styled.div`
-  grid-column: 1 / 4;
+  grid-column: 1 / 1;
   @media (min-width: 769px) {
     grid-column: 1 / 4;
     h2,

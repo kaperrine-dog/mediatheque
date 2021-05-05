@@ -9,7 +9,7 @@ const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   box-sizing: content-box;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   @media (min-width: 769px) {
     grid-template-columns: 1fr 1fr;
   }
