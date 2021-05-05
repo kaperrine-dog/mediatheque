@@ -13,18 +13,18 @@ const StyledAbout = ({ children }) => {
         placeholderImageLight: file(relativePath: { eq: "whiteAbstract.jpg" }) {
           childImageSharp {
             gatsbyImageData(
-              layout: FULL_WIDTH
+              
               placeholder: TRACED_SVG
-              formats: [AUTO, WEBP, AVIF]
+              formats: [AUTO, WEBP, AVIF, JPG]
             )
           }
         }
         placeholderImageDark: file(relativePath: { eq: "jellyfish01.jpg" }) {
           childImageSharp {
             gatsbyImageData(
-              layout: FULL_WIDTH
+              
               placeholder: TRACED_SVG
-              formats: [AUTO, WEBP, AVIF]
+              formats: [AUTO, WEBP, AVIF, JPG]
             )
           }
         }
@@ -33,16 +33,14 @@ const StyledAbout = ({ children }) => {
   )
 
   const bgImageLight = getImage(placeholderImageLight)
-  //const bgImageLight = convertToBgImage(imageLight)
   const bgImageDark = getImage(placeholderImageDark)
-  //const bgImageDark = convertToBgImage(imageDark)
-
+  
   console.log(bgImageLight)
   console.log(bgImageDark)
 
   return (
     <Parallax 
-      strength={ 1000 }
+      strength={ 500 }
       blur={{ min: -100, max: 100 }}
       style={{
         width: "100vw",
@@ -55,7 +53,7 @@ const StyledAbout = ({ children }) => {
       }} */
       bgStyle={{ 
         width: "100vw",
-        height: "150vh",
+        height: "175vh",
       }}
     /* Tag="section" {...bgImage} */
     >
@@ -63,7 +61,7 @@ const StyledAbout = ({ children }) => {
         className='reactParallaxBG'
         bgStyle={{ 
           width: "100vw",
-          height: "150vh",
+          height: "100%",
         }}
         >
 {/*         <Image
@@ -85,7 +83,7 @@ const StyledAbout = ({ children }) => {
           alt="the Parallax image dark"
           imgStyle={{
             width: "100vw",
-            height: "150vh",
+            height: "100%",
             objectFit: 'cover',
             //filter: 'hue-rotate(270deg)',
           }}
@@ -98,7 +96,7 @@ const StyledAbout = ({ children }) => {
 
           imgStyle={{
             width: "100vw",
-            height: "150vh",
+            height: "100%",
             objectFit: 'cover',
             //filter: 'hue-rotate(270deg)',
           }}
