@@ -9,12 +9,16 @@ import DarkMode from "../DarkMode/DarkMode"
 //import BackgroundImage from 'gatsby-background-image'
 
 const NavBar = styled.nav`
-  padding: 0.5rem 1.875rem;
+  padding: 0.5rem 1.875rem 0.75em;
   position: fixed;
   width: 100%;
   z-index: 5;
-  border-bottom: 1px solid var(--border);
-  background-color: var(--headerBG);
+  //border-bottom: 1px solid var(--border);
+  //background-color: var(--headerBG);
+  border-radius: 0 0 var(--itemCardBorderRadius) var(--itemCardBorderRadius);
+  background: var(--background);
+  box-shadow:  -20px 20px 40px var(--neumorphismShadow),
+                20px -20px 40px var(--neumorphizmLight);
   @media (min-width: 1000px){
     border: none;
   }
@@ -48,23 +52,30 @@ const NavButton = styled.button`
 `
 
 const NavLogo = styled.div`
+  font-family: 'Heebo','Noto Sans JP' , sans-serif;
   font-size: 1rem;
   font-weight: 900;
   flex-shrink: 0;
   letter-spacing: -0.5px;
-  padding: 7px 0;
   z-index: 2;
   border-bottom: 1px solid var(--border);
   width: 60%;
-  @media (max-width: 768x){
+  
+  @media (min-width100069px){
   }
   @media (min-width: 1000px){
+    padding: 7px 0.75em;
+    border: none;
+    border-radius: var(--buttonBorderRadius);
+    background: var(--background);
+    box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight)  ;
     width: auto;
     border: none;
   }
   @media (min-width: 1200px) {
     font-size: 1rem;
-    padding: 12px 0;
+    padding: 12px 0.75em;
   }
 
   a {
@@ -75,7 +86,7 @@ const NavLogo = styled.div`
     align-items: center;
     img{
       width: 35px;
-      margin-right: 1rem;
+      margin-right: 0.25em;
       cursor: pointer;
     }
     
@@ -96,11 +107,18 @@ const ThemeSwitch = styled.div`
   border-bottom: 1px solid var(--border);
   z-index: 2;
   width: 40%;
-  @media (max-width: 768x){
+  //background: var(--itemPanelBGDark);
+  
+  @media (min-width: 769px){
     
   }
   @media (min-width: 1000px){
-    width: 85px;
+    align-items: center;
+    border-radius: var(--buttonBorderRadius);
+    background: var(--background);
+    box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight);
+    width: 135px;
     border: none;
     order: 3;
   }
@@ -134,25 +152,53 @@ const NavSocials = styled.div`
     position: static;
     right: auto;
   }
-  li {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    list-style: none;
-    padding: 18px 0 15px;
-
-    a {
-      color: var(--text-color);
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      &:hover {
-        color: var(--primary);
+  ul{
+    margin: 0;
+    width: 115px;
+    display: flex;
+    cursor: auto;
+    
+    @media (min-width: 1000px){
+      margin: 0 1em;
+      justify-content: center;
+      align-items:center;
+      padding: 12px 1.0em 12px;
+      border-radius: var(--buttonBorderRadius);
+      background: var(--background);
+      box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                  -8px -8px 16px var(--neumorphizmLight);
+      &:active{
+        box-shadow: 2px 2px 4px var(--neumorphismShadow), 
+                    -4px -4px 16px var(--neumorphizmLight);
       }
     }
-
-    &:nth-child(2) {
-      margin-right: 0;
+    @media (min-width: 1200px){
+      padding: 17px 15px 17px;
+    }
+    li {
+      text-align: center;
+      font-size: 1.5rem;
+      //margin-right: 1rem;
+      list-style: none;
+      padding: 0;
+      a {
+        color: var(--text-color);
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        &:hover {
+          color: var(--primary);
+        }
+      }
+      &:nth-child(n){
+        margin: 0 0.5em 0;
+      }
+      &:first-child{
+        margin: 0 0.5em 0 0;
+      }
+      &:last-child{
+        margin: 0 0 0 0.5em;
+      }
     }
   }
 `
@@ -209,15 +255,25 @@ const NavLinks = styled.div`
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 0;
+    align-items: center;
+    justify-content:center;
     margin: 0;
-
+    padding: 0.5em 1.25em 0.75em;
     @media (min-width: 769px) {
       flex-direction: row;
     }
+    @media (min-width: 1000px) {
+      margin: 0 1em;
+      padding: 12px 1.0em 12px;
+      border-radius: var(--buttonBorderRadius);
+      background: var(--background);
+      box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                  -8px -8px 16px var(--neumorphizmLight);
+    }
+    @media (min-width: 1200px){
+      padding: 15px 15px 18px;
+    }
   }
-
   li {
     text-transform: capitalize;
     font-size: var(--menuItem);
@@ -226,36 +282,49 @@ const NavLinks = styled.div`
     position: relative;
     padding-bottom: 10px;
     margin-bottom: 10px;
-
+    letter-spacing: 0.01em;
     &::after {
       content: "";
       display: block;
       position: absolute;
-      height: 3px;
+      height: 2px;
       left: 0;
       right: 0;
-      bottom: 8px;
+      //bottom: -0.25em;
+      bottom: 0;
       background-color: var(--primary);
     }
-
     @media (min-width: 769px) {
       padding-top: 10px;
       padding-bottom: 18px;
       margin-right: 15px;
       margin-bottom: 0;
-
+      margin: 0;
+      padding: 0;
       &::after {
-        bottom: 17px;
+        bottom: -0.25em;
+      }
+      &:nth-child(n){
+        margin: 0 0.5em 0;
+      }
+      &:first-child{
+        margin: 0 0.5em 0 0;
+      }
+      &:last-child{
+        margin: 0 0 0 0.5em;
       }
     }
-
+    @media (min-width: 1000px){
+      
+    }
     @media (min-width: 1200px) {
       padding-top: 15px;
       padding-bottom: 20px;
       margin-right: 25px;
-
+      margin: 0;
+      padding: 0;
       &::after {
-        bottom: 17px;
+        //bottom: -0.25em;
       }
     }
   }
@@ -350,15 +419,17 @@ const Navbar = () => {
             </ul>
           </NavLinks>
           <NavSocials>
-            {quickNav.map((item, index) => {
-              return (
-                <li key={index}>
-                  <AniLink cover bg="var(--headerBG)" to={item.path}>
-                    {item.icon}
-                  </AniLink>
-                </li>
-              )
-            })}
+            <ul className="">
+              {quickNav.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <AniLink cover bg="var(--headerBG)" to={item.path}>
+                      {item.icon}
+                    </AniLink>
+                  </li>
+                )
+              })}
+            </ul>
           </NavSocials>
         </NavCenter>
       </NavBar>
