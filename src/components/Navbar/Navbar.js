@@ -15,7 +15,7 @@ const NavBar = styled.nav`
   z-index: 5;
   //border-bottom: 1px solid var(--border);
   //background-color: var(--headerBG);
-  border-radius: 0 0 var(--itemCardBorderRadius) var(--itemCardBorderRadius);
+  border-radius: var(--itemCardBorderRadius) var(--itemCardBorderRadius);
   background: var(--background);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
                 20px -20px 40px var(--neumorphizmLight);
