@@ -12785,6 +12785,11 @@ typeface-heebo@0.0.72:
   resolved "https://registry.yarnpkg.com/typeface-heebo/-/typeface-heebo-0.0.72.tgz#7f449615830919d0a2e46c53ef0f45af7a36160a"
   integrity sha512-Yp/o0gw0u1WYq3m8R1VOMOpc8XzP8cJcp1TKQ6EQPNPk6R8HYOpINJ/BJHwKeFP3uDFNHjP3zeHeToefcnc3iA==
 
+typeface-lato@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/typeface-lato/-/typeface-lato-1.1.13.tgz#630ec75394d7fd2c63148005e6e23f2d8014e931"
+  integrity sha512-sTn5k3+fagGOi8FQfN2MPeUiTdvG0Z3LVqCaQdsg2sYa0fzNteFZussizdwiPxF45OoFN3zdU/ci+PtjolNSPQ==
+
 unbox-primitive@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/unbox-primitive/-/unbox-primitive-1.0.1.tgz#085e215625ec3162574dc8859abee78a59b14471"
