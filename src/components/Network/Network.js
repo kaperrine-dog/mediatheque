@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Network = ( ) => {
-  const canvasAnimation = (viewWidth, viewHeight, nodesNumber, drawingCanvas ) => {
+  const canvasAnimation = (scale, viewWidth, viewHeight, nodesNumber, drawingCanvas ) => {
     let ctx,
         timeStep = (1/60),
         time = 0;
@@ -12,9 +12,10 @@ const Network = ( ) => {
     let signalCount = 0;
     
     function initDrawingCanvas() {
-        drawingCanvas.width = viewWidth;
-        drawingCanvas.height = viewHeight;
+        drawingCanvas.width = viewWidth * scale;
+        drawingCanvas.height = viewHeight * scale;
         ctx = drawingCanvas.getContext('2d');
+				ctx.scale(scale, scale)
     }
   
     function createNodes(nodesNumber) {
@@ -286,7 +287,7 @@ const Network = ( ) => {
 	
   React.useEffect(
 		() => {
-			const resizeCanvas = (width, height, nodesNumber, canvas ) => {
+			const resizeCanvas = (scale, width, height, nodesNumber, canvas ) => {
 				let viewWidth = window.innerWidth
 				let viewHeight = window.innerHeight
 				//height = canvas.parentElement.parentElement.clientHeight
@@ -294,16 +295,19 @@ const Network = ( ) => {
 				//console.log(canvas.parentElement)
 				viewWidth >= viewHeight ? (nodesNumber=60) : (nodesNumber=30)
 				setTimeout( () => {
-					canvasAnimation( height , height , nodesNumber, canvas );
+					canvasAnimation( scale, height , height , nodesNumber, canvas );
 				}, 500)
 			}
       const renderCanvas = () => {
+				const scale = window.devicePixelRatio;
 				let drawingCanvas = document.getElementById("drawingCanvas")
 				let canvasWidth = drawingCanvas.parentElement.clientWidth
 				let canvasHeight = drawingCanvas.parentElement.clientHeight
+				drawingCanvas.style.width = `${canvasWidth}px`
+				drawingCanvas.style.width = `${canvasHeight}px`
 				let nodesNumber
 				setTimeout(() => {
-					resizeCanvas(canvasHeight, canvasWidth, nodesNumber, drawingCanvas )
+					resizeCanvas(scale, canvasHeight, canvasWidth, nodesNumber, drawingCanvas )
 				}, 250);
 			}
       renderCanvas()
