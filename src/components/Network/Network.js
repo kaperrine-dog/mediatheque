@@ -94,7 +94,7 @@ const Network = ( ) => {
   
         this.connections = [];
   
-        this.r = randomRange(-10, 10);
+        this.r = randomRange(-30, 30);
     }
     Node.prototype = {
         update:function() {
@@ -304,7 +304,7 @@ const Network = ( ) => {
 				let canvasWidth = drawingCanvas.parentElement.clientWidth
 				let canvasHeight = drawingCanvas.parentElement.clientHeight
 				drawingCanvas.style.width = `${canvasWidth}px`
-				drawingCanvas.style.width = `${canvasHeight}px`
+				drawingCanvas.style.height = `${canvasHeight}px`
 				let nodesNumber
 				setTimeout(() => {
 					resizeCanvas(scale, canvasHeight, canvasWidth, nodesNumber, drawingCanvas )
