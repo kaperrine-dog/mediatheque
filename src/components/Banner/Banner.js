@@ -20,10 +20,10 @@ const HeroContainer = styled.div`
 
 const GridContainer = styled.div`
   display: grid;
-  grid-gap: 30px;
   grid-template-columns: 1fr;
-
+  
   @media (min-width: 769px) {
+    grid-gap: 30px;
     grid-template-columns: 1fr 1fr 1fr;
   }
 
@@ -99,8 +99,9 @@ const HeroTitle = styled.h1`
   transform: rotate(270deg);
   position: absolute;
   bottom: 29vh;
-  right: 0;
+  right: -3vw;
   @media (min-width: 769px){
+    right: 0;
     transform: rotate(0deg);
     position: static;
   }
@@ -121,7 +122,7 @@ const HeroTitleInverted = styled.div`
               -0px 0 0.25rem var(--titleTextShadow), 0px 0 0.25rem var(--titleTextShadow);
   position: absolute;
   top: 25vh;
-  left: 0;
+  left: -3vw;
   @media (min-width: 769px){
     transform: rotate( 180deg );
     position: static;
