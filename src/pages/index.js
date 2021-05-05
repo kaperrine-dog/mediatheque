@@ -20,7 +20,11 @@ const Index = () => {
       }
       featuredWorksImg: file(relativePath: { eq: "bark.jpg" }) {
         childImageSharp {
-          gatsbyImageData(quality: 90, layout: FULL_WIDTH)
+          gatsbyImageData(quality: 90
+            layout: FULL_WIDTH
+            placeholder: TRACED_SVG
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }
@@ -39,6 +43,7 @@ const Index = () => {
           </Link>
         </Banner>
       </Hero>
+      
       <StyledAbout>
         <About id="about" largePadding={true} />
       </StyledAbout>
