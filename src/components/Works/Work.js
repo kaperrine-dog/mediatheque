@@ -35,9 +35,9 @@ const StyledWorkItem = styled.article`
     padding: 40px 35px;
   }
   h2 {
-    height: 2.25em;
-    line-height: 1.25em;
-    font-size: 18px;
+    height: var(--itemCardH2Height);
+    line-height: var(--itemCardH2LineHeight);
+    font-size: var(--itemCardH2Title);
     margin: 0 0 20px;
     padding: 0 0 0;
     display: inline-block;
@@ -64,12 +64,16 @@ const StyledWorkItem = styled.article`
     mix-blend-mode: multiply;
   }
   .linkOnAImage{
-    padding: 5px 4px 0;
-    @media (min-width: 1200px){
+    
+    img{
+      border-radius: var(--itemCardBorderRadius);
+      padding: 10px 10px 6px;
+    }
+    @media (min-width: 1000px){
       &:hover{
         img{
-          filter: grayscale(100);
-          transition: filter 0.2s ease-in-out;
+          filter: hue-rotate( 270deg );
+          transition: filter 0.3s ease-in-out;
         }
       }
     }
