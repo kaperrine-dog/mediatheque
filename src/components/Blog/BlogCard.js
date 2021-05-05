@@ -9,7 +9,6 @@ const StyledBlogItem = styled.article`
   margin: auto auto;
   padding: 40px 35px;
   position: relative;
-  min-width: 325px; 
   max-width: 500px;
   border-radius: var(--itemCardBorderRadius);
   background: var(--background);
@@ -40,7 +39,7 @@ const StyledBlogItem = styled.article`
     height: 200px;
     border-radius: var(--itemCardBorderRadius);
   }
-  &:before{
+  /* &:before{
     content: '';
     display: block;
     position: absolute;
@@ -51,9 +50,27 @@ const StyledBlogItem = styled.article`
     filter: blur(20px);
     transform: translateY(10px) scale(1);
     mix-blend-mode: multiply;
+  } */
+  .linkOnAImage{
+    img{
+      border-radius: var(--itemCardBorderRadius);
+      padding: 10px;
+    }
+    @media (min-width: 1000px){
+      &:hover{
+        img{
+          filter: hue-rotate( 90deg );
+          transition: filter 0.3s ease-in-out;
+        }
+      }
+    }
   }
 `
 const StyledBlogCardTitle = styled.h2`
+  height: var(--itemCardH2Height);
+  line-height: var(--itemCardH2LineHeight);
+  font-size: var(--itemCardH2Title);
+  font-size: var(--itemCardH2Title);
   margin: 0 0 20px;
   padding: 0 0px;
   display: inline-block;
@@ -98,6 +115,7 @@ const StyledBlogIntro = styled.p`
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;  
   overflow: hidden;
+  
 `
 
 const BlogCard = ({ blog }) => {
@@ -108,7 +126,7 @@ const BlogCard = ({ blog }) => {
   return (
     <StyledBlogItem>
       <AniLink
-        className="btnSolid"
+        className="btnEmbedSolid"
         cover
         direction="up"
         //swipe
@@ -117,20 +135,31 @@ const BlogCard = ({ blog }) => {
         bg="var(--background)"
         to={`/blogs/${slug}`}
         >
-        <StyledBlogCardTitle>
-          {title}
-        </StyledBlogCardTitle>
-        <GatsbyImage className="blogImage" image={image} alt="Single Post" />
+          <StyledBlogCardTitle>
+            {title}
+          </StyledBlogCardTitle>
+        </AniLink>
+        <AniLink
+          className="linkOnAImage"
+          cover
+          direction="up"
+          //swipe
+          //entryOffset={100}
+          duration={1}
+          bg="var(--background)"
+          to={`/blogs/${slug}`}
+        >
+          <GatsbyImage className="blogImage btnImage" image={image} alt="Single Post" />
+        </AniLink>
         <StyledBlogItemContent>
           <StyledBlogIntro>
               {introduction}
           </StyledBlogIntro>
           <StyledBottom>
             <span>{published}</span>
-            <button className="btn">Read Post</button>
+            <button className="btnEmbed">Read Post</button>
           </StyledBottom>
         </StyledBlogItemContent>
-      </AniLink>
     </StyledBlogItem>
   )
 }
