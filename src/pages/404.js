@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import {Link} from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import Grid from "../components/Grid/Grid"
@@ -38,15 +38,14 @@ const error = () => {
       <Seo title="Error" />
       <Error404 className="section-padding">
         <Grid>
-          <Title>Sorry.</Title>
+          <Title>404 Not Found</Title>
           <SubContent>
-            <SubTitle>This page has moved or no longer exists.</SubTitle>
+            <SubTitle>このページは削除されたか存在しないページです。</SubTitle>
             <p>
-              Please choose another option from the menu above, or to return
-              home, press the button below.
+              
             </p>
             <Link className="btn" to="/">
-              Return Home
+              Homeに戻る
             </Link>
           </SubContent>
         </Grid>
