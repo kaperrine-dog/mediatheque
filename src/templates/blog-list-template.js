@@ -7,10 +7,15 @@ import BlogHeader from "../components/Blog/BlogHeader.js"
 import Grid from "../components/Grid/Grid.js"
 import PageIntro from "../components/PageIntro/PageIntro.js"
 import Seo from "../components/SEO.js"
+
+
 const StyledSection = styled.section`
-  grid-column: 1 / 4;
-  margin-left: -20px;
-  margin-right: -20px;
+  grid-column: 1 / 1;
+  @media (min-width: 769px){
+    grid-column: 1 / 4;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
 `
 const StyledFlexContainer = styled.div`
   display: flex;
@@ -115,7 +120,7 @@ const Blog = props => {
           <StyledPagination>
             {!isFirst && (
               <AniLink
-                className="btn"
+                className="btnEmbed"
                 cover
                 bg="var(--background)"
                 to={prevPage}
@@ -131,7 +136,7 @@ const Blog = props => {
                   cover
                   bg="var(--background)"
                   to={`/blogs/${i === 0 ? "" : i + 1}`}
-                  className={i + 1 === currentPage ? "btn btn-active" : "btn"}
+                  className={i + 1 === currentPage ? "btn btn-active" : "btnEmbed"}
                 >
                   {i + 1}
                 </AniLink>
@@ -139,7 +144,7 @@ const Blog = props => {
             })}
             {!isLast && (
               <AniLink
-                className="btn"
+                className="btnEmbed"
                 cover
                 bg="var(--background)"
                 to={nextPage}
