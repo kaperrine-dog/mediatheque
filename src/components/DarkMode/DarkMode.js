@@ -9,6 +9,7 @@ const SwitchContainer = styled.div`
   width: 32px;
   height: 16px;
   border-radius: 8px;
+  will-change: transform;
   overflow: hidden;
   position: relative;
   align-self: center;
@@ -22,6 +23,7 @@ const Switch = styled.button`
   background-color: red;
   position: absolute;
   transition: 0.2s ease-in;
+  will-change: transform;
 
   &.true {
     transform: translateX(0);
@@ -42,6 +44,7 @@ const Toggle = styled.span`
   width: 16px;
   height: 16px;
   border-radius: 8px;
+  will-change: transform;
   background-color: #d4d4d4;
   border-bottom: 1px solid rgba(100,100,100,1.0);
   position: absolute;
