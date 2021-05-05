@@ -283,28 +283,32 @@ const Network = ( ) => {
   `
   //--------------------------------------------
 
-  
+	
   React.useEffect(
-    () => {
-      const resizeCanvas = (width, height, nodesNumber, canvas ) => {
-        //viewWidth = window.innerWidth
-        //viewHeight = window.innerHeight
-        width = canvas.parentElement.parentElement.clientWidth
-        console.log(canvas.parentElement)
-        height = canvas.parentElement.parentElement.clientHeight
-        width >= height ? (nodesNumber=75) : (nodesNumber=40)
-        canvasAnimation( height , height, nodesNumber, canvas );
-      }
-      let drawingCanvas = document.getElementById("drawingCanvas")
-      //let viewWidth = window.innerWidth
-      //let viewHeight = window.innerHeight
-      let viewWidth = drawingCanvas.parentElement.clientWidth
-      let viewHeight = drawingCanvas.parentElement.clientHeight
-      let nodesNumber
-      resizeCanvas(viewWidth, viewHeight, nodesNumber, drawingCanvas )
-      window.addEventListener('resize' , resizeCanvas)
-      
-      return () => window.removeEventListener('resize', resizeCanvas)
+		() => {
+			const resizeCanvas = (width, height, nodesNumber, canvas ) => {
+				let viewWidth = window.innerWidth
+				let viewHeight = window.innerHeight
+				//height = canvas.parentElement.parentElement.clientHeight
+				//width = canvas.parentElement.parentElement.clientWidth
+				//console.log(canvas.parentElement)
+				viewWidth >= viewHeight ? (nodesNumber=60) : (nodesNumber=30)
+				setTimeout( () => {
+					canvasAnimation( height , height , nodesNumber, canvas );
+				}, 500)
+			}
+      const renderCanvas = () => {
+				let drawingCanvas = document.getElementById("drawingCanvas")
+				let canvasWidth = drawingCanvas.parentElement.clientWidth
+				let canvasHeight = drawingCanvas.parentElement.clientHeight
+				let nodesNumber
+				setTimeout(() => {
+					resizeCanvas(canvasHeight, canvasWidth, nodesNumber, drawingCanvas )
+				}, 250);
+			}
+      renderCanvas()
+			window.addEventListener('resize' , renderCanvas)
+      return () => { window.removeEventListener('resize' , renderCanvas) }
     }
   )
     

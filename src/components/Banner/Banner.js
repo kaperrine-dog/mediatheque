@@ -3,6 +3,7 @@ import {getImage} from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 import Network from "../Network/Network.js"
+
 const getImages = graphql`
   query HeroImage {
     fluid: file(relativePath: { eq: "deepsea01.jpg" }) {
@@ -41,7 +42,7 @@ const HeroImage = styled.div`
   }
   //height: fit-content;
   //background-color: var(--primary);
-  git 
+  
   border: none;
   outline: none;
   grid-column: 1 / 4;
