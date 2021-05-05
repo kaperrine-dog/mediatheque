@@ -18,6 +18,9 @@ const GlobalStyle = createGlobalStyle`
   --paddingLarge: 4.688rem;
   --itemCardBorderRadius: 20px;
   --buttonBorderRadius: 20px;
+  --itemCardH2Title: 18px;
+  --itemCardH2LineHeight: 1.25em;
+  --itemCardH2Height: 2.25em;
 
   @media(min-width:768px) {
     --h1: 2.375rem;
@@ -140,6 +143,7 @@ p{
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+  text-align: justify;
 }
 a.btn,
 button.btn {
@@ -216,7 +220,63 @@ button.btn {
                   -4px -4px 16px var(--neumorphizmLight);
     }
   }
-  
+
+  .btnEmbed{
+    color: var(--text-color);
+    background-color: transparent;
+    font-family: 'lato', 'Heebo','Noto Sans JP' , sans-serif;
+    border: 0;
+    text-decoration: none;
+    padding: 0;
+    transition: var(--transition) color;
+    text-transform: capitalize;
+    font-size: var(--menuItem);
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    position: relative;
+    align-self: flex-start;
+    &:focus {
+      color: var(--primary);
+    }
+    @media(hover: hover) {
+      cursor: pointer;
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 2px;
+      left: 0;
+      right: 0;
+      bottom: -0.25em;
+      background-color: var(--primary);
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  .btnEmbedSolid{
+    color: var(--text-color);
+    background-color: transparent;
+    font-family: 'lato', 'Heebo','Noto Sans JP' , sans-serif;
+    border: 0;
+    text-decoration: none;
+    padding: 0;
+    transition: var(--transition) color;
+    text-transform: capitalize;
+    font-size: var(--menuItem);
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    position: relative;
+    align-self: flex-start;
+    &:focus {
+      color: var(--primary);
+    }
+    @media(hover: hover) {
+      cursor: pointer;
+    }
+  }
+
   .btnImage{
     color: var(--text-color);
     background-color: transparent;
