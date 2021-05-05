@@ -59,7 +59,7 @@ const IndicatorDark = styled.span`
   left: 0;
   height: 16px;
   width: 24px;
-  background-color: rgba(132, 221, 255, 1);
+  background-color: var(--primary);
   z-index: 1;
 `
 
@@ -69,7 +69,7 @@ const IndicatorLight = styled.span`
   right: 0;
   height: 16px;
   width: 24px;
-  background-color: rgba(80, 76, 255, 1);
+  background-color: var(--primary);
   z-index: 1;
 `
 
