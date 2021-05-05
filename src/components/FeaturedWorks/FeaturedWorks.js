@@ -43,10 +43,10 @@ const Title = styled.h2`
 `
 
 const FlexContainer = styled.div`
-  grid-column: 1/4;
-  margin-left: -20px;
-  margin-right: -20px;
+  //grid-column: 1/4;
   @media (min-width: 769px) {
+    margin-left: -20px;
+    margin-right: -20px;
     grid-column: 2 / 4;
     display: flex;
     justify-content: space-between;
