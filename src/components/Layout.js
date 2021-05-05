@@ -2,6 +2,7 @@ import "@fontsource/noto-sans-jp"
 import React from "react"
 import {createGlobalStyle} from "styled-components"
 import "typeface-heebo"
+import "typeface-lato"
 import Footer from "./Footer"
 import Navbar from "./Navbar/Navbar"
 
@@ -16,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
   --paddingStd: 3.125rem;
   --paddingLarge: 4.688rem;
   --itemCardBorderRadius: 20px;
+  --buttonBorderRadius: 20px;
 
   @media(min-width:768px) {
     --h1: 2.375rem;
@@ -40,12 +42,12 @@ const GlobalStyle = createGlobalStyle`
   //LightMode
   --background: rgba(241, 241, 241, 1);
   --titleTextShadow: rgba(135, 135, 135, 0.5);
-  --headerBG: rgba(206, 208, 218, 0.60);
+  --headerBG: rgba(206, 208, 218, 0.10);
   --navMenuBG: rgba(240,240,240,0.5);
   --formBG: rgba(218, 218, 218, 49%);
   --formValidationColor: rgba(255, 101, 100, 0.9);
   --border: #313131;
-  --primary: rgba(56, 29, 123, 0.92);
+  --primary: rgba(125, 111, 161, 0.92);
   --secondary: rgba(22, 25, 157, 0.98);
   --inActive: #505050;
   --textColor: rgba(30, 30, 30, 1);
@@ -61,13 +63,14 @@ const GlobalStyle = createGlobalStyle`
   }
   --neumorphismShadow: #606060;
   --neumorphizmLight: rgba(255,255,255,0.99);
+  --neumorphismShadowSmall: #7b7b7b;
 }
 * {
   box-sizing: border-box;
 }  
 
 body {
-    font-family: 'Heebo','Noto Sans JP', sans-serif;
+    font-family: "lato",'Heebo','Noto Sans JP', 'Helvetica' ,sans-serif;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -142,7 +145,7 @@ a.btn,
 button.btn {
     color: var(--text-color);
     background-color: transparent;
-    font-family: 'Heebo','Noto Sans JP' , sans-serif;
+    font-family: 'lato', 'Heebo','Noto Sans JP' , sans-serif;
     border: 0;
     text-decoration: none;
     padding: 0;
@@ -150,20 +153,25 @@ button.btn {
     text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.01em;
     position: relative;
-    padding-bottom: 10px;
+    padding: 0.5em 1.25em 0.75em;
     align-self: flex-start;
+    border-radius: var(--buttonBorderRadius);
+    //background: var(--background);
+    box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight);
     &::after {
       content: "";
       display: block;
       position: absolute;
-      height: 3px;
+      height: 2px;
       left: 0;
       right: 0;
-      bottom: 8px;
+      bottom: 10px;
       background-color: var(--primary);
       margin: 0 auto;
+      width: 70%;
     }
     &:focus {
       color: var(--primary);
@@ -172,12 +180,16 @@ button.btn {
       cursor: pointer;
       opacity: 0.9;
     }
+    &:active{
+      box-shadow: 2px 2px 4px var(--neumorphismShadow), 
+                  -4px -4px 16px var(--neumorphizmLight);
+    }
   }
   
   .btnSolid{
     color: var(--text-color);
     background-color: transparent;
-    font-family: 'Heebo','Noto Sans JP' , sans-serif;
+    font-family: 'lato', 'Heebo','Noto Sans JP' , sans-serif;
     border: 0;
     text-decoration: none;
     padding: 0;
@@ -185,15 +197,53 @@ button.btn {
     text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.01em;
     position: relative;
-    padding-bottom: 10px;
+    padding: 0.5em 1.25em 0.75em;
     align-self: flex-start;
     &:focus {
       color: var(--primary);
     }
+    border-radius: var(--buttonBorderRadius);
+    //background: var(--background);
+    box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight);
     @media(hover: hover) {
       cursor: pointer;
+    }
+    &:active{
+      box-shadow: 2px 2px 4px var(--neumorphismShadow), 
+                  -4px -4px 16px var(--neumorphizmLight);
+    }
+  }
+  
+  .btnImage{
+    color: var(--text-color);
+    background-color: transparent;
+    font-family: 'lato', 'Heebo','Noto Sans JP' , sans-serif;
+    border: 0;
+    text-decoration: none;
+    padding: 0;
+    transition: var(--transition) color;
+    text-transform: capitalize;
+    font-size: var(--menuItem);
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    position: relative;
+    align-self: flex-start;
+    &:focus {
+      color: var(--primary);
+    }
+    border-radius: var(--buttonBorderRadius);
+    //background: var(--background);
+    box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight);
+    @media(hover: hover) {
+      cursor: pointer;
+    }
+    &:active{
+      box-shadow: 2px 2px 4px var(--neumorphismShadow), 
+                  -4px -4px 16px var(--neumorphizmLight);
     }
   }
 
