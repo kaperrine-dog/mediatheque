@@ -47,21 +47,15 @@ export default class WorkList extends Component {
   }
   render() {
     return (
-      <StyledSection>
-        <StyledFlexContainer>
+        <>
           {this.state.sortedWorks.map(({ node }, index) => {
             return (
-              <StyledFlexItem
-              key={node.workId}
-              >
                 <Work 
                   key={node.workId /* node.contentful_id */} 
                   work={node} />
-              </StyledFlexItem>
-            )
-          })}
-        </StyledFlexContainer>
-      </StyledSection>
+                  )
+            })}
+        </>
     )
   }
 }

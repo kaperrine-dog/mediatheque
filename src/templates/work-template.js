@@ -1,9 +1,7 @@
 import {graphql} from "gatsby";
-import {GatsbyImage} from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
 import Accordion from "../components/Accordion/Accordion";
-import Button from "../components/Button/Button";
 import {deleteAllCookies} from '../components/Common/Common.js';
 import Grid from "../components/Grid/Grid";
 import Seo from "../components/SEO";
@@ -16,9 +14,12 @@ const ImageLinkArea = styled.div`
   .main-image {
     //border-bottom: 3px solid var(--primary);
   }
-  width: 100%;
+  .sideSlider{
+    width: 100%;
+  }
   @media (min-width: 769px){
     width: 100%;
+    max-width: 375px;
     grid-column: 3 / 4;
     grid-row: 1 / 2;
   }
@@ -110,28 +111,34 @@ const workTemplate = ({ data }) => {
     introduction,
     description: { description },
     images,
+    narrowImages,
     url,
     accordion,
   } = data.work
 
-  const linkToOtherSites = () => {
+  const linkToOtherSites = (e) => {
+    e.preventDefault()
     deleteAllCookies()
     window.location.href = `http://${url}/`
   }
 
-  const [mainImage, ...workImages] = images
+  const [ mainImage_1, mainImage_2, ...workImages] = images
+  const [ ...sideImages ] = narrowImages
   return <>
     <Seo title={name} />
     <section className="section-padding">
       <Grid>
+        { sideImages && 
         <ImageLinkArea
-          onClick= { linkToOtherSites }
-          >
-          <GatsbyImage 
-            image={mainImage.gatsbyImageData} 
-            className="main-image" 
-          />
+        //onClick= { linkToOtherSites }
+        >
+          <div className="sideSlider">
+            <SwiperSlider
+              images = { sideImages }
+              />
+          </div>
         </ImageLinkArea>
+          }
         <ContentArea>
           <h1>{ name }</h1>
           { url &&
@@ -147,12 +154,18 @@ const workTemplate = ({ data }) => {
           </StyledIntroduction>
           }
           <p>{ description }</p>
-          <Button text="Enquire Now" link="/contact" />
+          <button
+            className = "btn"
+            onClick = { linkToOtherSites }
+            >
+            Jump to the Site
+          </button> 
+          
 
           <SwiperSlider
-            images = { images }
+            images = { workImages }
             />
-          
+{/*           
           <ImageGallery>
             {workImages && workImages.map((item, index) => {
               return (
@@ -165,6 +178,7 @@ const workTemplate = ({ data }) => {
             })}
           </ImageGallery>
           
+ */}          
           { accordion && 
           <AccordionBlock>
             { accordion.map((item, index) => {
@@ -206,7 +220,6 @@ export const query = graphql`
           placeholder: TRACED_SVG
           formats: [AUTO, WEBP]
         )
-        
         description
         title
         workImageId: contentful_id
