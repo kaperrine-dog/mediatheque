@@ -79,6 +79,19 @@ const StyledPagination = styled.div`
   }
 `
 
+const Spacer = styled.div`
+  height: 115px;
+  @media (min-width: 769px) {
+    height: 115px;
+  }
+  @media (min-width: 1000px) {
+    height: 115px;
+  }
+  @media (min-width: 1200px) {
+    height: 100px;
+  }
+`
+
 const Blog = props => {
   const { currentPage, numPages } = props.pageContext
 
@@ -92,7 +105,8 @@ const Blog = props => {
   return (
     <>
       <Seo title="Blogs" />
-      <BlogHeader></BlogHeader>
+      <Spacer/>
+      <BlogHeader/>
       <section className="section-padding">
         <Grid>
           <PageIntro
