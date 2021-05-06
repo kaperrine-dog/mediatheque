@@ -5,11 +5,20 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledBlogHeader = styled.div`
-  width: 100vw;
+  width: 95vw;
   max-width: 1400px;
   position: relative;
   height: 200px;
   margin: 0 auto;
+  padding: 1em;
+  border-radius: var(--buttonBorderRadius);
+  background: var(--background);
+  box-shadow:  8px 8px 16px var(--neumorphismShadow),
+              -8px -8px 16px var(--neumorphizmLight);
+  &:active{
+    box-shadow: 2px 2px 4px var(--neumorphismShadow), 
+                -4px -4px 16px var(--neumorphizmLight);
+  }
   .blogHeaderBG{
     position: absolute;
     top: 0;
@@ -18,6 +27,10 @@ const StyledBlogHeader = styled.div`
     width: 100%;
     height: 100%;
     z-index: 4;
+    img{
+      padding: 1em;
+      border-radius: var(--buttonBorderRadius);
+    }
   }
   .title{
     color: white;
