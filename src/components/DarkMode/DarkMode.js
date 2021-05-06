@@ -108,7 +108,7 @@ const DarkMode = () => {
     <>
       <ThemeSelect>
         <CurrentMode>
-          {darkMode ? `${"DeepSea"}` : `${"Iceage"}`}
+          {darkMode ? `${"DeepSea"}` : `${"Glacier"}`}
         </CurrentMode>
         <SwitchContainer>
           <Switch
