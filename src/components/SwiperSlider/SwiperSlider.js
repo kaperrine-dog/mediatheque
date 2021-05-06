@@ -1,5 +1,5 @@
 import {GatsbyImage} from "gatsby-plugin-image";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import React from 'react';
 import styled from 'styled-components';
 import SwiperCore, {A11y, Autoplay, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Navigation, Pagination, Scrollbar} from 'swiper';
@@ -13,10 +13,9 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade,EffectCoverf
 
 const SwiperSlider = ({ images }) => {
 
-  const [mainImage, ...workImages] = images
 	return (
 		<> {
-				workImages && workImages.length > 0 && ( 
+				images && images.length > 0 && ( 
 					<StyledSwiperSliderWrapper>
 					<Swiper 
 						effect="coverflow"
@@ -54,8 +53,8 @@ const SwiperSlider = ({ images }) => {
 						}
 					>
 					{
-						workImages && (
-							workImages.map((sliderImage, i) => {
+						images && (
+							images.map((sliderImage, i) => {
 								return ( 
 								<SwiperSlide 
 									className = "swiperSliderImageWrapper" 
@@ -179,7 +178,6 @@ const StyledSwperSliderImage = styled.div`
 		position: relative;
 		overflow: hidden;
 		z-index: 1;
-		
 		@media (min-width: 769px){
 			width: 100%;
 			height: 500px;
@@ -195,7 +193,7 @@ const StyledSwperSliderImage = styled.div`
 			//height: 500px;
 			//max-height: 400px;
 			object-fit: cover;
-			object-position: center;
+			object-position: 50% 0;
 			
 		}
   }
