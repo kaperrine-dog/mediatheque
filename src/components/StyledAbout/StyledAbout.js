@@ -78,6 +78,7 @@ const StyledAbout = ({ imgLight, imgDark, children }) => {
             imgStyle={{
               width: "100vw",
               height: "150vh",
+              filter: "opacity(0.7)",
               //objectFit: 'cover',
               //objectPosition: '50% 50%',
               //filter: 'hue-rotate(270deg)',
