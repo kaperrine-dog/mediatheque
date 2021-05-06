@@ -29,7 +29,14 @@ const getWorks = graphql`
   }
 `
 const TitleArea = styled.div`
+    grid-column: 1 / 1;
+    max-width: 500px;
+    margin: auto;
   @media (min-width: 769px) {
+    grid-column: 1 / 3;
+    max-width: none;
+  }
+  @media (min-width: 1000px) {
     grid-column: 1 / 2;
   }
   p{
@@ -87,15 +94,11 @@ const FeaturedWorks = ({ largePadding, id }) => {
           </p>
           <Button text="View All Works" link="/works" />
         </TitleArea>
-        <FlexContainer>
           {works.map(({ node }, index) => {
             return (
-              <FlexItem key={index}>
                 <Work key={node.workId} work={node} />
-              </FlexItem>
             )
           })}
-        </FlexContainer>
       </Grid>
     </Section>
   )
