@@ -24,28 +24,154 @@ const NavBar = styled.nav`
   }
 `
 
-const NavButton = styled.button`
+const StyledNavButton = styled.div`
+  width: 30px;
+  height: 30px;
   position: relative;
-  color: var(--text-color);
-  padding: 12px 0 17px 0;
-  order: 1;
-  border: none;
-  background-color: transparent;
-  font-size: var(--menuItem);
-  font-weight: 900;
-  letter-spacing: -1px;
   z-index: 10;
-  &::after {
-    content: "";
-    display: block;
+  button{
+    background: none;
     position: absolute;
-    height: 3px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 10px;
-    background-color: var(--primary);
-  }
+    margin: auto;
+/*     
+    color: var(--text-color);
+    //padding: 12px 0 17px 0;
+    order: 1;
+    background-color: transparent;
+    font-size: var(--menuItem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    z-index: 10; */
 
+    p{
+      position: absolute;
+      top: 0px;
+      width: 0px;
+      text-align: center;
+      left: 0px;
+      color: var(--textColor);
+    }
+  }
+  .bento-menu{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 8px auto;
+    color: var(--text-color);
+    //padding: 12px 0 17px 0;
+    order: 1;
+    border: none;
+    background-color: transparent;
+    font-size: var(--menuItem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    z-index: 10;
+    transform: rotateZ( 0 );
+    transition: 0.6s;
+    span{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      position: absolute;
+      &:nth-child(1){
+        top: 0;
+        left: 0;
+        transition: .6s ease-in-out;
+      }
+      &:nth-child(2){
+        top: 0;
+          left: 9px;
+          transition: .6s ease-in-out;
+      }
+      &:nth-child(3){
+        top: 0;
+        left:18px;
+        transition: .6s ease-in-out;
+      }
+      &:nth-child(4){
+        top: 9px;
+        left: 0;
+        transition: .6s ease-in-out;
+      }
+      &:nth-child(5){
+        top: 9px;
+        left: 9px;
+        transition: .6s ease-in-out;
+      }
+      &:nth-child(6){
+        top: 9px;
+        left:18px;
+        transition: .6s ease-in-out;
+      }
+      &:nth-child(7){
+        top: 18px;
+        left: 0;
+        transition: .6s ease-in-out;
+      }
+      &:nth-child(8){
+        top: 18px;
+        left: 9px;
+        transition: .6s ease-in-out;
+      }
+      &:nth-child(9){
+        top: 18px;
+        left:18px;
+        transition: .6s ease-in-out;
+      }
+    }
+  }
+  .isOpen{
+    //transform: scale( 1.125, 1.125 );
+    .bento-menu{
+      transform: rotateZ( 1.125turn );
+      top: 0;
+      span{
+        &:nth-child(1){
+            transform: translate(9px,9px);
+        }
+        &:nth-child(3){
+            transform: translate(-9px,9px);
+        }
+        &:nth-child(7){
+            transform: translate(9px,-9px);
+        }
+        &:nth-child(9){
+            transform: translate(-9px,-9px);
+        }
+        &:nth-child(2){
+            transform: rotate(180deg);
+        }
+        &:nth-child(4){
+            transform: rotate(180deg);
+        }
+        &:nth-child(6){
+            transform: rotate(-180deg);
+        }
+        &:nth-child(8){
+            transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+    
   @media (min-width: 769px) {
     display: none !important;
   }
@@ -79,6 +205,7 @@ const NavLogo = styled.div`
   }
 
   a {
+    padding: 5px 0;
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s;
@@ -396,9 +523,26 @@ const Navbar = () => {
           <ThemeSwitch> 
             <DarkMode /> 
           </ThemeSwitch>
-          <NavButton type="button" onClick={toggleNav}>
-            Menu.
-          </NavButton>
+          <StyledNavButton>
+            <button
+              onClick={toggleNav}
+              className={
+                isOpen && `${"isOpen"}`
+              }
+              >
+              <div class="bento-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+          </StyledNavButton>
           
           <NavLinks
             className={

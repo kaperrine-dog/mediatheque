@@ -46,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
   --background: rgba(241, 241, 241, 1);
   --titleTextShadow: rgba(135, 135, 135, 0.5);
   --headerBG: rgba(206, 208, 218, 0.10);
-  --navMenuBG: rgba(240,240,240,0.5);
+  --navMenuBG: rgba(240,240,240,0.7);
   --formBG: rgba(218, 218, 218, 49%);
   --formValidationColor: rgba(255, 101, 100, 0.9);
   --border: #313131;
