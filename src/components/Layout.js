@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   --menuItem: 1.125rem;
   --transition: 0.3s;
   --heroH1: 5rem;
-  --h1: 2rem;
+  --h1: 1.5rem;
   --h2: 1.375rem;
   --paddingBorder: 1.875rem;
   --paddingStd: 3.125rem;
@@ -23,8 +23,8 @@ const GlobalStyle = createGlobalStyle`
   --itemCardH2Height: 2.25em;
 
   @media(min-width:768px) {
-    --h1: 2.375rem;
-    --h2: 1.625rem;
+    --h1: 1.75rem;
+    --h2: 1.325rem;
     --h3: 1.00rem;
     --paddingStd: 3.688rem;
     --paddingLarge: 7.813rem;
