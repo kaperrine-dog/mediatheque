@@ -187,8 +187,6 @@ const NavLogo = styled.div`
   border-bottom: 1px solid var(--border);
   width: 60%;
   
-  @media (min-width100069px){
-  }
   @media (min-width: 1000px){
     padding: 7px 0.75em;
     border: none;
@@ -266,13 +264,13 @@ const NavSocials = styled.div`
   order: 2;
   z-index: 2;
   justify-content: flex-end;
+  
   @media (min-width: 1000px){
     width: auto;
     position: absolute;
     right: 160px;
     bottom: 0px;
     height: 100%;
-
   }
   @media (min-width: 1200px){
     width: 35%;
@@ -284,12 +282,14 @@ const NavSocials = styled.div`
     width: 115px;
     display: flex;
     cursor: auto;
-    
+    @media (min-width:769px){
+
+    }
     @media (min-width: 1000px){
       margin: 0 1em;
       justify-content: center;
       align-items:center;
-      padding: 12px 1.0em 12px;
+      padding: 14px 1.0em 16px;
       border-radius: var(--buttonBorderRadius);
       background: var(--background);
       box-shadow:  8px 8px 16px var(--neumorphismShadow),
@@ -344,12 +344,12 @@ const NavLinks = styled.div`
   visibility: hidden;
   opacity: 0;
   width: 100%;
-  max-width: 500px;
   transform: translateX(-100%);
   transition: opacity 0.5s ease-in, transform 0.5s ease-in,
   visibility var(--transition) ease-in;
 
   @media (min-width: 769px) {
+    width: auto;
     position: relative;
     top: auto;
     left: auto;
@@ -382,12 +382,13 @@ const NavLinks = styled.div`
     list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content:center;
     margin: 0;
     padding: 0.5em 1.25em 0.75em;
     @media (min-width: 769px) {
       flex-direction: row;
+      align-items: center;
     }
     @media (min-width: 1000px) {
       margin: 0 1em;
@@ -401,14 +402,20 @@ const NavLinks = styled.div`
       padding: 15px 15px 18px;
     }
   }
+  .navFixedPages{
+    display: initial;
+    @media (min-width: 769px){
+      display: none;
+    }
+  }
   li {
     text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
     letter-spacing: -0.5px;
     position: relative;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 7px;
+    margin: 10px 0;
     letter-spacing: 0.01em;
     &::after {
       content: "";
@@ -475,24 +482,32 @@ const NavLinks = styled.div`
 `
 
 const Spacer = styled.div`
-  height: 125px;
-
+  height: 115px;
   @media (min-width: 769px) {
-    height: 125px;
+    height: 115px;
   }
   @media (min-width: 1000px) {
-    height: 65px;
+    height: 80px;
   }
   @media (min-width: 1200px) {
     height: 80px;
   }
 `
 
+
 const Navbar = () => {
   const [isOpen, setNav] = useState(false)
   const toggleNav = () => {
     setNav(isOpen => !isOpen)
   }
+  
+  const closeNav = () => {
+    setNav(false)
+  }
+  
+  React.useEffect(() => {
+    
+  })
 
   const {
     site: { siteMetadata },
@@ -526,11 +541,10 @@ const Navbar = () => {
           <StyledNavButton>
             <button
               onClick={toggleNav}
-              className={
-                isOpen && `${"isOpen"}`
-              }
+              className= { 
+                isOpen ? `${"isOpen"}` : `${"isClose"}` }
               >
-              <div class="bento-menu">
+              <div className="bento-menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -554,7 +568,22 @@ const Navbar = () => {
               {links.map((item, index) => {
                 return (
                   <li key={index}>
-                    <AniLink cover bg="var(--headerBG)" to={item.path}>
+                    <AniLink cover bg="var(--headerBG)" to={item.path}
+                    onClick={closeNav}
+                    >
+                      {item.text}
+                    </AniLink>
+                  </li>
+                )
+              })}
+              {quickNav.map((item, index) => {
+                return (
+                  <li 
+                    className='navFixedPages'
+                    key={`fixed_pages_${index}`}>
+                    <AniLink cover bg="var(--headerBG)" to={item.path}
+                    onClick={closeNav}
+                    >
                       {item.text}
                     </AniLink>
                   </li>
@@ -563,11 +592,13 @@ const Navbar = () => {
             </ul>
           </NavLinks>
           <NavSocials>
-            <ul className="">
+            <ul>
               {quickNav.map((item, index) => {
                 return (
                   <li key={index}>
-                    <AniLink cover bg="var(--headerBG)" to={item.path}>
+                    <AniLink cover bg="var(--headerBG)" to={item.path}
+                    onClick={closeNav}
+                    >
                       {item.icon}
                     </AniLink>
                   </li>
