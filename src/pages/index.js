@@ -10,25 +10,54 @@ import Service from "../components/Service/Service"
 import StyledAbout from "../components/StyledAbout/StyledAbout"
 
 const Index = () => {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          title
-          description
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+          }
+        }
+        placeholderImageLight_1: file(relativePath: { eq: "whiteAbstract.jpg" }) {
+          childImageSharp {
+            gatsbyImageData(
+              formats: [AUTO, WEBP, AVIF, JPG]
+              layout: CONSTRAINED
+            )
+          }
+        }
+        placeholderImageDark_1: file(relativePath: { eq: "jellyfish01.jpg" }) {
+          childImageSharp {
+            gatsbyImageData(
+              placeholder: TRACED_SVG
+              formats: [AUTO, WEBP, AVIF, JPG]
+              layout: CONSTRAINED
+            )
+          }
+        }
+        placeholderImageLight_2: file(relativePath: { eq: "iceage_large.jpg" }) {
+          childImageSharp {
+            gatsbyImageData(
+              placeholder: TRACED_SVG
+              formats: [AUTO, WEBP, AVIF, JPG]
+              layout: CONSTRAINED
+            )
+          }
+        }
+        placeholderImageDark_2: file(relativePath: { eq: "jellyfish01.jpg" }) {
+          childImageSharp {
+            gatsbyImageData(
+              placeholder: TRACED_SVG
+              formats: [AUTO, WEBP, AVIF, JPG]
+              layout: CONSTRAINED
+            )
+          }
         }
       }
-      featuredWorksImg: file(relativePath: { eq: "bark.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(quality: 90
-            layout: FULL_WIDTH
-            placeholder: TRACED_SVG
-            formats: [AUTO, WEBP, AVIF]
-          )
-        }
-      }
-    }
-  `)
+    `
+  )
+  
 
   return (
     <>
@@ -44,13 +73,16 @@ const Index = () => {
         </Banner>
       </Hero>
       
-      <StyledAbout>
+      <StyledAbout
+        imgLight={data.placeholderImageLight_1}
+        imgDark={data.placeholderImageDark_1}
+      >
         <About id="about" largePadding={true} />
       </StyledAbout>
       <Service largePadding={true} />
       <StyledAbout
-        gradient="true"
-        img={data.featuredWorksImg.childImageSharp.gatsbyImageData}
+        imgLight={data.placeholderImageLight_2}
+        imgDark={data.placeholderImageDark_1}
       >
         <FeaturedWorks id="works" largePadding={true} />
       </StyledAbout>
