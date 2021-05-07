@@ -5,7 +5,6 @@ const AccordionItem = styled.article`
   width: calc( 100vw - var(--paddingBorder) * 2 );
   border-radius: var(--itemCardBorderRadius);
   background: var(--background);
-  background: var(--itemPanelBGDark);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
                 20px -20px 40px var(--neumorphizmLight);
   width: auto;
@@ -24,7 +23,7 @@ const AccordionItem = styled.article`
     height: 0;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s;
+    transition: all 0.7s ease-out;
     overflow-y: hidden;
   }
   &.acd-open {
@@ -42,7 +41,7 @@ const AccordionItem = styled.article`
       height: auto;
       opacity: 1;
       visibility: visible;
-      transition: all 0.3s;
+      transition: all 0.7s ease-out;
       overflow-y: visible;
     }
   }
