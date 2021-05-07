@@ -26,6 +26,10 @@ const GlobalStyle = createGlobalStyle`
   --textLineHeightLv1: 1.5em;
   --textLetterSpacingLv1: 0.125em;
   --textLetterSpacingLv2: 0.025em;
+  --marginBorder: 40px;
+  --marginSmall: 20px;
+  --marginStd: 40px;
+  --marginLarge: 60px;
 
   @media(min-width:768px) {
     --h1: 1.75rem;
@@ -389,7 +393,7 @@ button.btn {
       letter-spacing: var(--textLetterSpacingLv1);
       font-size: var(--contentArticleH1FontSize);
       font-weight: 400;
-      margin: 0 0 1.5em;
+      margin: 80px 0 40px;
       position: relative;
       padding: 0.125em 1.5em 0.25em;
       //border-top: solid 1px var(--textColor);
@@ -412,7 +416,7 @@ button.btn {
         height: 0.5em;
         border: 1px solid var(--primary);
         background: transparent;
-        border-radius: 0;
+        border-radius: 50%;
         transform: rotate( 45deg );
       }
     }
@@ -420,26 +424,17 @@ button.btn {
       letter-spacing: var(--textLetterSpacingLv1);
       margin: 20px calc(var(--contentArticleH1FontSize) / 2) 20px;
       @media (min-width: 1200px){
-        margin: 20px 0 20px var(--contentArticleH1FontSize);
+        margin: 40px 0 40px var(--contentArticleH1FontSize);
       }
     }
     h2{
       font-size: calc( var(--contentArticleH1FontSize) - 2px );
       font-weight: 400;
-      margin: 0 0 1.0em 0.75em;
+      margin: 80px 0 40px 1.5em;
       position: relative;
       padding: 0.125em 0.5em 0.25em;
       //border-top: solid 1px var(--textColor);
       border-bottom: solid 1px var(--primary);
-      &:before {
-        //content: '';
-        position: absolute;
-        top: 0;
-        left: 1em;
-        width: 1px;
-        height: calc(100% + 1em);
-        background-color: var(--primary);
-      }
       &:after {
         position: absolute;
         content: "";
@@ -456,6 +451,11 @@ button.btn {
     h3{
       font-weight: 400;
       font-size: calc( var(--contentArticleH1FontSize) - 4px );
+      margin: 80px 0 40px 1.5em;
+      position: relative;
+      padding: 0.125em 0.5em 0.25em;
+      //border-top: solid 1px var(--textColor);
+      border-bottom: solid 1px var(--primary);
     }
     h4{
       font-weight: 400;
@@ -479,7 +479,7 @@ button.btn {
       margin: 20px 0 20px calc(var(--contentArticleH1FontSize) / 2);
       @media (min-width: 769px){
         padding: 0 0 0 20px;
-        margin: 0 0 20px 20px;
+        margin: 40px 0 40px 20px;
       }
     }
     li{
@@ -490,6 +490,9 @@ button.btn {
         margin: 0;
         padding: 0;
       }
+    }
+    a{
+      width: 100%;
     }
   }
 `
