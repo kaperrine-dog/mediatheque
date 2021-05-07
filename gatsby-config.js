@@ -11,7 +11,7 @@ module.exports = {
     title: "mediatheque",
     description: "ようこそ！",
     author: "Kent Azuma",
-    twitterUsername: "@kentaznyan",
+    twitterUsername: "@kentaznna",
     image: "/yellow-metal-design-decoration.jpg",
     siteUrl: "https://mediatheque.netlify.com",
   },
@@ -40,6 +40,50 @@ module.exports = {
         host: "https://mediatheque.netlify.app",
         sitemap: "https://mediatheque.netlify.app/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        // Footnotes mode (default: true)
+        footnotes: true,
+        // GitHub Flavored Markdown mode (default: true)
+        gfm: true,
+        // Plugins configs
+        plugins: [
+          {
+            resolve: 'gatsby-remark-prismjs-title',
+            options: {
+              className: 'gatsby-code-title',
+            }
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {
+                js: 'javascript',
+                sh: 'bash',
+                
+              },
+              showLineNumbers: false,
+              noInlineHighlight: false,
+              languageExtensions: [
+                {
+                  language: 'superscript',
+                  extend: 'javascript',
+                  definition: { superscript_types: /(SuperType)/ },
+                  insertBefore: {
+                    function: { superscript_keywords: /(superif|superelse)/ },
+                  },
+                },
+              ],
+              prompt: { user: 'root', host: 'localhost', global: false },
+              escapeEntities: {},
+            },
+          },
+        ],
       },
     },
     `gatsby-plugin-playground`,
