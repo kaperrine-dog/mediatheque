@@ -68,7 +68,7 @@ const SwiperSlider = ({ images }) => {
                       image={sliderImage.gatsbyImageData} 
                       className = 'swiperSliderImage'
                       alt = {
-                        sliderImage.description
+                        sliderImage.description ? sliderImage.description : sliderImage.title
                       }
                     />
                   </StyledSwperSliderImage>
@@ -92,7 +92,7 @@ SwiperSlider.propTypes = {
 //StyledComponents
 
 const StyledSwiperSliderWrapper = styled.div`
-  margin: 40px 0 40px;
+  //margin: 40px 0 40px;
   position: relative;
 	//color: var(--secondary);
 	.swiper-wrapper{
@@ -170,17 +170,17 @@ const StyledSwiperSliderWrapper = styled.div`
 const StyledSwperSliderImage = styled.div`
 	.swiperSliderImage{
 		margin: auto;
-		width: 90vw;
-		height: calc(90vw * 0.5625);
+		//アスペクト比固定用
+		//width: 75vw;
+		//height: calc(75vw * 0.5625);
 		min-width: 300px;
 		min-height: 169px;
-		//aspect-ratio: 16 / 9;
 		position: relative;
 		overflow: hidden;
 		z-index: 1;
 		@media (min-width: 769px){
 			width: 100%;
-			height: 500px;
+			//height: 500px;
 		}
 		//filter: hue-rotate(170deg);
     //-webkit-filter: hue-rotate(170deg);
