@@ -8,9 +8,17 @@ const AccordionItem = styled.article`
   background: var(--itemPanelBGDark);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
                 20px -20px 40px var(--neumorphizmLight);
-@media (min-width: 769px){
   width: auto;
-}
+  max-width: calc( 100vw - var(--paddingStd) );
+  @media (min-width: 769px){
+    //max-width: calc( 100% - var(--paddingStd) );
+    max-width: 100%;
+  }
+  @media (min-width: 1000px){
+    //max-width: calc( 100% - var(--paddingStd) );
+    max-width: 100%;
+  }
+
   .accordionDesc{
     padding: 0 20px;
     height: 0;
