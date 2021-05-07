@@ -21,7 +21,12 @@ const SwiperSlider = ({ images }) => {
 						effect="coverflow"
 						//centeredSlides="true"
 						//loop="ture"
-						spaceBetween = { 100 }
+						breakpoints = {{
+							1000: {
+								spaceBetween: 100, 
+							}
+						}}
+						spaceBetween = { 0 }
 						slidesPerView = { 1 }
 						speed={ 1000 }
 						/* autoplay = { {
