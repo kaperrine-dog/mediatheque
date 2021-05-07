@@ -22,6 +22,10 @@ const GlobalStyle = createGlobalStyle`
   --itemCardH2Title: 18px;
   --itemCardH2LineHeight: 1.25em;
   --itemCardH2Height: 2.25em;
+  --textFontSizeLv1: 16px;
+  --textLineHeightLv1: 1.5em;
+  --textLetterSpacingLv1: 0.125em;
+  --textLetterSpacingLv2: 0.025em;
 
   @media(min-width:768px) {
     --h1: 1.75rem;
@@ -137,10 +141,10 @@ span, div{
   letter-spacing: 0.025em;
 }
 p{
-  line-height: 1.5em;
-  letter-spacing: 0.125em;
+  line-height: var(--textLineHeightLv1);
+  letter-spacing: 0.025em;
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--textFontSizeLv1);
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
@@ -341,20 +345,29 @@ button.btn {
     top: 10px;
     border-top-left-radius: 0.3em;
     border-top-right-radius: 0.3em;
+    span {
+      display: inline;
+      position: relative;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      color: #eee;
+      background: #777;
+      border-top-left-radius: 0.3em;
+      border-bottom-right-radius: 0.3em;
+      padding: 3px;
+      top: 1px;
+    }
   }
 
-  .gatsby-code-title span {
-    display: inline;
-    position: relative;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-    color: #eee;
-    background: #777;
-    border-top-left-radius: 0.3em;
-    border-bottom-right-radius: 0.3em;
-    padding: 3px;
-    top: 1px;
-  }
 
+
+  .contentIntroduction{
+    font-size: var(--textFontSizeLv1);
+    line-height: var(--textLineHeightLv1);
+    letter-spacing: var(--textLetterSpacingLv1);
+    span{
+      letter-spacing: var(--textLetterSpacingLv1);
+    }
+  }
   //contentful childMarkdownRemark.html styles
   .contentArticle{
     pre{
@@ -373,8 +386,9 @@ button.btn {
     box-shadow:  8px 8px 16px var(--neumorphismShadow),
                 -8px -8px 16px var(--neumorphizmLight);
     h1 {
-      font-weight: 400;
+      letter-spacing: var(--textLetterSpacingLv1);
       font-size: var(--contentArticleH1FontSize);
+      font-weight: 400;
       margin: 0 0 1.5em;
       position: relative;
       padding: 0.125em 1.5em 0.25em;
@@ -403,6 +417,7 @@ button.btn {
       }
     }
     p,h2,h3,h4,h5{
+      letter-spacing: var(--textLetterSpacingLv1);
       margin: 20px calc(var(--contentArticleH1FontSize) / 2) 20px;
       @media (min-width: 1200px){
         margin: 20px 0 20px var(--contentArticleH1FontSize);
@@ -410,22 +425,55 @@ button.btn {
     }
     h2{
       font-size: calc( var(--contentArticleH1FontSize) - 2px );
+      font-weight: 400;
+      margin: 0 0 1.0em 0.75em;
+      position: relative;
+      padding: 0.125em 0.5em 0.25em;
+      //border-top: solid 1px var(--textColor);
+      border-bottom: solid 1px var(--primary);
+      &:before {
+        //content: '';
+        position: absolute;
+        top: 0;
+        left: 1em;
+        width: 1px;
+        height: calc(100% + 1em);
+        background-color: var(--primary);
+      }
+      &:after {
+        position: absolute;
+        content: "";
+        left: -0.3em;
+        bottom: -0.125em;
+        width: 0.25em;
+        height: 0.25em;
+        border: 1px solid var(--primary);
+        background: transparent;
+        border-radius: 50%;
+        transform: rotate( 45deg );
+      }
     }
     h3{
+      font-weight: 400;
       font-size: calc( var(--contentArticleH1FontSize) - 4px );
     }
     h4{
+      font-weight: 400;
       font-size: calc( var(--contentArticleH1FontSize) - 6px );
     }
     p{
-      font-size: 16px;
-      line-height: 1.5em;
-      letter-spacing: 0.125em;
+      font-size: var(--textFontSizeLv1);
+      line-height: var(--textLineHeightLv1);
+      letter-spacing: var(--textLetterSpacingLv1);
+      span{
+        letter-spacing: var(--textLetterSpacingLv1);
+      }
     }
     span{
-      
-    }
+      letter-spacing: var(--textLetterSpacingLv1);
+      }
     ul,ol{
+      letter-spacing: var(--textLetterSpacingLv1);
       font-size: 16px;
       padding: 0 0 0 20px;
       margin: 20px 0 20px calc(var(--contentArticleH1FontSize) / 2);
@@ -433,16 +481,15 @@ button.btn {
         padding: 0 0 0 20px;
         margin: 0 0 20px 20px;
       }
-      li{
-        padding: 0;
-        margin: 0;
-      }
+    }
+    li{
+      letter-spacing: var(--textLetterSpacingLv1);
+      padding: 0;
+      margin: 0;
       p{
         margin: 0;
+        padding: 0;
       }
-    }
-    hr{
-
     }
   }
 `

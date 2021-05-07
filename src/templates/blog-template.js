@@ -63,8 +63,10 @@ const Blog = ({ data }) => {
     introduction,
     published,
     images,
+    content,
     richText,
     richText: { raw },
+
   } = data.post
   
   const [mainImage, ...blogImages] = images
@@ -98,10 +100,19 @@ const Blog = ({ data }) => {
               image={mainImage.gatsbyImageData}
               className="main-image"
               alt="Placeholder" />
-            <article>{renderRichText(richText, options)}</article>
+            <article
+              className = "contentArticle"
+            >
+              {/* renderRichText(richText, options) */}
+              {}
+            </article>
           </ContentArea>
           <DetailArea>
-            <h2>{introduction}</h2>
+            <h2 
+              className='contentIntroduction'
+              >
+              {introduction}
+            </h2>
             <p>Published on - {published}</p>
             <AniLink className="btn" cover bg="var(--background)" to="/blogs">
               Back to Blogs
