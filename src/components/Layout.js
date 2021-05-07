@@ -1,4 +1,5 @@
 import "@fontsource/noto-sans-jp"
+import "prismjs/themes/prism-tomorrow.css"
 import React from "react"
 import {createGlobalStyle} from "styled-components"
 import "typeface-heebo"
@@ -13,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   --heroH1: 5rem;
   --h1: 1.5rem;
   --h2: 1.375rem;
-  --paddingBorder: 1.875rem;
+  --paddingBorder: 1.575rem;
   --paddingStd: 3.125rem;
   --paddingLarge: 4.688rem;
   --itemCardBorderRadius: 20px;
@@ -32,10 +33,11 @@ const GlobalStyle = createGlobalStyle`
   }
   @media(min-width: 1200px) {
     --menuItem: 1.25rem;
-    --h1: 2.125rem;
+    --h1: 1.75rem;
     --h2: 1.50rem;
     --h3: 1.00rem;
     --paddingStd: 4.625rem;
+    --paddingBorder: 3.875rem;
     --paddingLarge: 9.375rem;
     --heroH1: 10vw;
   }
@@ -329,6 +331,109 @@ button.btn {
   
   .section-padding--large {
     padding: var(--paddingLarge) var(--paddingBorder);
+  }
+
+  .gatsby-code-title {
+    display: block;
+    position: relative;
+    background: #272822;
+    width: 100%;
+    top: 10px;
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+  }
+
+  .gatsby-code-title span {
+    display: inline;
+    position: relative;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    color: #eee;
+    background: #777;
+    border-top-left-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    padding: 3px;
+    top: 1px;
+  }
+
+  //contentful childMarkdownRemark.html styles
+  .contentArticle{
+    pre{
+      border-radius: 0.3em;
+    }
+    --contentArticleH1FontSize: 24px;
+    margin: 0 0 40px;
+    padding: 2rem 1rem;
+    background: var(--navMenuBG);
+    border-radius: var(--buttonBorderRadius);
+    //background: var(--background);
+    box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight);
+    h1 {
+      font-weight: 400;
+      font-size: var(--contentArticleH1FontSize);
+      margin: 0 0 1.5em;
+      position: relative;
+      padding: 0.125em 1.5em 0.25em;
+      //border-top: solid 1px var(--textColor);
+      border-bottom: solid 1px var(--primary);
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 1em;
+        width: 1px;
+        height: calc(100% + 1em);
+        background-color: var(--primary);
+      }
+      &:after {
+        position: absolute;
+        content: "";
+        left: 0.7em;
+        top: 1.35em;
+        width: 0.5em;
+        height: 0.5em;
+        border: 1px solid var(--primary);
+        background: transparent;
+        border-radius: 0;
+        transform: rotate( 45deg );
+      }
+    }
+    p,h2,h3,h4,h5{
+      margin: 1em 0 1em var(--contentArticleH1FontSize);
+    }
+    h2{
+      font-size: 22px;
+    }
+    h3{
+      font-size: 18px;
+    }
+    h4{
+      font-size: 16px;
+    }
+    p{
+      font-size: 16px;
+      margin: 1em 0 1em var(--contentArticleH1FontSize);
+      line-height: 1.5em;
+      letter-spacing: 0.125em;
+    }
+    span{
+      
+    }
+    ul,ol{
+      font-size: 16px;
+      margin: 0 0 20px 20px;
+      padding: 0 0 0 20px;
+      li{
+        padding: 0;
+        margin: 0;
+      }
+      p{
+        margin: 0;
+      }
+    }
+    hr{
+
+    }
   }
 `
 
