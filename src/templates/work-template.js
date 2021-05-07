@@ -18,21 +18,25 @@ const StyledNarrowImageArea = styled.div`
     width: 100%;
   }
   @media (min-width: 769px){
-    margin: 95px 0 0 auto;
+    max-width: 350px;
+    margin: 95px auto 0;
     display: initial;
     width: 100%;
-    max-width: 375px;
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    grid-row: 1 / 1;
     .swiperSliderImage{
       max-height: 812px;
       height: auto;
     }
   }
   @media (min-width: 1000px) {
-    height: fit-content;
+    max-width: 375px;
+    margin: 95px 0 0 auto;
+    display: initial;
+    width: 100%;
     grid-column: 3 / 4;
-    grid-row: 1 / 2;
+    grid-row: 1 / 1;
+    height: fit-content;
   }
 `
 
@@ -41,7 +45,7 @@ const ContentArea = styled.div`
   width: 100%;
   @media (min-width: 769px){
     width: 100%;
-    grid-column: 1 / 2;
+    grid-column: 1 / 1;
   }
   @media (min-width: 1000px) {
     width: 100%;
@@ -58,15 +62,9 @@ const ContentArea = styled.div`
   }
 `
 
-const Iframe = styled.iframe`
-  width: 100%;
-  min-height: 400px;
-  aspect-ratio: 16 / 9;
-  //background: white;
-`
-
 const StyledImageGallery = styled.div`
   margin: 40px 0 40px;
+  max-width: 100vw;
 `
 const StyledIntroduction = styled.p`
   
@@ -76,10 +74,6 @@ const StyledURL = styled.span`
   text-transform: none;
 `
 
-const AccordionBlock = styled.div`
-  margin-top: 40px;
-  
-`
 
 const StyledContentArticle = styled.article`
 
