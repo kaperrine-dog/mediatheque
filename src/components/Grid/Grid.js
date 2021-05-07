@@ -11,7 +11,7 @@ const Container = styled.div`
   box-sizing: content-box;
   grid-template-columns: 100%;
   @media (min-width: 769px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
   }
   @media (min-width: 1000px){
     grid-template-columns: 1fr 1fr 1fr;
