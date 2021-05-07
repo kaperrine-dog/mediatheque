@@ -138,7 +138,7 @@ span, div{
 }
 p{
   line-height: 1.5em;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.125em;
   font-weight: 400;
   font-size: 16px;
   margin-block-start: 1em;
@@ -231,7 +231,7 @@ button.btn {
     text-decoration: none;
     padding: 0;
     transition: var(--transition) color;
-    text-transform: capitalize;
+    //text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
     letter-spacing: 0.01em;
@@ -265,7 +265,7 @@ button.btn {
     text-decoration: none;
     padding: 0;
     transition: var(--transition) color;
-    text-transform: capitalize;
+    //text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
     letter-spacing: 0.01em;
@@ -360,9 +360,13 @@ button.btn {
     pre{
       border-radius: 0.3em;
     }
-    --contentArticleH1FontSize: 24px;
+    --contentArticleH1FontSize: 20px;
+    padding: 2rem 20px 2rem 5px;
+    @media (min-width: 769px){
+      --contentArticleH1FontSize: 24px;
+      padding: 2rem 1rem;
+    }
     margin: 0 0 40px;
-    padding: 2rem 1rem;
     background: var(--navMenuBG);
     border-radius: var(--buttonBorderRadius);
     //background: var(--background);
@@ -399,20 +403,22 @@ button.btn {
       }
     }
     p,h2,h3,h4,h5{
-      margin: 1em 0 1em var(--contentArticleH1FontSize);
+      margin: 20px calc(var(--contentArticleH1FontSize) / 2) 20px;
+      @media (min-width: 1200px){
+        margin: 20px 0 20px var(--contentArticleH1FontSize);
+      }
     }
     h2{
-      font-size: 22px;
+      font-size: calc( var(--contentArticleH1FontSize) - 2px );
     }
     h3{
-      font-size: 18px;
+      font-size: calc( var(--contentArticleH1FontSize) - 4px );
     }
     h4{
-      font-size: 16px;
+      font-size: calc( var(--contentArticleH1FontSize) - 6px );
     }
     p{
       font-size: 16px;
-      margin: 1em 0 1em var(--contentArticleH1FontSize);
       line-height: 1.5em;
       letter-spacing: 0.125em;
     }
@@ -421,8 +427,12 @@ button.btn {
     }
     ul,ol{
       font-size: 16px;
-      margin: 0 0 20px 20px;
       padding: 0 0 0 20px;
+      margin: 20px 0 20px calc(var(--contentArticleH1FontSize) / 2);
+      @media (min-width: 769px){
+        padding: 0 0 0 20px;
+        margin: 0 0 20px 20px;
+      }
       li{
         padding: 0;
         margin: 0;
