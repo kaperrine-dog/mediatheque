@@ -1,13 +1,13 @@
 import {graphql} from "gatsby"
 import {GatsbyImage} from "gatsby-plugin-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import {renderRichText} from "gatsby-source-contentful/rich-text"
 import React from "react"
 import styled from "styled-components"
 import BlogHeader from "../components/Blog/BlogHeader"
 import Grid from "../components/Grid/Grid"
 import Seo from "../components/SEO"
 import Sidebar from "../components/Sidebar/Sidebar.js"
+//import Accordion from "../components/Accordion/Accordion";
 
 const DetailArea = styled.div`
   grid-column: 1 / 1;
@@ -29,8 +29,8 @@ const DetailArea = styled.div`
 `
 
 const ContentArea = styled.div`
-  grid-column: 1 / 4;
-
+  grid-column: 1 / 1;
+  margin: var(--marginBorder) 0;
   @media (min-width: 1000px) {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
@@ -43,17 +43,31 @@ const ContentArea = styled.div`
     margin-top: 0;
     text-transform: capitalize;
   }
-
-  .main-image {
-    border-bottom: 3px solid var(--primary);
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    aspect-ratio: 16 / 9;
-  }
-
   p {
     margin-bottom: 40px;
   }
+`
+
+const StyledBlogImage = styled.div`
+  width: 100%;
+  margin: var(--marginBorder) 0;
+  border-radius: var(--itemCardBorderRadius);
+  background: var(--background);
+  box-shadow:  -20px 20px 40px var(--neumorphismShadow),
+              20px -20px 40px var(--neumorphizmLight);
+  padding: 15px;
+  .main-image {
+    max-height: 300px;
+    border-bottom: 3px solid var(--primary);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: var(--itemCardBorderRadius);
+    //aspect-ratio: 16 / 9;
+    img{
+
+    }
+  }
+
 `
 
 
@@ -64,13 +78,10 @@ const Blog = ({ data }) => {
     published,
     images,
     content,
-    richText,
-    richText: { raw },
-
   } = data.post
   
   const [mainImage, ...blogImages] = images
-
+  const contentHtml = content.childMarkdownRemark.html
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -91,21 +102,21 @@ const Blog = ({ data }) => {
   return (
     <>
       <Seo title={title} />
-      <BlogHeader></BlogHeader>
+      <BlogHeader/>
       <section className="section-padding">
         <Grid>
           <ContentArea>
             <h1>{title}</h1>
+            <StyledBlogImage>
               <GatsbyImage
-              image={mainImage.gatsbyImageData}
-              className="main-image"
-              alt="Placeholder" />
+                image={mainImage.gatsbyImageData}
+                className="main-image"
+                alt="Placeholder" />
+            </StyledBlogImage>
             <article
               className = "contentArticle"
-            >
-              {/* renderRichText(richText, options) */}
-              {}
-            </article>
+              dangerouslySetInnerHTML={{ __html: contentHtml }}
+            />
           </ContentArea>
           <DetailArea>
             <h2 
@@ -141,8 +152,11 @@ export const query = graphql`
           formats: [AUTO, WEBP]
         )
       }
-      richText {
-        raw
+      content {
+        childMarkdownRemark {
+          html
+          rawMarkdownBody
+        }
       }
     }
   }
