@@ -2,12 +2,15 @@ import React, {useState} from "react"
 import styled from "styled-components"
 
 const AccordionItem = styled.article`
+  width: calc( 100vw - var(--paddingBorder) * 2 );
   border-radius: var(--itemCardBorderRadius);
   background: var(--background);
   background: var(--itemPanelBGDark);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
                 20px -20px 40px var(--neumorphizmLight);
-
+@media (min-width: 769px){
+  width: auto;
+}
   .accordionDesc{
     padding: 0 20px;
     height: 0;
@@ -27,7 +30,7 @@ const AccordionItem = styled.article`
       }
     }
     .accordionDesc{
-      padding: 20px 20px;
+      padding: 20px 20px 20px;
       height: auto;
       opacity: 1;
       visibility: visible;
@@ -102,8 +105,8 @@ const AccordionDesc = styled.div`
   //background-color: var(--background);
 `
 
-const Accordion = ({ title, description }) => {
-  const [showInfo, setInfo] = useState(false)
+const Accordion = ({children, title , state}) => {
+  const [showInfo, setInfo] = useState(state)
 
   const toggleInfo = () => {
     setInfo(showInfo => !showInfo)
@@ -115,7 +118,10 @@ const Accordion = ({ title, description }) => {
         <span>{title}</span>
         <span className="indicator"></span>
       </AccordionTitle>
-      {<AccordionDesc className="accordionDesc">{description}</AccordionDesc>}
+      {<AccordionDesc 
+        className="accordionDesc">
+          {children}
+      </AccordionDesc>}
     </AccordionItem>
   )
 }
