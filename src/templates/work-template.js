@@ -7,21 +7,27 @@ import Grid from "../components/Grid/Grid";
 import Seo from "../components/SEO";
 import SwiperSlider from "../components/SwiperSlider/SwiperSlider.js";
 
-const ImageLinkArea = styled.div`
+
+
+
+const StyledNarrowImageArea = styled.div`
   grid-column: 1 / 1;
   grid-row: 4 / 5;
   cursor: pointer;
-  .main-image {
-    //border-bottom: 3px solid var(--primary);
-  }
   .sideSlider{
     width: 100%;
   }
   @media (min-width: 769px){
+    margin: 95px 0 0 auto;
+    display: initial;
     width: 100%;
     max-width: 375px;
     grid-column: 3 / 4;
     grid-row: 1 / 2;
+    .swiperSliderImage{
+      max-height: 812px;
+      height: auto;
+    }
   }
   @media (min-width: 1000px) {
     height: fit-content;
@@ -31,7 +37,7 @@ const ImageLinkArea = styled.div`
 `
 
 const ContentArea = styled.div`
-  grid-column: 1 / 4;
+  grid-column: 1 / 1;
   width: 100%;
   @media (min-width: 769px){
     width: 100%;
@@ -59,44 +65,15 @@ const Iframe = styled.iframe`
   //background: white;
 `
 
-const ImageGallery = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  .image-gallery--item {
-    //aspect-ratio: 16 / 9;
-    flex: 0 0 calc(50% - 10px);
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  @media (min-width: 769px) {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    .image-gallery--item {
-      flex-basis: calc((100% / 3) - 40px);
-      margin-top: 20px;
-      margin-bottom: 20px;
-      
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .image-gallery--item {
-      
-      flex-basis: calc(50% - 20px);
-    }
-  }
+const StyledImageGallery = styled.div`
+  margin: 40px 0 40px;
 `
 const StyledIntroduction = styled.p`
   
 `
 const StyledURL = styled.span`
   cursor: pointer;
-  
+  text-transform: none;
 `
 
 const AccordionBlock = styled.div`
@@ -104,16 +81,19 @@ const AccordionBlock = styled.div`
   
 `
 
+const StyledContentArticle = styled.article`
+
+`
+
 
 const workTemplate = ({ data }) => {
   const {
     name,
     introduction,
-    description: { description },
+    description,
     images,
     narrowImages,
     url,
-    accordion,
   } = data.work
 
   const linkToOtherSites = (e) => {
@@ -121,31 +101,36 @@ const workTemplate = ({ data }) => {
     deleteAllCookies()
     window.location.href = `http://${url}/`
   }
-
-  const [ mainImage_1, mainImage_2, ...workImages] = images
-  const [ ...sideImages ] = narrowImages
+  const [ bannerImage, ...mainImages ] = images
+  const [ ...subImages ] = narrowImages
+  const contentHtml = description.childMarkdownRemark.html
+  //console.log( description.childMarkdownRemark.html )
   return <>
     <Seo title={name} />
     <section className="section-padding">
       <Grid>
-        { sideImages && 
-        <ImageLinkArea
+        { subImages && 
+        <StyledNarrowImageArea
         //onClick= { linkToOtherSites }
         >
-          <div className="sideSlider">
-            <SwiperSlider
-              images = { sideImages }
-              />
-          </div>
-        </ImageLinkArea>
+          <Accordion
+            title = {"スマートフォン画面キャプチャ"}
+            state = {true}
+          >
+          <SwiperSlider
+            images = { subImages }
+            />
+          </Accordion>
+        </StyledNarrowImageArea>
           }
         <ContentArea>
           <h1>{ name }</h1>
           { url &&
           <StyledURL
             onClick ={ linkToOtherSites }
+            className = "btnEmbed"
             >
-              { url }
+              {  `https://www.${url}/` }
           </StyledURL>
           }
           { introduction && 
@@ -153,45 +138,27 @@ const workTemplate = ({ data }) => {
             {introduction}
           </StyledIntroduction>
           }
-          <p>{ description }</p>
+          <StyledContentArticle
+            className="contentArticle"
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          >
+          </StyledContentArticle>
           <button
             className = "btn"
             onClick = { linkToOtherSites }
             >
             Jump to the Site
           </button> 
-          
-
-          <SwiperSlider
-            images = { workImages }
-            />
-{/*           
-          <ImageGallery>
-            {workImages && workImages.map((item, index) => {
-              return (
-                <GatsbyImage
-                  image={item.gatsbyImageData}
-                  className="image-gallery--item"
-                  key={item.workImageId}
-                  alt={item.title} />
-              );
-            })}
-          </ImageGallery>
-          
- */}          
-          { accordion && 
-          <AccordionBlock>
-            { accordion.map((item, index) => {
-              return (
-                <Accordion
-                  key={item.id}
-                  title={item.title}
-                  description={item.description}
+          <StyledImageGallery>
+            <Accordion
+              title = {'PC画面キャプチャ'}
+              state = {true}
+            >
+              <SwiperSlider
+                images = { mainImages }
                 />
-              )
-            })}
-          </AccordionBlock>
-          }
+            </Accordion>
+          </StyledImageGallery>
         </ContentArea>
       </Grid>
     </section>
@@ -205,18 +172,28 @@ export const query = graphql`
       introduction
       description {
         description
-      }
-      accordion {
-        title
-        description
-        id
+        childMarkdownRemark {
+          html
+          rawMarkdownBody
+        }
       }
       images {
         fluid {
           ...GatsbyContentfulFluid_tracedSVG
         }
         gatsbyImageData(
-          
+          placeholder: TRACED_SVG
+          formats: [AUTO, WEBP]
+        )
+        description
+        title
+        workImageId: contentful_id
+      }
+      narrowImages {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+        gatsbyImageData(
           placeholder: TRACED_SVG
           formats: [AUTO, WEBP]
         )
