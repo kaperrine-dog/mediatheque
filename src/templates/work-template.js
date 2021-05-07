@@ -132,11 +132,10 @@ const workTemplate = ({ data }) => {
             {introduction}
           </StyledIntroduction>
           }
-          <StyledContentArticle
+          <article
             className="contentArticle"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
-          >
-          </StyledContentArticle>
+          />
           <button
             className = "btn"
             onClick = { linkToOtherSites }
