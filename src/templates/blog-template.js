@@ -1,29 +1,34 @@
 import {graphql} from "gatsby"
 import {GatsbyImage} from "gatsby-plugin-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+//import Accordion from "../components/Accordion/Accordion";
+import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import BlogHeader from "../components/Blog/BlogHeader"
 import Grid from "../components/Grid/Grid"
+import RecentPosts from "../components/RecentPosts/RecentPosts.js"
 import Seo from "../components/SEO"
-import Sidebar from "../components/Sidebar/Sidebar.js"
-//import Accordion from "../components/Accordion/Accordion";
 
 const DetailArea = styled.div`
   grid-column: 1 / 1;
-
   h2 {
     margin-top: 0;
-    position: sticky;
   }
-
   p {
     margin-bottom: 40px;
   }
+  @media (min-width: 769px) {
+    grid-column: 1 / 2;
+    width: 200%;
+  }
   @media (min-width: 1000px) {
+    margin: var(--marginBorder) 0;
+    width: 100%;
     grid-column: 3 / 4;
   }
   @media (min-width: 1200px) {
+    width: 100%;
     grid-column: 3 / 4;
   }
 `
@@ -31,17 +36,22 @@ const DetailArea = styled.div`
 const ContentArea = styled.div`
   grid-column: 1 / 1;
   margin: var(--marginBorder) 0;
+  @media (min-width: 769px) {
+    grid-column: 1 / 1;
+    width: 200%;
+  }
   @media (min-width: 1000px) {
+    width: 100%;
     grid-column: 1 / 3;
     grid-row: 1 / 2;
   }
   @media (min-width: 1200px) {
+    width: 100%;
     grid-column: 1 / 3;
     grid-row: 1 / 2;
   }
   h1 {
     margin-top: 0;
-    text-transform: capitalize;
   }
   p {
     margin-bottom: 40px;
@@ -54,20 +64,16 @@ const StyledBlogImage = styled.div`
   border-radius: var(--itemCardBorderRadius);
   background: var(--background);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
-              20px -20px 40px var(--neumorphizmLight);
+                20px -20px 40px var(--neumorphizmLight);
   padding: 15px;
   .main-image {
     max-height: 300px;
-    border-bottom: 3px solid var(--primary);
     margin-top: 2rem;
     margin-bottom: 2rem;
-    border-radius: var(--itemCardBorderRadius);
     //aspect-ratio: 16 / 9;
     img{
-
     }
   }
-
 `
 
 
@@ -110,7 +116,7 @@ const Blog = ({ data }) => {
             <StyledBlogImage>
               <GatsbyImage
                 image={mainImage.gatsbyImageData}
-                className="main-image"
+                className="main-image neumorphizmLarge"
                 alt="Placeholder" />
             </StyledBlogImage>
             <article
@@ -125,10 +131,14 @@ const Blog = ({ data }) => {
               {introduction}
             </h2>
             <p>Published on - {published}</p>
-            <AniLink className="btn" cover bg="var(--background)" to="/blogs">
+            <AniLink 
+              className="btn" 
+              cover 
+              bg="var(--background)" 
+              to="/blogs">
               Back to Blogs
             </AniLink>
-            <Sidebar/>
+            <RecentPosts/>
           </DetailArea>
         </Grid>
       </section>
@@ -161,5 +171,29 @@ export const query = graphql`
     }
   }
 `
+
+
+
+Blog.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    post: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      introduction: PropTypes.string.isRequired,
+      published: PropTypes.instanceOf(Date).isRequired,
+      images: PropTypes.oneOfType([
+        PropTypes.string.isRequired,
+        PropTypes.array.isRequired,
+      ]),
+      content: PropTypes.shape({
+        childMarkdownRemark: PropTypes.shape({
+          html: PropTypes.string.isRequired,
+        })
+      })
+    }
+    ),
+  }),
+}
+
 
 export default Blog
