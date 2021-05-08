@@ -482,7 +482,7 @@ const NavLinks = styled.div`
 `
 
 const Spacer = styled.div`
-  height: 115px;
+  height: 80px;
   @media (min-width: 769px) {
     height: 115px;
   }
