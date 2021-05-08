@@ -127,6 +127,7 @@ h2 {
   margin-bottom: 1rem;
   line-height: 1.25em;
   letter-spacing: 0.025em;
+  letter-spacing: var(--textLetterSpacingLv2);
   @media(min-width: 1200px) {
     margin-bottom: 1.5rem;
   }
@@ -145,8 +146,8 @@ span, div{
   letter-spacing: 0.025em;
 }
 p{
+  letter-spacing: var(--textLetterSpacingLv1);
   line-height: var(--textLineHeightLv1);
-  letter-spacing: 0.025em;
   font-weight: 400;
   font-size: var(--textFontSizeLv1);
   margin-block-start: 1em;
@@ -167,10 +168,10 @@ button.btn {
     text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
-    letter-spacing: 0.01em;
     position: relative;
     padding: 0.5em 1.25em 0.75em;
     align-self: flex-start;
+    letter-spacing: var(--textLetterSpacingLv1);
     border-radius: var(--buttonBorderRadius);
     //background: var(--background);
     box-shadow:  8px 8px 16px var(--neumorphismShadow),
@@ -211,7 +212,7 @@ button.btn {
     text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
-    letter-spacing: 0.01em;
+    letter-spacing: var(--textLetterSpacingLv2);
     position: relative;
     padding: 0.5em 1.25em 0.75em;
     align-self: flex-start;
@@ -242,7 +243,7 @@ button.btn {
     //text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
-    letter-spacing: 0.01em;
+    letter-spacing: var(--textLetterSpacingLv2);
     position: relative;
     align-self: flex-start;
     &:focus {
@@ -276,7 +277,7 @@ button.btn {
     //text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
-    letter-spacing: 0.01em;
+    letter-spacing: var(--textLetterSpacingLv2);
     position: relative;
     align-self: flex-start;
     &:focus {
@@ -298,7 +299,7 @@ button.btn {
     text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
-    letter-spacing: 0.01em;
+    letter-spacing: var(--textLetterSpacingLv2);
     position: relative;
     align-self: flex-start;
     &:focus {
@@ -316,7 +317,6 @@ button.btn {
                   -4px -4px 16px var(--neumorphizmLight);
     }
   }
-
   @media (min-width: 1200px) {
       font-size: var(--menuItem);
     }
@@ -362,7 +362,36 @@ button.btn {
     }
   }
 
+  .neumorphizmLarge{
+    border-radius: var(--itemCardBorderRadius);
+    background: var(--background);
+    box-shadow:  -20px 20px 40px var(--neumorphismShadow),
+                20px -20px 40px var(--neumorphizmLight);
+    &:active{
+      box-shadow: -10px 10px 20px var(--neumorphismShadow),
+                  10px -10px 20px var(--neumorphizmLight);
+    }
 
+  }
+  .neumorphizm{
+    border-radius: var(--buttonBorderRadius);
+    background: var(--background);
+    box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight);
+    &:active{
+      box-shadow: 2px 2px 4px var(--neumorphismShadow), 
+                  -4px -4px 16px var(--neumorphizmLight);
+    }
+  }
+
+  .imageWindow{
+    //on GatsbyImage Components in the panel or cards
+    border-bottom: 3px solid var(--primary);
+    border-left: 1px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    border-top: 1px solid var(--primary);
+    border-radius: var(--itemCardBorderRadius);
+  }
 
   .contentIntroduction{
     font-size: var(--textFontSizeLv1);
@@ -393,7 +422,7 @@ button.btn {
       letter-spacing: var(--textLetterSpacingLv1);
       font-size: var(--contentArticleH1FontSize);
       font-weight: 400;
-      margin: 80px 0 40px;
+      margin: 80px 0 60px;
       position: relative;
       padding: 0.125em 1.5em 0.25em;
       //border-top: solid 1px var(--textColor);
@@ -493,6 +522,11 @@ button.btn {
     }
     a{
       width: 100%;
+      color: var(--primary);
+      text-decoration:none;
+      &:hover{
+        text-decoration: underline;
+      }
     }
   }
 `
