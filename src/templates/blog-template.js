@@ -63,14 +63,20 @@ const StyledBlogImage = styled.div`
   margin: var(--marginBorder) 0;
   border-radius: var(--itemCardBorderRadius);
   background: var(--background);
-  box-shadow:  -20px 20px 40px var(--neumorphismShadow),
-                20px -20px 40px var(--neumorphizmLight);
-  padding: 15px;
+  box-shadow:  -10px 10px 20px var(--neumorphismShadow),
+                10px -10px 20px var(--neumorphizmLight);
+  padding: 20px 15px 20px;
+  @media (min-width: 769px){
+    padding: 40px;
+  }
   .main-image {
     max-height: 300px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
     //aspect-ratio: 16 / 9;
+    border-bottom: 3px solid var(--primary);
+    border-left: 1px solid var(--primary);
+    border-right: 2px solid var(--primary);
+    border-top: 1px solid var(--primary);
+    border-radius: var(--itemCardBorderRadius);
     img{
     }
   }
