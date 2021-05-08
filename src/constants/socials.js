@@ -1,7 +1,7 @@
 export default [
   {
-    title: "LinkedIn",
-    url: "https://www.linkedin.com/",
+    title: "Qiita",
+    url: "https://qiita.com/wang_chang",
   },
   {
     title: "GitHub",
