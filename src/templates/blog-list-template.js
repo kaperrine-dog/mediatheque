@@ -80,7 +80,7 @@ const StyledPagination = styled.div`
 `
 
 const Spacer = styled.div`
-  height: 115px;
+  height: 30px;
   @media (min-width: 769px) {
     height: 115px;
   }
@@ -111,8 +111,8 @@ const Blog = props => {
         <Grid>
           <PageIntro
             title="Blog"
-            subTitle="A simple blog system that will allow you to update your followers with recent news"
-            paragraph="Aliquam tempus libero nec quam aliquam fringilla. Suspendisse potenti. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In quis ipsum magna."
+            subTitle=""
+            paragraph=""
           />
           <StyledSection>
             <StyledFlexContainer>
