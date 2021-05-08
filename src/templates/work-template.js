@@ -64,8 +64,11 @@ const ContentArea = styled.div`
 `
 
 const StyledImageGallery = styled.div`
-  margin: 40px 0 40px;
+  margin: 40px 0 0;
   max-width: 100vw;
+  @media(min-width: 1000px){
+    margin: 40px 0 40px;
+  }
 `
 const StyledIntroduction = styled.p`
   
@@ -74,12 +77,6 @@ const StyledURL = styled.span`
   cursor: pointer;
   text-transform: none;
 `
-
-
-const StyledContentArticle = styled.article`
-
-`
-
 
 const workTemplate = ({ data }) => {
   const {
