@@ -9,6 +9,10 @@ const AccordionItem = styled.article`
                 20px -20px 40px var(--neumorphizmLight);
   width: auto;
   max-width: calc( 100vw - var(--paddingStd) );
+  &:active{
+    box-shadow: -8px 8px 16px var(--neumorphismShadow),
+                10px -10px 20px var(--neumorphizmLight);
+  }
   @media (min-width: 769px){
     //max-width: calc( 100% - var(--paddingStd) );
     max-width: 100%;
