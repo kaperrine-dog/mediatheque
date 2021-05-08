@@ -12,8 +12,9 @@ const TitleArea = styled.div`
 `
 
 const Title = styled.h1`
-  margin: 2rem 0 0;
+  margin: 0;
   @media (min-width: 769px){
+    margin: 2rem 0 0;
     margin-bottom: 2.125rem;
     text-indent: 0.75em;
   }
@@ -21,7 +22,10 @@ const Title = styled.h1`
 
 const ContentArea = styled.div`
   grid-column: 1 / 1;
+  display: none;
   @media (min-width: 769px) {
+    margin: initial;
+    display: initial;
     grid-column: 1 / 4;
     h2,
     p {
