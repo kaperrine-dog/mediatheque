@@ -79,7 +79,7 @@ const BlogHeader = ({  }) => {
       />
       <div className="title">
         <span>
-          {"の日常"}
+          {"備忘録"}
         </span>
       </div>
     </StyledBlogHeader>
