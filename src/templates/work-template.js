@@ -12,7 +12,7 @@ import SwiperSlider from "../components/SwiperSlider/SwiperSlider.js";
 
 const StyledNarrowImageArea = styled.div`
   grid-column: 1 / 1;
-  grid-row: 4 / 5;
+  grid-row: 2 / 3;
   cursor: pointer;
   .sideSlider{
     width: 100%;
@@ -51,14 +51,15 @@ const ContentArea = styled.div`
     width: 100%;
     grid-column: 1 / 3;
   }
-
   h1 {
     margin-top: 0;
     text-transform: capitalize;
   }
-
   p {
     margin-bottom: 40px;
+  }
+  &:last-child{
+    
   }
 `
 
