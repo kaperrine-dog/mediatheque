@@ -19,11 +19,14 @@ const Title = styled.h1`
   @media (min-width: 769px) {
     grid-column: 1 / 2;
   }
+  @media (min-width: 1000px) {
+    grid-column: 1 / 3;
+  }
 `
 
 const SubContent = styled.div`
   @media (min-width: 769px) {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
   }
   @media (min-width: 1000px) {
     grid-column: 2 / 4;
@@ -41,6 +44,14 @@ const SubTitle = styled.h2`
 `
 
 const Form = styled.form`
+  @media (min-width: 769px) {
+    max-width: 95%;
+  }    
+  @media (min-width: 1000px) {
+    max-width: 700px;
+  }
+  @media (min-width: 1200px) {
+  }
   p{
     margin: 0;
     padding: 0;
@@ -70,7 +81,6 @@ const Form = styled.form`
     transition: border-bottom-color 0.3s;
     resize: vertical;
     overflow: auto;
-
     &:focus {
       border-bottom-color: var(--primary);
     }
