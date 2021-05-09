@@ -3,7 +3,9 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
 import links from "../constants/links"
+import quickNav from "../constants/quickNav"
 import socials from "../constants/socials"
+import Logo from "../images/logo.svg"
 
 const FooterArea = styled.footer`
   padding-left: 1.875rem;
@@ -19,25 +21,68 @@ const GridContainer = styled.div`
   }
 `
 
-const FooterMenu = styled.div`
-  padding-top: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid var(--border);
+const NavLogo = styled.div`
+  font-family: 'Heebo','Noto Sans JP' , sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  flex-shrink: 0;
+  letter-spacing: -0.5px;
+  z-index: 2;
+  width: fit-content;
+  margin: auto;
+  @media (min-width: 1000px){
+    margin: 0;
+  }
+  @media (min-width: 1200px) {
+    font-size: 1rem;
+  }
+  a {
+    padding: 5px 0;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    img{
+      width: 35px;
+      margin-right: 0.25em;
+      cursor: pointer;
+    }
+    span{
+    }
+    @media (hover: hover) {
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+`
 
+
+const FooterMenu = styled.div`
+  padding: 40px 40px 40px;
+  border-bottom: 1px solid var(--border);
   @media (min-width: 769px) {
     border-bottom: none;
-    padding-bottom: 0;
+  }
+  @media (min-width: 1000px){
+    border-radius: var(--buttonBorderRadius);
+    background: var(--background);
+    box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight);
+    border: none;
   }
 
   ul {
     list-style: none;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
     padding: 0;
     margin: 0;
   }
-
   li {
+    margin: auto;
     text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
@@ -45,20 +90,30 @@ const FooterMenu = styled.div`
     position: relative;
     padding-bottom: 10px;
     align-self: flex-start;
-
+    width: fit-content;
     &:last-child {
       padding-bottom: 5px;
-
       &::after {
         bottom: 4px;
       }
     }
-
+    &:first-child{
+      grid-column: 1 / 2;
+    }
+    &:nth-child(2n){
+      grid-column: 2 / 3;
+    }
+    &:nth-child(2n-1){
+      grid-column: 1 / 2;
+    }
+    &:last-child{
+      grid-column: 2 / 3;
+    }
     &::after {
       content: "";
       display: block;
       position: absolute;
-      height: 3px;
+      height: 2px;
       left: 0;
       right: 0;
       bottom: 8px;
@@ -107,6 +162,30 @@ const Copyright = styled.div`
   }
 `
 
+const StyledSocialIcons = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  ul{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    li{
+      margin: 0 10px 0;
+      &::after{
+        display: none;
+      }
+      a{
+        img{
+          width: 25px;
+          
+        }
+      }
+    }
+  }
+`
+
 const Footer = () => {
   const {
     site: { siteMetadata },
@@ -114,6 +193,7 @@ const Footer = () => {
     {
       site {
         siteMetadata {
+          title
           author
         }
       }
@@ -124,12 +204,57 @@ const Footer = () => {
     <>
       <FooterArea>
         <GridContainer className="container">
+        <FooterMenu>
+          <NavLogo>
+            <AniLink cover bg="var(--headerBG)" to="/">
+              <img
+                src={Logo}
+                />
+              <span>
+                { siteMetadata.title }
+              </span>
+            </AniLink>
+          </NavLogo>
+          <StyledSocialIcons>
+            <ul>
+              {socials.map((item, index) => {
+                  return (
+                    <li key={index} >
+                      <a
+                        key={index}
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img src={item.iconLight} alt={`a lightmode ${item.title
+                        } icon`} className = 'icon-light-mode'/>
+                        <img src={item.iconDark} alt={`a darkmode ${item.title
+                        } icon`} className = 'icon-dark-mode'/>
+                      </a>
+                    </li>
+                  )
+                })}
+            </ul>
+          </StyledSocialIcons>
+        </FooterMenu>
           <FooterMenu>
             <ul>
               {links.map((item, index) => {
                 return (
                   <li key={index}>
                     <AniLink cover bg="#1d1d1d" to={item.path}>
+                      {item.text}
+                    </AniLink>
+                  </li>
+                )
+              })}
+              {quickNav.map((item, index) => {
+                return (
+                  <li 
+                    className='navFixedPages'
+                    key={`fixed_pages_${index}`}>
+                    <AniLink cover bg="var(--headerBG)" to={item.path}
+                    >
                       {item.text}
                     </AniLink>
                   </li>
