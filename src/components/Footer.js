@@ -8,6 +8,7 @@ import socials from "../constants/socials"
 import Logo from "../images/logo.svg"
 
 const FooterArea = styled.footer`
+  margin: 40px 0 0;
   padding-left: 1.875rem;
   padding-right: 1.875rem;
 `

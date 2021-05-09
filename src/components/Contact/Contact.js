@@ -3,12 +3,17 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import axios from "axios";
 import React from "react";
 import {useForm} from 'react-hook-form';
+import {useRecaptcha} from "react-hook-recaptcha";
 import styled from "styled-components";
 //import * as yup from 'yup';
 //import {setLocale} from "yup";
 import {BaseYup} from "../Form/BaseYup";
 //import {LocaleJP} from '../Form/LocaleJP';
 import Grid from "../Grid/Grid";
+
+const containerId = "contact-recaptcha"; // this id can be customized
+const sitekey = process.env.RECAPTCHA_SITE_KEY;
+
 //setLocale(LocaleJP);
 const Section = styled.section``
 
@@ -137,23 +142,54 @@ const Contact = () => {
       resolver: yupResolver(schema),
       mode: 'onChange',
       options: {
-        reValidateMode: 'onChange',
+        reValidateMode: 'onKeyUp',
         criteriaMode: "firstError",
         shouldFocusError: true,
         shouldUnregister: false,
       }
   })
+  const [ send, setSend ] = React.useState( false )
+  const [ sendError, setSendError ] = React.useState( false )
+  
 
+
+  const successCallback = (response) =>{
+    handleSubmit(
+      (data) => onSubmit({ ...data, catchaResponse: response }))();
+  }
+
+  const { recaptchaLoaded, recaptchaWidget } = useRecaptcha({
+    containerId,
+    successCallback,
+    sitekey,
+    size: "invisible"
+  });
+
+  const executeCaptcha = (e) => {
+    e.preventDefault();
+    if (recaptchaWidget !== null) {
+      window.grecaptcha.reset(recaptchaWidget);
+      window.grecaptcha.execute(recaptchaWidget);
+    }
+  };
+  
   const onSubmit = (data) => {
     data['form-name'] = 'contact'
     axios.post('/', new URLSearchParams(data))
       .then( (response) => {
         console.log(response.data)
+        document.contact.reset()
+        setSend(true)
+        window.location.href = "/"
       })
       .catch( (axiosError) => {
         console.log(axiosError)
+        setSendError(true)
+        alert(`エラーが発生しました。\nフォームを送信できませんでした。`)
+        window.location.href = "/contact"
       })
   }
+
 
   return (
     <Section className="section-padding">
@@ -164,15 +200,19 @@ const Contact = () => {
           <p>
             
           </p>
-          <Form netlify onSubmit={handleSubmit(onSubmit)}
-                name="contact" 
-                method="POST" 
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
+          <Form 
+            netlify 
+            onSubmit={ executeCaptcha }
+            name="contact" 
+            method="POST" 
+            data-netlify-honeypot="bot-field"
+            data-netlify-recaptcha="true"
               >
               <input type="hidden" name="form-name" value="contact" />
               <input type="hidden" name="bot-field" /> 
-            
+              <noscript>
+                <p>This form won’t work with Javascript disabled</p>
+              </noscript>
             <label>
               <p>
                 {errors.name?.message && 
@@ -232,8 +272,21 @@ const Contact = () => {
                 {...register("message")}
                 rows="5"
               />
-            <button className="btn" type="submit">
-              Send Message
+            <button 
+              className={ 
+                sendError ? ('btnSolid') 
+                : send ? ( 'btnSolid' )
+                : ( 'btn' )
+              } 
+              disabled={!recaptchaLoaded}
+              type="submit"
+              id={containerId}
+              >
+              { sendError ? (
+                <p> 申し訳ございません、送信エラーです。</p>) 
+                : send ? ("送信しました。") 
+                : ('Send Message')
+              }
             </button>
           </Form>
         </SubContent>
