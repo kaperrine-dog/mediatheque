@@ -10,9 +10,9 @@ module.exports = {
   siteMetadata: {
     title: "mediatheque",
     description: "ようこそ！",
-    author: "Kent Azuma",
-    twitterUsername: "@kentaznna",
-    image: "/yellow-metal-design-decoration.jpg",
+    author: "kaperrine-dog",
+    twitterUsername: "@",
+    image: "/ago.jpg",
     siteUrl: "https://mediatheque.netlify.com",
   },
   /* Your site config here */
