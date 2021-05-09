@@ -46,6 +46,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-hook-form": "^7.3.5",
+    "react-hook-recaptcha": "^1.0.3",
     "react-icons": "^3.9.0",
     "react-parallax": "^3.3.0",
     "react-scroll": "^1.8.2",
