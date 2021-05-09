@@ -79,6 +79,7 @@ const IndicatorLight = styled.span`
 const CurrentMode = styled.p`
   margin: 0;
   padding-right: 1rem;
+  letter-spacing: 0.025em;
 `
 
 const DarkMode = () => {

@@ -64,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
   --secondary: rgba(22, 25, 157, 0.98);
   --inActive: #505050;
   --textColor: rgba(30, 30, 30, 1);
-  --parallaxBG: rgba(255, 255, 255, 0.25);
+  --parallaxBG: rgba(255, 255, 255, 0.425);
   --itemPanelBG: rgba(255,255,255,0.65);
   --servicesPanelBG: rgba(255,255,255,0.85);
   --itemCardShadow: rgba(1, 1, 1, 0.6);
@@ -91,8 +91,11 @@ body {
     color: var(--textColor);
   }
 
-.light-mode{
-
+.icon-dark-mode{
+  display: none;
+}
+.icon-light-mode{
+  display: initial;
 }
 
 .dark-mode{
@@ -119,6 +122,12 @@ body {
   }
   --neumorphismShadow: #606060;
   --neumorphizmLight: rgba(50, 50, 50, 0.99);
+  .icon-dark-mode{
+    display: initial;
+  }
+  .icon-light-mode{
+    display: none;
+  }
 }
 
 
@@ -142,9 +151,6 @@ h2 {
   font-size: var(--h2);
   font-weight: 500;
 }
-span, div{
-  letter-spacing: 0.025em;
-}
 p{
   letter-spacing: var(--textLetterSpacingLv1);
   line-height: var(--textLineHeightLv1);
@@ -155,6 +161,9 @@ p{
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   text-align: justify;
+}
+span, div{
+  letter-spacing: 0.025em;
 }
 a.btn,
 button.btn {
