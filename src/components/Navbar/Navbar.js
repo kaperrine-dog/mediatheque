@@ -30,18 +30,16 @@ const StyledNavButton = styled.div`
   position: relative;
   z-index: 10;
   button{
+    padding: 0;
     background: none;
     position: absolute;
     width: 30px;
     height: 30px;
     border: none;
     z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    display: block;
     position: absolute;
-    top: 0;
+    top: 7px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -73,7 +71,7 @@ const StyledNavButton = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 8px auto;
+    margin: auto;
     color: var(--text-color);
     //padding: 12px 0 17px 0;
     order: 1;
@@ -88,7 +86,7 @@ const StyledNavButton = styled.div`
     span{
       width: 6px;
       height: 6px;
-      border-radius: 50%;
+      border-radius: 0%;
       background: var(--primary);
       position: absolute;
       &:nth-child(1){
@@ -141,33 +139,48 @@ const StyledNavButton = styled.div`
   .isOpen{
     //transform: scale( 1.125, 1.125 );
     .bento-menu{
-      transform: rotateZ( 1.125turn );
+      transform: rotateZ( 1.625turn );
       top: 0;
       span{
+        border-radius: 0%;
         &:nth-child(1){
-            transform: translate(9px,9px);
+          transform: translate(9px,9px);
         }
         &:nth-child(3){
-            transform: translate(-9px,9px);
+          transform: translate(-9px,9px);
         }
         &:nth-child(7){
-            transform: translate(9px,-9px);
+          transform: translate(9px,-9px);
         }
         &:nth-child(9){
-            transform: translate(-9px,-9px);
+          transform: translate(-9px,-9px);
+        }
+        &:nth-child(2n+1){
+          opacity: 0;
         }
         &:nth-child(2){
-            transform: rotate(180deg);
+          width: 12px;
+          height: 3px;
+          //transform: rotate(180deg);
+          transform: rotate(90deg);
         }
         &:nth-child(4){
-            transform: rotate(180deg);
+          width: 12px;
+          height: 3px;
+          transform: rotate(180deg);
         }
         &:nth-child(6){
-            transform: rotate(-180deg);
+          width: 12px;
+          height: 3px;
+          transform: rotate(-180deg);
         }
         &:nth-child(8){
-            transform: rotate(-180deg);
+          width: 12px;
+          height: 3px;
+          //transform: rotate(-180deg);
+          transform: rotate(90deg);
         }
+
       }
     }
   }
