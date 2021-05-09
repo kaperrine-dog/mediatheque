@@ -21,46 +21,8 @@ const GridContainer = styled.div`
   }
 `
 
-const NavLogo = styled.div`
-  font-family: 'Heebo','Noto Sans JP' , sans-serif;
-  font-size: 1rem;
-  font-weight: 900;
-  flex-shrink: 0;
-  letter-spacing: -0.5px;
-  z-index: 2;
-  width: fit-content;
-  margin: auto;
-  @media (min-width: 1000px){
-    margin: 0;
-  }
-  @media (min-width: 1200px) {
-    font-size: 1rem;
-  }
-  a {
-    padding: 5px 0;
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s;
-    display: flex;
-    align-items: center;
-    img{
-      width: 35px;
-      margin-right: 0.25em;
-      cursor: pointer;
-    }
-    span{
-    }
-    @media (hover: hover) {
-      &:hover {
-        color: var(--primary);
-      }
-    }
-  }
-`
-
-
 const FooterMenu = styled.div`
-  padding: 40px 40px 40px;
+  padding: 25px 20px 20px;
   border-bottom: 1px solid var(--border);
   @media (min-width: 769px) {
     border-bottom: none;
@@ -139,6 +101,48 @@ const FooterMenu = styled.div`
   @media (hover: hover) {
     a:hover {
       color: var(--primary);
+    }
+  }
+`
+
+const NavLogo = styled.div`
+  font-family: 'Heebo','Noto Sans JP' , sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  flex-shrink: 0;
+  letter-spacing: -0.5px;
+  z-index: 2;
+  width: fit-content;
+  margin: auto;
+  @media (min-width: 1000px){
+    margin: 0;
+  }
+  @media (min-width: 1200px) {
+    font-size: 1rem;
+  }
+  ul{
+    li{
+      padding: 0;
+    }
+  }
+  a {
+    padding: 5px 0;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    img{
+      width: 35px;
+      margin-right: 0.25em;
+      cursor: pointer;
+    }
+    span{
+    }
+    @media (hover: hover) {
+      &:hover {
+        color: var(--primary);
+      }
     }
   }
 `
