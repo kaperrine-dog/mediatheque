@@ -38,6 +38,11 @@ jobs:
 
       - name: build
         run: yarn build
+        env: 
+          CONTENTFUL_SPACE_ID: ${{secrets.CONTENTFUL_SPACE_ID}}
+          CONTENTFUL_ACCESS_TOKEN: ${{CONTENTFUL_ACCESS_TOKEN}}
+          RECAPTCHA_SITE_KEY: ${{RECAPTCHA_SITE_KEY}}
+          RECAPTCHA_SECRET_KEY: ${{RECAPTCHA_SECRET_KEY}}
 
       - name: Upload file to S3
         env: 
