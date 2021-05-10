@@ -168,8 +168,10 @@ const Contact = () => {
   const executeCaptcha = (e) => {
     e.preventDefault();
     if (recaptchaWidget !== null) {
-      window.grecaptcha.reset(recaptchaWidget);
-      window.grecaptcha.execute(recaptchaWidget);
+      if( typeof window !== `undefined` ){
+        window.grecaptcha.reset(recaptchaWidget);
+        window.grecaptcha.execute(recaptchaWidget);
+      }
     }
   };
   
@@ -178,15 +180,21 @@ const Contact = () => {
     axios.post('/', new URLSearchParams(data))
       .then( (response) => {
         console.log(response.data)
-        document.contact.reset()
+        if(typeof document !== `undefined`){
+          document.contact.reset()
+        }
         setSend(true)
-        window.location.href = "/"
+        if(typeof window !== `undefined`){
+          window.location.href = "/"
+        }
       })
       .catch( (axiosError) => {
         console.log(axiosError)
         setSendError(true)
         alert(`エラーが発生しました。\nフォームを送信できませんでした。`)
-        window.location.href = "/contact"
+        if(typeof window !== `undefined`){
+          window.location.href = "/contact"
+        }
       })
   }
 
