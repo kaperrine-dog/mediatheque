@@ -165,6 +165,7 @@ const Contact = () => {
     size: "invisible"
   });
 
+  
   const executeCaptcha = (e) => {
     e.preventDefault();
     if (recaptchaWidget !== null) {
