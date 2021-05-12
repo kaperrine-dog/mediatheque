@@ -1,11 +1,14 @@
 import "@fontsource/noto-sans-jp"
 import "prismjs/themes/prism-tomorrow.css"
 import React from "react"
+import {GoogleReCaptchaProvider} from 'react-google-recaptcha-v3'
 import {createGlobalStyle} from "styled-components"
 import "typeface-heebo"
 import "typeface-lato"
 import Footer from "./Footer"
 import Navbar from "./Navbar/Navbar"
+const sitekey = process.env.RECAPTCHA_SITE_KEY;
+
 
 const GlobalStyle = createGlobalStyle`
 :root {
@@ -545,7 +548,9 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
         <Navbar />
-          {children}
+          <GoogleReCaptchaProvider reCaptchaKey={ sitekey }>
+            {children}
+          </GoogleReCaptchaProvider>
         <Footer />
     </>
   )

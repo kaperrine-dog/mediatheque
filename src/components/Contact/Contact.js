@@ -41,7 +41,6 @@ const schema = BaseYup.object().shape({
 
 
 const Contact = () => {
-  
   const { 
     register, 
     handleSubmit, 
@@ -58,12 +57,18 @@ const Contact = () => {
   })
   const [ send, setSend ] = React.useState( false )
   const [ sendError, setSendError ] = React.useState( false )
-  
+  const [token, setToken] = React.useState('')
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   
+  
+  
   const onSubmit = (data) => {
-    
+
+    if (!executeRecaptcha) {
+      return
+    }
+
     data['form-name'] = 'contact'
     axios.post('/', new URLSearchParams(data))
       .then( (response) => {
@@ -176,6 +181,7 @@ const Contact = () => {
                   : send ? ( 'btnSolid' )
                   : ( 'btn' )
                 } 
+
                 type="submit"
                 >
                 { sendError ? (
