@@ -2,8 +2,8 @@
 import {yupResolver} from '@hookform/resolvers/yup';
 import axios from "axios";
 import React from "react";
+import {GoogleReCaptchaProvider, useGoogleReCaptcha} from 'react-google-recaptcha-v3';
 import {useForm} from 'react-hook-form';
-import {useRecaptcha} from "react-hook-recaptcha";
 import styled from "styled-components";
 //import * as yup from 'yup';
 //import {setLocale} from "yup";
@@ -11,11 +11,189 @@ import {BaseYup} from "../Form/BaseYup";
 //import {LocaleJP} from '../Form/LocaleJP';
 import Grid from "../Grid/Grid";
 
-const containerId = "contact-recaptcha"; // this id can be customized
+//const containerId = "contact-recaptcha"; // this id can be customized
 const sitekey = process.env.RECAPTCHA_SITE_KEY;
 
 //setLocale(LocaleJP);
 const Section = styled.section``
+
+
+const schema = BaseYup.object().shape({
+  name: BaseYup.string()
+      .min(1)
+      .max(255)
+      .required()
+      .label('お名前'),
+  email: BaseYup.string()
+      .max(255)
+      .email()
+      .required()
+      .label('メールアドレス'),
+  url: BaseYup.string()
+      .max(255)
+      .url()
+      .label('URL'),
+  message: BaseYup.string()
+      .max(1024)
+      .required()
+      .label('メッセージ'),
+})
+
+
+const Contact = () => {
+  
+  const { 
+    register, 
+    handleSubmit, 
+    formState: { errors },
+    } = useForm({  
+      resolver: yupResolver(schema),
+      mode: 'onChange',
+      options: {
+        reValidateMode: 'onKeyUp',
+        criteriaMode: "firstError",
+        shouldFocusError: true,
+        shouldUnregister: false,
+      }
+  })
+  const [ send, setSend ] = React.useState( false )
+  const [ sendError, setSendError ] = React.useState( false )
+  
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  
+  const onSubmit = (data) => {
+    
+    data['form-name'] = 'contact'
+    axios.post('/', new URLSearchParams(data))
+      .then( (response) => {
+        console.log(response.data)
+        if(typeof document !== `undefined`){
+          document.contact.reset()
+        }
+        setSend(true)
+        if(typeof window !== `undefined`){
+          window.location.href = "/"
+        }
+      })
+      .catch( (axiosError) => {
+        console.log(axiosError)
+        setSendError(true)
+        alert(`エラーが発生しました。\nフォームを送信できませんでした。`)
+        if(typeof window !== `undefined`){
+          window.location.href = "/contact/"
+        }
+      })
+  }
+
+
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey={sitekey}>
+      <Section className="section-padding">
+        <Grid>
+          <Title>Contact.</Title>
+          <SubContent>
+            <SubTitle>お問い合わせはこちらまでどうぞ。</SubTitle>
+            <p>
+              
+            </p>
+            <Form 
+              id = "contact"
+              netlify 
+              onSubmit={ handleSubmit(onSubmit) }
+              name="contact" 
+              method="POST" 
+              data-netlify-honeypot="bot-field"
+              data-netlify-recaptcha="true"
+                >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" /> 
+                <noscript>
+                  <p>This form won’t work with Javascript disabled</p>
+                </noscript>
+              <label>
+                <p>
+                  {errors.name?.message && 
+                    errors.name?.message
+                  }
+                </p>
+                <input 
+                  placeholder="お名前" 
+                  name="name"
+                  type="text"
+                  label="お名前"
+                  autoComplete="name"
+                  {...register("name")}
+                />
+              </label>
+              <label>
+                <p>
+                  {errors.email?.message && 
+                    errors.email?.message
+                  }
+                </p>
+                <input 
+                  placeholder="メールアドレス" 
+                  name="email"
+                  label="メールアドレス"
+                  autoComplete="email"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  {...register("email")}
+                />
+              </label>
+              <label>
+                <p>
+                  {errors.url?.message && 
+                    errors.url?.message
+                  }
+                </p>
+                <input 
+                  placeholder="URL" 
+                  name="url"
+                  label="URL"
+                  autoComplete="url"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  {...register("url")}
+                />
+              </label>
+                <p>
+                  {errors.message?.message && 
+                    errors.message?.message
+                  }
+                </p>
+                <textarea
+                  placeholder="メッセージ" 
+                  name="message"
+                  label="メッセージ"
+                  {...register("message")}
+                  rows="5"
+                />
+              <button 
+                className={ 
+                  sendError ? ('btnSolid') 
+                  : send ? ( 'btnSolid' )
+                  : ( 'btn' )
+                } 
+                type="submit"
+                >
+                { sendError ? (
+                  <p> 申し訳ございません、送信エラーです。</p>) 
+                  : send ? ("送信しました。") 
+                  : ('Send Message')
+                }
+              </button>
+            </Form>
+          </SubContent>
+        </Grid>
+      </Section>
+    </GoogleReCaptchaProvider>
+  )
+}
+
+export default Contact
+
 
 const Title = styled.h1`
   margin-top: 0;
@@ -110,198 +288,3 @@ const Form = styled.form`
     margin-bottom: 2.125rem;
   }
 `
-
-const schema = BaseYup.object().shape({
-  name: BaseYup.string()
-      .min(1)
-      .max(255)
-      .required()
-      .label('お名前'),
-  email: BaseYup.string()
-      .max(255)
-      .email()
-      .required()
-      .label('メールアドレス'),
-  url: BaseYup.string()
-      .max(255)
-      .url()
-      .label('URL'),
-  message: BaseYup.string()
-      .max(1024)
-      .required()
-      .label('メッセージ'),
-})
-
-const Contact = () => {
-  
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors },
-    } = useForm({  
-      resolver: yupResolver(schema),
-      mode: 'onChange',
-      options: {
-        reValidateMode: 'onKeyUp',
-        criteriaMode: "firstError",
-        shouldFocusError: true,
-        shouldUnregister: false,
-      }
-  })
-  const [ send, setSend ] = React.useState( false )
-  const [ sendError, setSendError ] = React.useState( false )
-  
-
-
-  const successCallback = (response) =>{
-    handleSubmit(
-      (data) => onSubmit({ ...data, catchaResponse: response }))();
-  }
-
-  const { recaptchaLoaded, recaptchaWidget } = useRecaptcha({
-    containerId,
-    successCallback,
-    sitekey,
-    size: "invisible"
-  });
-
-  
-  const executeCaptcha = (e) => {
-    e.preventDefault();
-    if (recaptchaWidget !== null) {
-      if( typeof window !== `undefined` ){
-        window.grecaptcha.reset(recaptchaWidget);
-        window.grecaptcha.execute(recaptchaWidget);
-      }
-    }
-  };
-  
-  const onSubmit = (data) => {
-    data['form-name'] = 'contact'
-    axios.post('/', new URLSearchParams(data))
-      .then( (response) => {
-        console.log(response.data)
-        if(typeof document !== `undefined`){
-          document.contact.reset()
-        }
-        setSend(true)
-        if(typeof window !== `undefined`){
-          window.location.href = "/"
-        }
-      })
-      .catch( (axiosError) => {
-        console.log(axiosError)
-        setSendError(true)
-        alert(`エラーが発生しました。\nフォームを送信できませんでした。`)
-        if(typeof window !== `undefined`){
-          window.location.href = "/contact"
-        }
-      })
-  }
-
-
-  return (
-    <Section className="section-padding">
-      <Grid>
-        <Title>Contact.</Title>
-        <SubContent>
-          <SubTitle>お問い合わせはこちらまでどうぞ。</SubTitle>
-          <p>
-            
-          </p>
-          <Form 
-            netlify 
-            onSubmit={ executeCaptcha }
-            name="contact" 
-            method="POST" 
-            data-netlify-honeypot="bot-field"
-            data-netlify-recaptcha="true"
-              >
-              <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="bot-field" /> 
-              <noscript>
-                <p>This form won’t work with Javascript disabled</p>
-              </noscript>
-            <label>
-              <p>
-                {errors.name?.message && 
-                  errors.name?.message
-                }
-              </p>
-              <input 
-                placeholder="お名前" 
-                name="name"
-                type="text"
-                label="お名前"
-                autoComplete="name"
-                {...register("name")}
-              />
-            </label>
-            <label>
-              <p>
-                {errors.email?.message && 
-                  errors.email?.message
-                }
-              </p>
-              <input 
-                placeholder="メールアドレス" 
-                name="email"
-                label="メールアドレス"
-                autoComplete="email"
-                autoCorrect="off"
-                autoCapitalize="off"
-                {...register("email")}
-              />
-            </label>
-            <label>
-              <p>
-                {errors.url?.message && 
-                  errors.url?.message
-                }
-              </p>
-              <input 
-                placeholder="URL" 
-                name="url"
-                label="URL"
-                autoComplete="url"
-                autoCorrect="off"
-                autoCapitalize="off"
-                {...register("url")}
-              />
-            </label>
-              <p>
-                {errors.message?.message && 
-                  errors.message?.message
-                }
-              </p>
-              <textarea
-                placeholder="メッセージ" 
-                name="message"
-                label="メッセージ"
-                {...register("message")}
-                rows="5"
-              />
-            <button 
-              className={ 
-                sendError ? ('btnSolid') 
-                : send ? ( 'btnSolid' )
-                : ( 'btn' )
-              } 
-              disabled={!recaptchaLoaded}
-              type="submit"
-              id={containerId}
-              >
-              { sendError ? (
-                <p> 申し訳ございません、送信エラーです。</p>) 
-                : send ? ("送信しました。") 
-                : ('Send Message')
-              }
-            </button>
-          </Form>
-        </SubContent>
-      </Grid>
-    </Section>
-  )
-}
-
-export default Contact
