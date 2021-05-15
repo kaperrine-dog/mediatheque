@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
-import ContactForm from "../ContactForm/ContactForm";
-import ContactFormS3 from "../ContactForm/ContactFormS3";
-
-
+import ContactForm from "../ContactForm/ContactForm.js";
+import ContactFormS3 from "../ContactForm/ContactFormS3RGR.js";
 const Contact = () => {
   
   const [ netlify, setNetlify ] = useState( false )
@@ -12,7 +10,7 @@ const Contact = () => {
         setNetlify(true) 
         : setNetlify(false)
       }
-  })
+  },[])
 
   return (
     <>
