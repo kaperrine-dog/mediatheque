@@ -1,7 +1,6 @@
 import "@fontsource/noto-sans-jp"
 import "prismjs/themes/prism-tomorrow.css"
 import React from "react"
-import {GoogleReCaptchaProvider} from 'react-google-recaptcha-v3'
 import {createGlobalStyle} from "styled-components"
 import "typeface-heebo"
 import "typeface-lato"
@@ -339,6 +338,13 @@ button.btn {
     }
   }
 
+  .btnDisable{
+    background-color: rgba(123, 123, 123, 0.8)!important;
+    color: rgba(100,100,100,0.8)!important;
+    &:active{
+      box-shadow: initial;
+    }
+  }
   .container {
     max-width: 1400px;
     margin-left: auto;
@@ -548,9 +554,7 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
         <Navbar />
-          <GoogleReCaptchaProvider reCaptchaKey={ sitekey }>
             {children}
-          </GoogleReCaptchaProvider>
         <Footer />
     </>
   )
