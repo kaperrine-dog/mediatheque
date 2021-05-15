@@ -1,3 +1,5 @@
+//Netlifyのフォームかどうかはドメインで分岐
+
 //import {ErrorMessage} from '@hookform/error-message';
 import {yupResolver} from '@hookform/resolvers/yup';
 import axios from "axios";
@@ -16,8 +18,15 @@ const sitekey = process.env.RECAPTCHA_SITE_KEY;
 
 //setLocale(LocaleJP);
 
+const apiURL = process.env.API_GATEWAY_ENDPOINT_URL
 
-const s3Endpoint = ``
+
+const googleFormAcction = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfjlvCK50l_Pk096sde1e8TMbb7r9wPVJUz_mJUft76TVNNfw/formResponse'
+const googleFormInputName = 'entry.1449599711'
+const googleFormInputEmail = 'entry.2012648857'
+const googleFormInputURL = 'entry.1838410213'
+const googleFormInputContent = 'entry.2059006499'
+
 
 const schema = BaseYup.object().shape({
   name: BaseYup.string()
@@ -46,7 +55,7 @@ const schema = BaseYup.object().shape({
 })
 
 
-const ContactNetlify = () => {
+const ContactS3v3 = () => {
   const { 
     register, 
     handleSubmit, 
@@ -64,19 +73,22 @@ const ContactNetlify = () => {
   const [ send, setSend ] = React.useState( false )
   const [ sendError, setSendError ] = React.useState( false )
   const [token, setToken] = React.useState('')
-
+  
   const { executeRecaptcha } = useGoogleReCaptcha();
   
   
   
+  
   const onSubmit = (data) => {
-
     if (!executeRecaptcha) {
+      alert(`あなたはロボットです。\nフォームを送信できませんでした。`)
       return
     }
 
     data['form-name'] = 'contact'
-    axios.post('/', new URLSearchParams(data))
+    axios
+      .post( apiURL , new URLSearchParams(data))
+      
       .then( (response) => {
         console.log(response.data)
         if(typeof document !== `undefined`){
@@ -129,13 +141,13 @@ const ContactNetlify = () => {
                   }
                 </p>
                 <input 
-                  placeholder="お名前" 
-                  name="name"
-                  type="text"
-                  label="お名前"
-                  autoComplete="name"
-                  {...register("name")}
-                />
+                    placeholder="お名前" 
+                    name= "name"
+                    type="name"
+                    label="お名前"
+                    autoComplete="name"
+                    {...register("name")}
+                  />
               </label>
               <label>
                 <p>
@@ -158,15 +170,15 @@ const ContactNetlify = () => {
                     errors.email?.message
                   }
                 </p>
-                <input 
-                  placeholder="メールアドレス" 
-                  name="email"
-                  label="メールアドレス"
-                  autoComplete="email"
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  {...register("email")}
-                />
+                  <input 
+                    placeholder="メールアドレス" 
+                    name="email"
+                    label="メールアドレス"
+                    autoComplete="email"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    {...register("email")}
+                  />
               </label>
               <label>
                 <p>
@@ -174,35 +186,34 @@ const ContactNetlify = () => {
                     errors.url?.message
                   }
                 </p>
-                <input 
-                  placeholder="URL" 
-                  name="url"
-                  label="URL"
-                  autoComplete="url"
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  {...register("url")}
-                />
+                  <input 
+                    placeholder="URL" 
+                    name="url"
+                    label="URL"
+                    autoComplete="url"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    {...register("url")}
+                  />
               </label>
                 <p>
                   {errors.message?.message && 
                     errors.message?.message
                   }
-                </p>
-                <textarea
-                  placeholder="メッセージ" 
-                  name="message"
-                  label="メッセージ"
-                  {...register("message")}
-                  rows="5"
-                />
+                </p> 
+                  <textarea
+                    placeholder="メッセージ" 
+                    name="message"
+                    label="メッセージ"
+                    {...register("message")}
+                    rows="5"
+                  />
               <button 
                 className={ 
                   sendError ? ('btnSolid') 
                   : send ? ( 'btnSolid' )
                   : ( 'btn' )
                 } 
-
                 type="submit"
                 >
                 { sendError ? (
@@ -219,7 +230,7 @@ const ContactNetlify = () => {
   )
 }
 
-export default ContactNetlify
+export default ContactS3v3
 
 
 const Title = styled.h1`
