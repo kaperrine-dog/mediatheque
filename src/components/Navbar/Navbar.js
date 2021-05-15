@@ -455,10 +455,10 @@ const NavLinks = styled.div`
         margin: 0 0.5em 0;
       }
       &:first-child{
-        margin: 0 0.5em 0 0;
+        margin: 0 0.5em 0;
       }
       &:last-child{
-        margin: 0 0 0 0.5em;
+        margin: 0 0.5em 0;
       }
     }
     @media (min-width: 1000px){
