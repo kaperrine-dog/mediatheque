@@ -148,7 +148,11 @@ const Banner = ({ title, info, children }) => {
             <HeroTitleInverted role='headeing'>{title}</HeroTitleInverted>
           </TitleArea>
           <HeroImage>
-            <Network/>
+            <Network
+             id = "mainCanvas"
+             randomRangeMin = {-34}
+             randomRangeMax = {14}
+            />
 {/*             <GatsbyImage image={image} alt="hero image" /> */}
           </HeroImage>
           <ContentArea>

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Network = ( ) => {
-  const canvasAnimation = (scale, viewWidth, viewHeight, nodesNumber, drawingCanvas ) => {
+const Network = ({ id, randomRangeMin , randomRangeMax }) => {
+  
+  const canvasAnimation = ( randomRangeMin, randomRangeMax, scale, viewWidth, viewHeight, nodesNumber, drawingCanvas ) => {
     let ctx,
         timeStep = (1/60),
         time = 0;
@@ -94,7 +95,7 @@ const Network = ( ) => {
   
         this.connections = [];
   
-        this.r = randomRange(-30, 30);
+        this.r = randomRange( randomRangeMin, randomRangeMax);
     }
     Node.prototype = {
         update:function() {
@@ -286,7 +287,7 @@ const Network = ( ) => {
 
 	
   React.useEffect(
-		() => {
+		( ) => {
 			const resizeCanvas = (scale, width, height, nodesNumber, canvas ) => {
 				let viewWidth = window.innerWidth
 				let viewHeight = window.innerHeight
@@ -295,12 +296,12 @@ const Network = ( ) => {
 				//console.log(canvas.parentElement)
 				viewWidth >= viewHeight ? (nodesNumber=60) : (nodesNumber=30)
 				setTimeout( () => {
-					canvasAnimation( scale, height , height , nodesNumber, canvas );
+					canvasAnimation(randomRangeMin , randomRangeMax, scale, height , height , nodesNumber, canvas );
 				}, 500)
 			}
-      const renderCanvas = () => {
+      const renderCanvas = ( ) => {
 				const scale = window.devicePixelRatio;
-				let drawingCanvas = document.getElementById("drawingCanvas")
+				let drawingCanvas = document.getElementById( id )
 				let canvasWidth = drawingCanvas.parentElement.clientWidth
 				let canvasHeight = drawingCanvas.parentElement.clientHeight
 				drawingCanvas.style.width = `${canvasWidth}px`
@@ -310,7 +311,7 @@ const Network = ( ) => {
 					resizeCanvas(scale, canvasHeight, canvasWidth, nodesNumber, drawingCanvas )
 				}, 250);
 			}
-      renderCanvas()
+      renderCanvas(id)
 			window.addEventListener('resize' , renderCanvas)
       return () => { window.removeEventListener('resize' , renderCanvas) }
     }
@@ -319,8 +320,8 @@ const Network = ( ) => {
   return(
     <StyledFlexBox>
       <canvas 
-        className="drawingCanvas" 
-        id="drawingCanvas"
+        className="drawingCanvas"
+        id= { id }
       ></canvas>
     </StyledFlexBox>
   )
