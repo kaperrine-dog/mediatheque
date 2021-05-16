@@ -188,6 +188,7 @@ const ContactFormS3 = () => {
   }
 
   const onSubmit = (data) => {
+    console.log("onSubmit読み込まれた")
     handleSubmitClick()
     data['form-name'] = 'contact'
     data['g-recaptcha-response'] = recaptcha
@@ -231,7 +232,7 @@ const ContactFormS3 = () => {
           </p>
           <Form 
             netlify 
-            onSubmit={ console.log("submit") }
+            onSubmit={ ()=>{console.log("submit")} }
             name="contact" 
             method="POST" 
             data-netlify-honeypot="bot-field"
@@ -334,7 +335,7 @@ const ContactFormS3 = () => {
               type="submit"
               id={containerId}
               disabled={ !enableSubmit || sent || sendError || submitClickCount !== 0}
-              onClick = { handleSubmit(onSubmit) }
+              onClick = { () => { handleSubmit(onSubmit)} }
               >
               { sendError ? (
                 <p> 申し訳ございません、送信エラーです。</p>) 
