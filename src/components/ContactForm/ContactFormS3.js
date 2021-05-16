@@ -1,7 +1,7 @@
 //import {ErrorMessage} from '@hookform/error-message';
 import {yupResolver} from '@hookform/resolvers/yup';
 import axios from "axios";
-import React from "react";
+import React, {createRef, useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useForm} from 'react-hook-form';
 //import {useRecaptcha} from "react-hook-recaptcha";
@@ -164,22 +164,31 @@ const ContactFormS3 = () => {
         shouldUnregister: false,
       }
   })
-  const [ sent, setSent ] = React.useState( false )
-  const [ sendError, setSendError ] = React.useState( false )
-  const [ recaptcha, setRecaptcha] = React.useState('')
-  const [ enableSubmit, setEnableSubmit ] = React.useState(false)
-
-  const recaptchaRef = React.createRef();
+  const [ sent, setSent ] = useState( false )
+  const [ sendError, setSendError ] = useState( false )
+  const [ recaptcha, setRecaptcha] = useState('')
+  const [ enableSubmit, setEnableSubmit ] = useState(false)
+  const [ submitClickCount, setSubmitClickCount ] = useState( 0 )
+  
+  const recaptchaRef = createRef();
 
   const handleChangeRecaptcha = (value) => {
+    //if sloved recaptcha
     setEnableSubmit(true)
     setRecaptcha(value)
   }
+
   const handleSubmitClick = () => {
-    
+  //prevent to multiple submit
+    console.log( submitClickCount )
+    setSubmitClickCount( submitClickCount + 1)
+    setTimeout( () => {
+      setSubmitClickCount(0)
+    }  , 5000 )
   }
 
   const onSubmit = (data) => {
+    handleSubmitClick()
     data['form-name'] = 'contact'
     data['g-recaptcha-response'] = recaptcha
     data['domain'] = typeof window !== `undefined` ?  window.location.host : false
@@ -197,7 +206,7 @@ const ContactFormS3 = () => {
         }
         setSent(true)
         if(typeof window !== `undefined`){
-          //window.location.href = "/thanks-page/"
+          window.location.href = "/thanks"
         }
       })
       .catch( (axiosError) => {
@@ -222,7 +231,7 @@ const ContactFormS3 = () => {
           </p>
           <Form 
             netlify 
-            onSubmit={ handleSubmit(onSubmit) }
+            onSubmit={ console.log("submit") }
             name="contact" 
             method="POST" 
             data-netlify-honeypot="bot-field"
@@ -319,13 +328,13 @@ const ContactFormS3 = () => {
               className={ 
                 sendError ? ('btnSolid') 
                 : sent ? ( 'btnSolid' )
-                : !enableSubmit ? ('btn btnDisable')
+                : !enableSubmit || submitClickCount !== 0 ? ('btn btnDisable')
                 : ( 'btn' )
               } 
               type="submit"
               id={containerId}
-              disabled={ !enableSubmit || sent || sendError }
-              onClick = { () => handleSubmitClick() }
+              disabled={ !enableSubmit || sent || sendError || submitClickCount !== 0}
+              onClick = { handleSubmit(onSubmit) }
               >
               { sendError ? (
                 <p> 申し訳ございません、送信エラーです。</p>) 
