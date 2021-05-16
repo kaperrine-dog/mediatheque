@@ -20,7 +20,7 @@ const Title = styled.h2`
 const ContentArea = styled.div`
   //grid-column: 1 / 4;
   @media (min-width: 769px) {
-    grid-column: 2 / 3;
+    grid-column: 2 / 4;
 
     p {
       margin-top: 0;
@@ -40,7 +40,7 @@ const About = ({ largePadding, id }) => {
       <Grid>
         <TitleArea>
           <Title>
-            ここにタイトルが入ります。
+            
           </Title>
           <Link className="btn" to="works" smooth={true} duration={500}>
             View Works

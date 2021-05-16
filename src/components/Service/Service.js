@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import services from "../../constants/services"
 import Grid from "../Grid/Grid"
+//import {StaticImage} from "gatsby-plugin-image"
 
 const StyledServiceItem = styled.article`
   //background-color: var(--servicesPanelBG);
@@ -38,14 +39,15 @@ const Service = props => {
       }
     >
       <Grid>
-        {services.map((item, index) => {
+         {services.map((item, index) => {
           return (
             <StyledServiceItem key={index}>
               <h2>{item.title}</h2>
               <p>{item.text}</p>
             </StyledServiceItem>
           )
-        })}
+        })} 
+        
       </Grid>
     </section>
   )
