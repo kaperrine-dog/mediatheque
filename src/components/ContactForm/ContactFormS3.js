@@ -226,7 +226,7 @@ const ContactFormS3 = () => {
       <Grid>
         <Title>Contact.</Title>
         <SubContent>
-          <SubTitle>お問い合わせはこちらまでどうぞ。</SubTitle>
+          <SubTitle>お問い合わせはこちらまで。</SubTitle>
           <p>
             
           </p>
