@@ -17,11 +17,6 @@ const sitekey = process.env.RECAPTCHA_SITE_KEY_VISIBLE
 //const sitekey = process.env.RECAPTCHA_SITE_KEY_V2
 const apiEndpoint = process.env.API_GATEWAY_ENDPOINT_URL
 
-if( typeof window !== `undefined` ){
-  if (typeof sitekey === 'undefined') {
-    throw new Error('reCAPTCHAキーが設定されていません')
-  }
-}
 
 //setLocale(LocaleJP);
 const Section = styled.section``
