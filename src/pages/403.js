@@ -34,11 +34,11 @@ const SubTitle = styled.h2`
 const Error = () => {
   const redirect = () => {
     if( typeof window !== `undefined` ){
-      window.location.href = GATSBY_403_REDIRECT_URL
+      window.location.href = process.env.GATSBY_403_REDIRECT_URL
     }
   }
   useEffect(
-  redirect()
+    redirect
   )
   return (
     <>
