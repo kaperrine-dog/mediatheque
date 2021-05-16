@@ -95,9 +95,11 @@ const thanks= () => {
               randomRangeMax = {10}
             />
           </NetWorkRight>
+          <SubContent>
             <Link className="btn" to="/">
               Homeに戻る
             </Link>
+          </SubContent>
         </Grid>
       </Thanks>
     </>
