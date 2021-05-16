@@ -18,10 +18,6 @@ const StyledAbout = ({ imgLight, imgDark, children }) => {
 
   const bgImageLight = getImage(imgLight)
   const bgImageDark = getImage(imgDark)
-  
-  console.log(bgImageLight)
-  console.log(bgImageDark)
-
   return (
     <Parallax 
       strength={ 1000 }
