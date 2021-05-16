@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import ContactForm from "../ContactForm/ContactForm.js";
+//import ContactForm from "../ContactForm/ContactForm.js";
 import ContactFormS3 from "../ContactForm/ContactFormS3.js";
 const Contact = () => {
   
@@ -14,11 +14,12 @@ const Contact = () => {
 
   return (
     <>
-      { netlify ?  (
-        <ContactForm/>
+    <ContactFormS3/>
+{/*       { netlify ?  (
+        <ContactFormS3/>
       ) : ( 
         <ContactFormS3/>
-      )}
+      )} */}
     </>
   )
 }
