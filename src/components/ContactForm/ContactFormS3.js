@@ -13,9 +13,9 @@ import {BaseYup} from "../Form/BaseYup";
 import Grid from "../Grid/Grid";
 
 const containerId = "contact-recaptcha"; // this id can be customized
-const sitekey = process.env.RECAPTCHA_SITE_KEY_VISIBLE
+const sitekey = process.env.GATSBY_RECAPTCHA_SITE_KEY_VISIBLE
 //const sitekey = process.env.RECAPTCHA_SITE_KEY_V2
-const apiEndpoint = process.env.API_GATEWAY_ENDPOINT_URL
+const apiEndpoint = process.env.GATSBY_API_GATEWAY_ENDPOINT_URL
 
 
 //setLocale(LocaleJP);
