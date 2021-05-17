@@ -19,6 +19,7 @@ const Title = styled.h2`
 
 const ContentArea = styled.div`
   //grid-column: 1 / 4;
+  
   @media (min-width: 769px) {
     grid-column: 2 / 4;
 
@@ -46,7 +47,8 @@ const About = ({ largePadding, id }) => {
             View Works
           </Link>
         </TitleArea>
-        <ContentArea>
+        <ContentArea
+          className = "neuporphizm">
           <SelfIntroduction/>
         </ContentArea>
       </Grid>
