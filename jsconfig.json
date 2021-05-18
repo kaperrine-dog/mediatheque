@@ -8,6 +8,9 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/images/*",
+    "src/images/*.svg",
+    "src/images/*.png",
+    "src/images/*.jpg",
+    "src/images/*.gif",
   ]
 }
