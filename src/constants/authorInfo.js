@@ -1,3 +1,4 @@
+
 export default 
   {
     author: "wangchang",
@@ -6,6 +7,15 @@ export default
     image: "/src/images/ago.jpg",
     github: {
       grass: "https://grass-graph.moshimo.works/images/kaperrine-dog.png"
-      }
+      },
+    skills: [{
+      react: "",
+      vue: "",
+
+    },
+    {
+
+    }
+    ]
   }
 

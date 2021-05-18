@@ -7,17 +7,26 @@ import authorInfo from "../../constants/authorInfo.js"
 const StyledSelfIntroSection = styled.section`
   width: 100%;
   height: 100%;
+  padding: 40px;
+  @media (min-width:769px){
+  }
+`
+const StyledContentGrid = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  grid-template-columns: 1fr 1fr;
   .avatorImage{
     border-radius: 50%;
     img{
       border-radius: 50%;
+      transform: scale(1.2,1.2);
     }
   }
-  @media (min-width:769px){
+  h3{
+
   }
-`
-const StyledContent = styled.div`
-  
+
 `
 
 const StyledRightContent = styled.div`
@@ -28,9 +37,9 @@ const SelfIntroduction = () => {
 
   return(
     <StyledSelfIntroSection
-      
+      className = "neumorphizm"
     >
-      <StyledContent>
+      <StyledContentGrid>
         <StaticImage
           className = "avatorImage"
           src = { "../../images/ago.jpg" }
@@ -41,11 +50,15 @@ const SelfIntroduction = () => {
           height={100}
           objectFit
         />
+        <div className = "skills">
+          { 
+          }
+        </div>
         <h3>{ authorInfo.author }</h3>
         <p>
           { authorInfo.introduction }
         </p>
-      </StyledContent>
+      </StyledContentGrid>
     </StyledSelfIntroSection>
   )
 }

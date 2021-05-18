@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Grid from "../components/Grid/Grid"
 import Seo from "../components/SEO"
 
-const Error404 = styled.section`
+const Error403 = styled.section`
   background-color: var(--background);
   color: var(--text-color);
 `
@@ -43,7 +43,7 @@ const Error = () => {
   return (
     <>
       <Seo title="Error" />
-      <Error404 className="section-padding">
+      <Error403 className="section-padding">
         <Grid>
           <Title>403 FORBIDDEN</Title>
           <SubContent>
@@ -54,7 +54,7 @@ const Error = () => {
             </p>
           </SubContent>
         </Grid>
-      </Error404>
+      </Error403>
     </>
   )
 }

@@ -21,7 +21,7 @@ const ContentArea = styled.div`
   //grid-column: 1 / 4;
   
   @media (min-width: 769px) {
-    grid-column: 2 / 4;
+    grid-column: 2 / 3;
 
     p {
       margin-top: 0;
@@ -47,8 +47,7 @@ const About = ({ largePadding, id }) => {
             View Works
           </Link>
         </TitleArea>
-        <ContentArea
-          className = "neuporphizm">
+        <ContentArea>
           <SelfIntroduction/>
         </ContentArea>
       </Grid>
