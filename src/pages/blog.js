@@ -1,8 +1,8 @@
 import React from "react"
-import BlogList from "../components/Blog/BlogList"
-import Grid from "../components/Grid/Grid"
-import PageIntro from "../components/PageIntro/PageIntro"
-import Seo from "../components/SEO"
+import BlogList from "/src/components/Blog/BlogList"
+import Grid from "/src/components/Grid/Grid"
+import PageIntro from "/src/components/PageIntro/PageIntro"
+import Seo from "/src/components/SEO"
 
 const blog = () => {
   return (

@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
+import Contact from "/src/components/Contact/Contact.js";
+import Seo from "/src/components/SEO";
 
-import Seo from "../components/SEO";
-import Contact from "../components/Contact/Contact.js"
 
 const contact = () => {
   

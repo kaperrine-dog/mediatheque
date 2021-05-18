@@ -2,10 +2,10 @@ import {graphql, useStaticQuery} from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
-import links from "../constants/links"
-import quickNav from "../constants/quickNav"
-import socials from "../constants/socials"
-import Logo from "../images/logo.svg"
+import links from "/src/constants/links"
+import quickNav from "/src/constants/quickNav"
+import socials from "/src/constants/socials"
+import Logo from "/src/images/logo.svg"
 
 const FooterArea = styled.footer`
   margin: 40px 0 0;

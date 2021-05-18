@@ -1,12 +1,12 @@
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
-import BlogCard from "../components/Blog/BlogCard.js"
-import BlogHeader from "../components/Blog/BlogHeader.js"
-import Grid from "../components/Grid/Grid.js"
-import PageIntro from "../components/PageIntro/PageIntro.js"
-import Seo from "../components/SEO.js"
+import BlogCard from "/src/components/Blog/BlogCard.js"
+import BlogHeader from "/src/components/Blog/BlogHeader.js"
+import Grid from "/src/components/Grid/Grid.js"
+import PageIntro from "/src/components/PageIntro/PageIntro.js"
+import Seo from "/src/components/SEO.js"
 
 
 const StyledSection = styled.section`

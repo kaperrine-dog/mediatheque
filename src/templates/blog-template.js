@@ -1,22 +1,24 @@
 import {graphql} from "gatsby"
 import {GatsbyImage} from "gatsby-plugin-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-//import Accordion from "../components/Accordion/Accordion";
+//import Accordion from "/src/components/Accordion/Accordion";
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
-import BlogHeader from "../components/Blog/BlogHeader"
-import Grid from "../components/Grid/Grid"
-import RecentPosts from "../components/RecentPosts/RecentPosts.js"
-import Seo from "../components/SEO"
+import BlogHeader from "/src/components/Blog/BlogHeader"
+import Grid from "/src/components/Grid/Grid"
+import RecentPosts from "/src/components/RecentPosts/RecentPosts.js"
+import SelfIntroduction from "/src/components/SelfIntroduction/SelfIntroduction.js"
+import Seo from "/src/components/SEO"
 
 const DetailArea = styled.div`
   grid-column: 1 / 1;
-  h2 {
-    margin-top: 0;
-  }
-  p {
-    margin-bottom: 40px;
+
+  .selfIntro{
+    margin: 0 auto 40px;
+    height: auto;
+    .selfIntroPanel{
+    }
   }
   @media (min-width: 769px) {
     grid-column: 1 / 2;
@@ -35,6 +37,12 @@ const DetailArea = styled.div`
 
 const ContentArea = styled.div`
   grid-column: 1 / 1;
+  h2 {
+    margin-top: 0;
+  }
+  p {
+    margin-bottom: 40px;
+  }
   margin: var(--marginBorder) 0;
   @media (min-width: 769px) {
     grid-column: 1 / 1;
@@ -119,6 +127,12 @@ const Blog = ({ data }) => {
         <Grid>
           <ContentArea>
             <h1>{title}</h1>
+            <h2 
+              className='contentIntroduction'
+              >
+              {introduction}
+            </h2>
+            <p>Published on - {published}</p>
             <StyledBlogImage>
               <GatsbyImage
                 image={mainImage.gatsbyImageData}
@@ -131,12 +145,10 @@ const Blog = ({ data }) => {
             />
           </ContentArea>
           <DetailArea>
-            <h2 
-              className='contentIntroduction'
-              >
-              {introduction}
-            </h2>
-            <p>Published on - {published}</p>
+            <div className = "selfIntro">
+              <SelfIntroduction
+                className = "selfIntroPanel"/>
+            </div>
             <AniLink 
               className="btn" 
               cover 

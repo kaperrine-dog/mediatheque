@@ -1,13 +1,13 @@
-import {graphql, useStaticQuery} from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import {Link} from "react-scroll"
-import About from "../components/About/About"
-import Banner from "../components/Banner/Banner"
-import FeaturedWorks from "../components/FeaturedWorks/FeaturedWorks"
-import Hero from "../components/Hero/Hero"
-import Seo from "../components/SEO"
-import Service from "../components/Service/Service"
-import StyledAbout from "../components/StyledAbout/StyledAbout"
+import { Link } from "react-scroll"
+import About from "/src/components/About/About"
+import Banner from "/src/components/Banner/Banner"
+import FeaturedWorks from "/src/components/FeaturedWorks/FeaturedWorks"
+import Hero from "/src/components/Hero/Hero"
+import Seo from "/src/components/SEO"
+import Service from "/src/components/Service/Service"
+import StyledAbout from "/src/components/StyledAbout/StyledAbout"
 
 const Index = () => {
   const data = useStaticQuery(

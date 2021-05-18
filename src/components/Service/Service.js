@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import services from "../../constants/services"
 import Grid from "../Grid/Grid"
+import services from "/src/constants/services"
 //import {StaticImage} from "gatsby-plugin-image"
 
 const StyledServiceItem = styled.article`
@@ -28,6 +28,8 @@ const StyledServiceItem = styled.article`
     margin-bottom: 0;
   }
 `
+
+
 
 const Service = props => {
   return (

@@ -1,11 +1,11 @@
-import {graphql} from "gatsby";
+import { graphql } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import Accordion from "../components/Accordion/Accordion";
-import {deleteAllCookies} from '../components/Common/Common.js';
-import Grid from "../components/Grid/Grid";
-import Seo from "../components/SEO";
-import SwiperSlider from "../components/SwiperSlider/SwiperSlider.js";
+import Accordion from "/src/components/Accordion/Accordion";
+import { deleteAllCookies } from '/src/components/Common/Common.js';
+import Grid from "/src/components/Grid/Grid";
+import Seo from "/src/components/SEO";
+import SwiperSlider from "/src/components/SwiperSlider/SwiperSlider.js";
 
 
 

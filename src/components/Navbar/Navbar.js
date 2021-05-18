@@ -2,10 +2,10 @@ import {graphql, useStaticQuery} from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React, {useState} from "react"
 import styled from "styled-components"
-import links from "../../constants/links"
-import quickNav from "../../constants/quickNav"
-import Logo from "../../images/logo.svg"
 import DarkMode from "../DarkMode/DarkMode"
+import links from "/src/constants/links"
+import quickNav from "/src/constants/quickNav"
+import Logo from "/src/images/logo.svg"
 //import BackgroundImage from 'gatsby-background-image'
 
 const NavBar = styled.nav`

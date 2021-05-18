@@ -1,7 +1,7 @@
-import githubIconDark from "../images/icons/githubDark.svg"
-import githubIconLight from "../images/icons/githubLight.svg"
-import qiitaIconDark from "../images/icons/qiitaDark.png"
-import qiitaIconLight from "../images/icons/qiitaLight.png"
+import githubIconDark from "/src/images/icons/githubDark.svg"
+import githubIconLight from "/src/images/icons/githubLight.svg"
+import qiitaIconDark from "/src/images/icons/qiitaDark.png"
+import qiitaIconLight from "/src/images/icons/qiitaLight.png"
 
 export default [
   {

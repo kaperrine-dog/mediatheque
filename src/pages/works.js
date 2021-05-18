@@ -1,8 +1,8 @@
 import React from "react"
-import Grid from "../components/Grid/Grid"
-import PageIntro from "../components/PageIntro/PageIntro"
-import Seo from "../components/SEO"
-import Works from "../components/Works/Works"
+import Grid from "/src/components/Grid/Grid"
+import PageIntro from "/src/components/PageIntro/PageIntro"
+import Seo from "/src/components/SEO"
+import Works from "/src/components/Works/Works"
 
 const works = () => {
   return (
