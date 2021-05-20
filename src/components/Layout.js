@@ -167,8 +167,7 @@ p{
 span, div{
   letter-spacing: 0.025em;
 }
-a.btn,
-button.btn {
+a.btn,button.btn {
     color: var(--text-color);
     background-color: transparent;
     font-family: 'lato', 'Heebo','Noto Sans JP' , sans-serif;
@@ -187,18 +186,6 @@ button.btn {
     //background: var(--background);
     box-shadow:  8px 8px 16px var(--neumorphismShadow),
                 -8px -8px 16px var(--neumorphizmLight);
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      height: 2px;
-      left: 0;
-      right: 0;
-      bottom: 10px;
-      background-color: var(--primary);
-      margin: 0 auto;
-      width: 70%;
-    }
     &:focus {
       color: var(--primary);
     }
@@ -210,8 +197,35 @@ button.btn {
       box-shadow: 2px 2px 4px var(--neumorphismShadow), 
                   -4px -4px 16px var(--neumorphizmLight);
     }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 2px;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      background-color: var(--primary);
+      margin: 0 auto;
+      width: 0%;
+      transition: all 0.5s;
+    }
+    &:hover{
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 2px;
+        left: 0;
+        right: 0;
+        bottom: 10px;
+        background-color: var(--primary);
+        margin: 0 auto;
+        width: 70%;
+        transition: all 0.5s;
+      }
+    }
   }
-  
   .btnSolid{
     color: var(--text-color);
     background-color: transparent;
@@ -273,7 +287,23 @@ button.btn {
       bottom: -0.25em;
       background-color: var(--primary);
       margin: 0 auto;
-      width: 100%;
+      width: 0%;
+      transition: all 0.5s;
+    }
+    &:hover{
+      &:after{
+        content: "";
+        display: block;
+        position: absolute;
+        height: 2px;
+        left: 0;
+        right: 0;
+        bottom: -0.25em;
+        background-color: var(--primary);
+        margin: 0 auto;
+        width: 100%;
+        transition: all 0.5s;
+      }
     }
   }
 

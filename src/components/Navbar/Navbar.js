@@ -227,7 +227,6 @@ const NavLogo = styled.div`
       margin-right: 0.25em;
       cursor: pointer;
     }
-    
     @media (hover: hover) {
       &:hover {
         color: var(--primary);
@@ -427,7 +426,7 @@ const NavLinks = styled.div`
     font-weight: 900;
     letter-spacing: -0.5px;
     position: relative;
-    padding-bottom: 7px;
+    padding-bottom: 0px;
     margin: 10px 0;
     letter-spacing: 0.01em;
     &::after {
@@ -437,10 +436,28 @@ const NavLinks = styled.div`
       height: 2px;
       left: 0;
       right: 0;
-      //bottom: -0.25em;
-      bottom: 0;
+      //bottom: 0;
+      bottom: 0.25em;
       background-color: var(--primary);
+      transition: width 0.4s;
+      width: 0;
     }
+    &:hover{
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 2px;
+        left: 0;
+        right: 0;
+        //bottom: 0;
+        bottom: -0.25em;
+        background-color: var(--primary);
+        width: 100%;
+        transition: width 0.4s;
+    }
+    }
+
     @media (min-width: 769px) {
       padding-top: 10px;
       padding-bottom: 18px;
@@ -471,7 +488,7 @@ const NavLinks = styled.div`
       margin: 0;
       padding: 0;
       &::after {
-        //bottom: -0.25em;
+        bottom: -0.25em;
       }
     }
   }

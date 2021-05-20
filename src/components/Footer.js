@@ -81,6 +81,14 @@ const FooterMenu = styled.div`
       right: 0;
       bottom: 8px;
       background-color: var(--primary);
+      width: 0;
+      transition: width 0.5s;
+    }
+    &:hover{
+      &:after{
+        width: 100%;
+        transition: width 0.5s;
+      }
     }
 
     @media (min-width: 1200px) {
