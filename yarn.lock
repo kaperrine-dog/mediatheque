@@ -5991,6 +5991,14 @@ gatsby-page-utils@^1.5.0:
     lodash "^4.17.21"
     micromatch "^4.0.2"
 
+gatsby-plugin-google-analytics@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-3.5.0.tgz#f0cb53730bf65d2e75581896f6811a3c95525370"
+  integrity sha512-HLByaS3U8tZtpoRs3hDx0fYX1jnmkhue4prsR7OKEj2pzAZUGMkbK5sDiugiHdxdx/b4/PKXjP5lQceUr3VAYA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    minimatch "3.0.4"
+
 gatsby-plugin-image@^1.2.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.5.0.tgz#1b965794b08df2fe70bd8add192f019c5d5535ed"
@@ -6039,6 +6047,11 @@ gatsby-plugin-react-helmet@^4.2.0:
   integrity sha512-QDddKLz2aVDVIAttdQot4S/5H+KP6yUTkZySWyNsvClPovZ+XXgsrmav/Dt0w/6dAzIJA7RXqGvFwOJRHIKncQ==
   dependencies:
     "@babel/runtime" "^7.12.5"
+
+gatsby-plugin-resolve-src@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-resolve-src/-/gatsby-plugin-resolve-src-2.1.0.tgz#290fec7dc7b55d05a41827b106aa04968b7549ba"
+  integrity sha512-uffIv/7VD4HLvMlxl6J9zzK9Y5L2jhrU+uDXzpAKHp6kWH/zNjgbnuE1UD05Z/xo7o4ngDkk2+GWOmcbQQRIXw==
 
 gatsby-plugin-robots-txt@^1.5.5:
   version "1.6.2"

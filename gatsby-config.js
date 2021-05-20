@@ -103,7 +103,7 @@ module.exports = {
         // Any additional optional fields
         sampleRate: 5,
         siteSpeedSampleRate: 10,
-        cookieDomain: "",
+        cookieDomain: "coro-lab.com",
       },
     },
     'gatsby-plugin-resolve-src',
