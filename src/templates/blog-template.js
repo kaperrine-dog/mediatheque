@@ -13,11 +13,10 @@ import Seo from "/src/components/SEO"
 
 const DetailArea = styled.div`
   grid-column: 1 / 1;
-
   .selfIntro{
     margin: 0 auto 40px;
-    height: auto;
     .selfIntroPanel{
+
     }
   }
   @media (min-width: 769px) {

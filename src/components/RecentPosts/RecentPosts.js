@@ -15,6 +15,7 @@ const StyledRecentItems = styled.div`
   h3{
     text-decoration: none;
     font-weight: 400;
+    min-height: 2.5em;
   }
   .navLink{
     text-decoration: none;
@@ -22,7 +23,6 @@ const StyledRecentItems = styled.div`
     display: block;
     background: var(--blogPanelBG);
   }
-
 `
 
 const StyledBlogImage = styled.div`
