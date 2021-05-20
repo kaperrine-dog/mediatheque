@@ -28,12 +28,15 @@ const FlexItem = styled.div`
 
 const getPosts = graphql`
   query {
-    posts: allContentfulPosts(sort: { fields: published, order: DESC }) {
+    posts: allContentfulPosts(
+      sort: { fields: published, order: DESC }
+    ) {
       edges {
         node {
           published(formatString: "Y年MM月DD日")
           title
           slug
+          introduction
           postId: contentful_id
           images {
             gatsbyImageData(width: 600, formats: [AUTO, WEBP])
@@ -50,9 +53,7 @@ const BlogList = () => {
       <FlexContainer>
         {posts.edges.map(({ node }) => {
           return (
-            <FlexItem>
-              <BlogCard key={node.postId} blog={node} />
-            </FlexItem>
+            <BlogCard key={node.postId} blog={node} />
           )
         })}
       </FlexContainer>

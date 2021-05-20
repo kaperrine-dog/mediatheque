@@ -67,20 +67,20 @@ const StyledBlogItem = styled.article`
   }
 `
 const StyledBlogCardTitle = styled.h2`
-  height: var(--itemCardH2Height);
+  height: calc( var(--itemCardH2Height) * 1.5);
   line-height: var(--itemCardH2LineHeight);
   font-size: var(--itemCardH2Title);
   font-size: var(--itemCardH2Title);
-  margin: 0 0 20px;
-  padding: 0 0px;
+  margin: 0 0 25px;
+  padding: 0 0.5em 0px;
   display: inline-block;
 `
 
 const StyledBlogItemContent = styled.div`
   //background-color: var(--blogPanelBG);
   //border-top: 3px solid var(--primary);
-  padding: 1.5rem 0 0;
-  min-height: 20rem;
+  padding: 1.5rem 0.5em 0;
+  min-height: 15rem;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -122,7 +122,9 @@ const BlogCard = ({ blog }) => {
   const { slug, title, images, published, introduction } = blog
 
   // let mainImage = images[0].fluid
+
   const image = getImage(images[0])
+  
   return (
     <StyledBlogItem>
       <AniLink
@@ -149,7 +151,10 @@ const BlogCard = ({ blog }) => {
           bg="var(--background)"
           to={`/blogs/${slug}`}
         >
-          <GatsbyImage className="blogImage btnImage" image={image} alt="Single Post" />
+          <GatsbyImage 
+            className="blogImage btnImage" 
+            image={image} 
+            alt="Single Post" />
         </AniLink>
         <StyledBlogItemContent>
           <StyledBlogIntro>
