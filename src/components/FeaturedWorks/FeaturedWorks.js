@@ -97,7 +97,10 @@ const FeaturedWorks = ({ largePadding, id }) => {
         </TitleArea>
           {works.map(({ node }, index) => {
             return (
-                <Work key={node.workId} work={node} />
+                <Work 
+                  key={node.workId} 
+                  work={node} 
+                />
             )
           })}
       </Grid>

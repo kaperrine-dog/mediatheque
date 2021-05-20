@@ -59,7 +59,7 @@ const SelfIntroduction = () => {
 
   return(
     <StyledSelfIntroSection
-      className = "neumorphizm"
+      className = "glass-container"
     >
       <StyledContentGrid>
         <StyledSelfIntroHeader>

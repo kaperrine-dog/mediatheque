@@ -123,7 +123,9 @@ const Work = ({ work }) => {
   const image = getImage(images[0])
 
   return (
-    <StyledWorkItem>
+    <StyledWorkItem
+      className="glass-container"
+      >
       <h2>{name || "Name not listed"}</h2>
       <AniLink
         swipe

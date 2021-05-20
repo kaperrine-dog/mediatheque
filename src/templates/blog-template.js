@@ -148,14 +148,14 @@ const Blog = ({ data }) => {
               <SelfIntroduction
                 className = "selfIntroPanel"/>
             </div>
+            <RecentPosts/>
             <AniLink 
               className="btn" 
               cover 
               bg="var(--background)" 
               to="/blogs">
-              Back to Blogs
+              Back to Blog Index
             </AniLink>
-            <RecentPosts/>
           </DetailArea>
         </Grid>
       </section>
