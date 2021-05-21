@@ -18,7 +18,6 @@ module.exports = {
   /* Your site config here */
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -37,10 +36,17 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://mediatheque.netlify.app",
-        sitemap: "https://mediatheque.netlify.app/sitemap.xml",
+        host: "https://coro-lab.com/",
+        sitemap: "https://coro-lab.com/sitemap-path.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap-path.xml`,
+        exclude: [`/thanks`, `/works/*`],
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
