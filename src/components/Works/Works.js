@@ -4,7 +4,8 @@ import WorkList from "./WorkList"
 
 const getWorks = graphql`
   query {
-    works: allContentfulWorks {
+    works: allContentfulWorks
+    (filter: {node_locale: {eq: "ja-JP"}}) {
       edges {
         node {
           name
