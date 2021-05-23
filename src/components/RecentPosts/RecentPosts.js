@@ -61,6 +61,10 @@ const RecentPosts = () => {
                 formats: [AUTO, WEBP]
               )
             }
+            tags {
+              title
+              slug
+            }
           }
         }
       }
