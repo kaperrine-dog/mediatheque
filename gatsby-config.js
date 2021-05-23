@@ -45,7 +45,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap-path.xml`,
-        exclude: [`/thanks`, `/works/*`],
+        exclude: [`/thanks`, `/works/*`,`/works`],
       }
     },
     {
