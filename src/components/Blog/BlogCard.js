@@ -118,13 +118,18 @@ const StyledBlogIntro = styled.p`
   
 `
 
-const BlogCard = ({ blog }) => {
-  const { slug, title, images, published, introduction } = blog
+const StyledTags = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`
 
+const BlogCard = ({ blog }) => {
+  const { slug, title, images, published, introduction, tags } = blog
+  
   // let mainImage = images[0].fluid
 
   const image = getImage(images[0])
-  
   return (
     <StyledBlogItem>
       <AniLink
@@ -160,6 +165,20 @@ const BlogCard = ({ blog }) => {
           <StyledBlogIntro>
               {introduction}
           </StyledBlogIntro>
+          <StyledTags>
+            { tags && tags.map(({ title, slug } , index) => {
+              return(
+                  <AniLink
+                    className='navLink btnSmall' 
+                    cover
+                    bg="var(--background)"
+                    to={`/tags/${slug}`}
+                  >
+                    {title}
+                  </AniLink>
+              )
+            })}
+          </StyledTags>
           <StyledBottom>
             <span>{published}</span>
             <button className="btnEmbed">Read Post</button>
