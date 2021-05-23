@@ -19,31 +19,35 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      tags: allContentfulTags {
+        edges {
+          node {
+            slug
+            posts{
+              slug
+            }
+          }
+        }
+      }
     }
   `)
 
-/*   data.products.edges.forEach(({ node }) => {
-    createPage({
-      path: `products/${node.slug}`,
-      component: path.resolve("src/templates/product-template.js"),
-      context: {
-        slug: node.slug,
-      },
-    })
-  }) */
+
+
   data.posts.edges.forEach(({ node }) => {
     createPage({
       path: `blogs/${node.slug}`,
-      component: path.resolve("src/templates/blog-template.js"),
+      component: path.resolve("./src/templates/blog-template.js"),
       context: {
         slug: node.slug,
       },
     })
   })
+
   data.works.edges.forEach(({ node }) => {
     createPage({
       path: `works/${node.slug}`,
-      component: path.resolve("src/templates/work-template.js"),
+      component: path.resolve("./src/templates/work-template.js"),
       context: {
         slug: node.slug,
       },
@@ -55,7 +59,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const postsPerPage = 6
   // How many pages
   const numPages = Math.ceil(posts.length / postsPerPage)
-
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/blogs` : `/blogs/${i + 1}`,
@@ -68,7 +71,47 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+/*   data.tags.edges.forEach(({ node }) => {
+    createPage({
+      path: `tags/${node.slug}`,
+      component: path.resolve("./src/templates/tag-template.js"),
+      context: {
+        id: node.id,
+        slug: node.slug,
+      },
+    })
+  }) */
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    data.tags.edges.forEach(({ node }) => {
+      createPage({
+        path: i === 0 ? `/tags/${node.slug}` : `/tags/${node.slug}/page-${i + 1}`,
+        component: path.resolve("./src/templates/tag-template.js"),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+          id: node.id,
+          slug: node.slug,
+        },
+      })
+    })
+  })
+
+/*   data.tags.edges.forEach(({ node }) => {
+
+      //Amount of posts
+      const posts = node.posts
+      // Posts per page
+      const postsPerPage = 6
+      // How many pages
+      const numPages = Math.ceil(posts.length / postsPerPage)
+    
+  }) */
 }
+
 
 /* exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === "build-html" || stage === "develop-html") {
