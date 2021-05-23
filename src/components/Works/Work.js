@@ -139,7 +139,6 @@ const Work = ({ work }) => {
         <GatsbyImage className="workImage" image={image} alt={introduction} />
       </AniLink>
       <StyledWorkContent>
-        {/* <h3>£ { || "Call"}</h3> */}
         <StyledWorksIntro>{introduction && introduction}</StyledWorksIntro>
         <AniLink 
           //cover 
