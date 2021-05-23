@@ -12,6 +12,7 @@ const sitekey = process.env.RECAPTCHA_SITE_KEY;
 const GlobalStyle = createGlobalStyle`
 :root {
   --menuItem: 1.125rem;
+  --tags: 0.5rem;
   --transition: 0.3s;
   --heroH1: 5rem;
   --h1: 1.5rem;
@@ -365,6 +366,68 @@ a.btn,button.btn {
   @media (hover: hover) {
     a:hover {
       color: var(--primary);
+    }
+  }
+
+  .btnSmall{
+    word-break: keep-all;
+    color: var(--text-color);
+    background-color: transparent;
+    font-family: 'lato', 'Heebo','Noto Sans JP' , sans-serif;
+    border: 0;
+    text-decoration: none;
+    padding: 0;
+    transition: var(--transition) color;
+    text-transform: capitalize;
+    font-size: var(--tags);
+    font-weight: 900;
+    position: relative;
+    padding: 0.5em 1.25em 0.75em;
+    margin: 1em 0.5em 1em;
+    align-self: flex-start;
+    letter-spacing: var(--textLetterSpacingLv1);
+    border-radius: var(--buttonBorderRadius);
+    //background: var(--background);
+    box-shadow:  2px 2px 8px var(--neumorphismShadow),
+                -2px -2px 8px var(--neumorphizmLight);
+    &:focus {
+      color: var(--primary);
+    }
+    @media(hover: hover) {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+    &:active{
+      box-shadow: 2px 2px 4px var(--neumorphismShadow), 
+                  -4px -4px 16px var(--neumorphizmLight);
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      left: 0;
+      right: 0;
+      bottom: 4px;
+      background-color: var(--primary);
+      margin: 0 auto;
+      width: 0%;
+      transition: all 0.5s;
+    }
+    &:hover{
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 1px;
+        left: 0;
+        right: 0;
+        bottom: 4px;
+        background-color: var(--primary);
+        margin: 0 auto;
+        width: 70%;
+        transition: all 0.5s;
+      }
     }
   }
 
