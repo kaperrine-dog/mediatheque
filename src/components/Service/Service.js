@@ -75,15 +75,19 @@ const getPosts = graphql`
           introduction
           published(formatString: "Y年MM月DD日")
           images {
-              fluid {
-                ...GatsbyContentfulFluid
-              }
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                formats: [AUTO, WEBP]
-                placeholder: TRACED_SVG
-              )
+            fluid {
+              ...GatsbyContentfulFluid
             }
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              formats: [AUTO, WEBP]
+              placeholder: TRACED_SVG
+            )
+          }
+          tags{
+            title
+            slug
+          }
         }
       }
     }
