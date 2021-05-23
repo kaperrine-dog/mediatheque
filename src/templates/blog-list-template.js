@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import {graphql} from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
@@ -102,6 +102,7 @@ const Blog = props => {
     currentPage - 1 === 1 ? `/blogs` : `/blogs/${currentPage - 1}`
   const nextPage = `/blogs/${currentPage + 1}`
   const { data } = props
+  console.log(data)
   return (
     <>
       <Seo title="Blogs" />
@@ -189,6 +190,10 @@ export const query = graphql`
           published(formatString: "Y年MM月DD日")
           images {
             gatsbyImageData(width: 600, formats: [AUTO, WEBP])
+          }
+          tags{
+            title
+            slug
           }
         }
       }
