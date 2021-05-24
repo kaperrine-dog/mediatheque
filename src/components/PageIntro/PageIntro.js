@@ -7,7 +7,7 @@ const TitleArea = styled.div`
     grid-column: 1 / 4;
   }
   @media (min-width: 1000px){
-    grid-column: 1 / 2;
+    grid-column: 1 / 3;
   }
 `
 
@@ -33,7 +33,7 @@ const ContentArea = styled.div`
     }
   }
   @media (min-width: 1000px){
-    grid-column: 2 / 4;
+    grid-column: 1 / 4;
   }
 `
 
@@ -43,10 +43,12 @@ const PageIntro = ({ title, subTitle, paragraph }) => {
       <TitleArea>
         <Title>{title}</Title>
       </TitleArea>
+      { (subTitle && paragraph) && (
       <ContentArea>
         <h2>{subTitle}</h2>
         <p>{paragraph}</p>
       </ContentArea>
+      )}
     </>
   )
 }

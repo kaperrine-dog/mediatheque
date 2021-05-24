@@ -15,7 +15,7 @@ const NavBar = styled.nav`
   z-index: 5;
   //border-bottom: 1px solid var(--border);
   //background-color: var(--headerBG);
-  border-radius: var(--itemCardBorderRadius) var(--itemCardBorderRadius);
+  border-radius: var(--itemCardBorderRadius);
   background: var(--background);
   box-shadow:  -20px 20px 40px var(--neumorphismShadow),
                 20px -20px 40px var(--neumorphizmLight);
@@ -205,8 +205,8 @@ const NavLogo = styled.div`
     border: none;
     border-radius: var(--buttonBorderRadius);
     background: var(--background);
-    box-shadow:  8px 8px 16px var(--neumorphismShadow),
-                -8px -8px 16px var(--neumorphizmLight)  ;
+    /* box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight)  ; */
     width: auto;
     border: none;
   }
@@ -253,8 +253,8 @@ const ThemeSwitch = styled.div`
     align-items: center;
     border-radius: var(--buttonBorderRadius);
     background: var(--background);
-    box-shadow:  8px 8px 16px var(--neumorphismShadow),
-                -8px -8px 16px var(--neumorphizmLight);
+/*     box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                -8px -8px 16px var(--neumorphizmLight); */
     width: 135px;
     border: none;
     order: 3;
@@ -304,12 +304,12 @@ const NavSocials = styled.div`
       padding: 14px 1.0em 16px;
       border-radius: var(--buttonBorderRadius);
       background: var(--background);
-      box-shadow:  8px 8px 16px var(--neumorphismShadow),
+/*       box-shadow:  8px 8px 16px var(--neumorphismShadow),
                   -8px -8px 16px var(--neumorphizmLight);
       &:active{
         box-shadow: 2px 2px 4px var(--neumorphismShadow), 
                     -4px -4px 16px var(--neumorphizmLight);
-      }
+      } */
     }
     @media (min-width: 1200px){
       padding: 17px 15px 17px;
@@ -317,7 +317,6 @@ const NavSocials = styled.div`
     li {
       text-align: center;
       font-size: 1.5rem;
-      //margin-right: 1rem;
       list-style: none;
       padding: 0;
       a {
@@ -407,8 +406,8 @@ const NavLinks = styled.div`
       padding: 12px 1.0em 12px;
       border-radius: var(--buttonBorderRadius);
       background: var(--background);
-      box-shadow:  8px 8px 16px var(--neumorphismShadow),
-                  -8px -8px 16px var(--neumorphizmLight);
+/*       box-shadow:  8px 8px 16px var(--neumorphismShadow),
+                  -8px -8px 16px var(--neumorphizmLight); */
     }
     @media (min-width: 1200px){
       padding: 15px 15px 18px;
@@ -436,7 +435,6 @@ const NavLinks = styled.div`
       height: 2px;
       left: 0;
       right: 0;
-      //bottom: 0;
       bottom: 0.25em;
       background-color: var(--primary);
       transition: width 0.4s;
@@ -450,7 +448,6 @@ const NavLinks = styled.div`
         height: 2px;
         left: 0;
         right: 0;
-        //bottom: 0;
         bottom: -0.25em;
         background-color: var(--primary);
         width: 100%;

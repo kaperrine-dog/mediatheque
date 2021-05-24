@@ -16,6 +16,8 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            title
+            images
           }
         }
       }
@@ -31,15 +33,27 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  
+  console.log(data)
+  console.log(`あああああああああああああああああ`)
 
+  console.log(data.posts)
+  console.log(data.posts.edges)
 
-
-  data.posts.edges.forEach(({ node }) => {
+  const postPages = data.posts.edges
+  data.posts.edges.forEach(({ node }, index ) => {
+      
+      const prev = index === 0 ? null : postPages[index - 1].node
+      const next = index === postPages.length - 1 ? null : postPages[index + 1].node
     createPage({
       path: `blogs/${node.slug}`,
       component: path.resolve("./src/templates/blog-template.js"),
       context: {
         slug: node.slug,
+        title: node.title,
+        image: node.images,
+        prev,
+        next,
       },
     })
   })

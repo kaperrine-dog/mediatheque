@@ -38,6 +38,12 @@ const StyledBlogImage = styled.div`
     }
   `
 
+const StyledTags = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`
+
 const RecentPosts = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -73,6 +79,7 @@ const RecentPosts = () => {
 
 
   const posts = data.posts.edges
+  console.log(posts)
   return (
     <StyledSidebar className="StyledSidebar">
       <h2>最近の投稿</h2>
@@ -96,6 +103,20 @@ const RecentPosts = () => {
               <h3 className={""}>
                 {node.title}
               </h3>
+              <StyledTags>
+                { node.tags && node.tags.map(({ title, slug } , index) => {
+                  return(
+                    <AniLink
+                      className='navLink btnSmall' 
+                      cover
+                      bg="var(--background)"
+                      to={`/tags/${slug}`}
+                    >
+                      {`#${title}`}
+                    </AniLink>
+                  )
+                })}
+              </StyledTags>
               <span className={""}>
                 {node.published}
               </span>

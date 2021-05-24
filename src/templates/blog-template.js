@@ -7,6 +7,7 @@ import React from "react"
 import styled from "styled-components"
 import BlogHeader from "/src/components/Blog/BlogHeader"
 import Grid from "/src/components/Grid/Grid"
+import PrevNext from "/src/components/PrevNext/PrevNext.js"
 import RecentPosts from "/src/components/RecentPosts/RecentPosts.js"
 import SelfIntroduction from "/src/components/SelfIntroduction/SelfIntroduction.js"
 import Seo from "/src/components/SEO"
@@ -90,7 +91,7 @@ const StyledBlogImage = styled.div`
 `
 
 
-const Blog = ({ data }) => {
+const Blog = ({ data, pageContext }) => {
   const {
     title,
     introduction,
@@ -98,13 +99,15 @@ const Blog = ({ data }) => {
     images,
     content,
   } = data.post
-  
+  console.log(pageContext)
+  console.log(pageContext.prev)
+  console.log(pageContext.next)
+
   const [mainImage, ...blogImages] = images
   const contentHtml = content.childMarkdownRemark.html
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
-        console.log(node)
         return (
           <div>
             <img
@@ -117,7 +120,6 @@ const Blog = ({ data }) => {
       },
     },
   }
-
   return (
     <>
       <Seo title={title} />
@@ -142,6 +144,11 @@ const Blog = ({ data }) => {
               className = "contentArticle"
               dangerouslySetInnerHTML={{ __html: contentHtml }}
             />
+            <PrevNext
+              prev = {pageContext.prev}
+              next = {pageContext.next}
+              info = {data.post}
+            />
           </ContentArea>
           <DetailArea>
             <div className = "selfIntro">
@@ -158,6 +165,7 @@ const Blog = ({ data }) => {
             </AniLink>
           </DetailArea>
         </Grid>
+
       </section>
     </>
   )

@@ -92,6 +92,8 @@ const Spacer = styled.div`
   }
 `
 
+
+
 const Tags = ( props )=> {
   const { currentPage, numPages } = props.pageContext
 
@@ -99,10 +101,6 @@ const Tags = ( props )=> {
   const isLast = currentPage === numPages
   //const { slug, posts } = data.tags
   const { data } = props
-  console.log(data)
-  console.log( data.tags )
-  console.log( data.tags.posts)
-  console.log(data.tags.slug)
   const blogPosts = data.tags.posts
   const prevPage =
     currentPage - 1 === 1 ? `/tags/${data.tags.slug}` : `/tags/${data.tags.slug}/${currentPage - 1}`
@@ -116,7 +114,7 @@ const Tags = ( props )=> {
         <Grid>
 
           <PageIntro
-            title="Blog"
+            title={`${data.tags.title}に関する記事の一覧`}
             subTitle=""
             paragraph=""
           />

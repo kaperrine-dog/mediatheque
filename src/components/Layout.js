@@ -12,7 +12,7 @@ const sitekey = process.env.RECAPTCHA_SITE_KEY;
 const GlobalStyle = createGlobalStyle`
 :root {
   --menuItem: 1.125rem;
-  --tags: 0.5rem;
+  --tags: 0.75rem;
   --transition: 0.3s;
   --heroH1: 5rem;
   --h1: 1.5rem;
@@ -378,15 +378,19 @@ a.btn,button.btn {
     text-decoration: none;
     padding: 0;
     transition: var(--transition) color;
-    text-transform: capitalize;
     font-size: var(--tags);
     font-weight: 900;
     position: relative;
     padding: 0.5em 1.25em 0.75em;
-    margin: 1em 0.5em 1em;
+    margin: 0em 0.5em 1em;
+    height: 2.25em;
     align-self: flex-start;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     letter-spacing: var(--textLetterSpacingLv1);
-    border-radius: var(--buttonBorderRadius);
+    border-radius: 8px;
+    //border-radius: var(--buttonBorderRadius);
     //background: var(--background);
     box-shadow:  2px 2px 8px var(--neumorphismShadow),
                 -2px -2px 8px var(--neumorphizmLight);
