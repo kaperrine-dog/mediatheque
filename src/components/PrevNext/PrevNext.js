@@ -75,6 +75,7 @@ const StyledCards = styled.div`
     }
   }
   @media (max-width: 768px){
+    margin: 10px 0;
     .prevLink{
       width: fit-content;
       margin-left: auto;
