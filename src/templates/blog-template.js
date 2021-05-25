@@ -5,7 +5,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
-import BlogHeader from "/src/components/Blog/BlogHeader"
+import TagIconList from "../components/TagIconList/TagIconList.js"
 import Grid from "/src/components/Grid/Grid"
 import PrevNext from "/src/components/PrevNext/PrevNext.js"
 import RecentPosts from "/src/components/RecentPosts/RecentPosts.js"
@@ -35,14 +35,58 @@ const DetailArea = styled.div`
   }
 `
 
-const ContentArea = styled.div`
+
+const StyledTitle = styled.div`
   grid-column: 1 / 1;
+  margin: 0;
+  padding: 0 10px 0;
+  @media (min-width: 769px) {
+    grid-column: 1 / 1;
+    width: 200%;
+  }
+  @media (min-width: 1000px) {
+    width: 100%;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+  @media (min-width: 1200px) {
+    width: 100%;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
   h2 {
     margin-top: 0;
   }
   p {
     margin-bottom: 40px;
   }
+`
+
+const StyledTags = styled.div`
+  grid-column: 1 / 1;
+  margin: 0;
+  @media (min-width: 769px) {
+    grid-column: 1 / 1;
+    width: 200%;
+  }
+  @media (min-width: 1000px) {
+    width: 100%;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
+  @media (min-width: 1200px) {
+    width: 100%;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
+`
+
+const ContentArea = styled.div`
+  grid-column: 1 / 1;
   margin: var(--marginBorder) 0;
   @media (min-width: 769px) {
     grid-column: 1 / 1;
@@ -58,9 +102,6 @@ const ContentArea = styled.div`
     grid-column: 1 / 3;
     grid-row: 1 / 2;
   }
-  h1 {
-    margin-top: 0;
-  }
   p {
     margin-bottom: 40px;
   }
@@ -68,7 +109,7 @@ const ContentArea = styled.div`
 
 const StyledBlogImage = styled.div`
   width: 100%;
-  margin: var(--marginBorder) 0;
+  margin:0 0 var(--marginBorder);
   border-radius: var(--itemCardBorderRadius);
   background: var(--background);
   box-shadow:  -10px 10px 20px var(--neumorphismShadow),
@@ -80,10 +121,10 @@ const StyledBlogImage = styled.div`
   .main-image {
     max-height: 300px;
     //aspect-ratio: 16 / 9;
-    border-bottom: 3px solid var(--primary);
+/*     border-bottom: 3px solid var(--primary);
     border-left: 1px solid var(--primary);
     border-right: 2px solid var(--primary);
-    border-top: 1px solid var(--primary);
+    border-top: 1px solid var(--primary); */
     border-radius: var(--itemCardBorderRadius);
     img{
     }
@@ -98,10 +139,8 @@ const Blog = ({ data, pageContext }) => {
     published,
     images,
     content,
+    tags,
   } = data.post
-  console.log(pageContext)
-  console.log(pageContext.prev)
-  console.log(pageContext.next)
 
   const [mainImage, ...blogImages] = images
   const contentHtml = content.childMarkdownRemark.html
@@ -123,21 +162,30 @@ const Blog = ({ data, pageContext }) => {
   return (
     <>
       <Seo title={title} />
-      <BlogHeader/>
+      {/* <BlogHeader/> */}
       <section className="section-padding">
         <Grid>
+          <StyledTitle>
+              <h1>{title}</h1>
+              <h2 
+                className='contentIntroduction'
+                >
+                {introduction}
+              </h2>
+              <p>Published on - {published}</p>
+          </StyledTitle>
+          <StyledTags>
+            <TagIconList
+              tags = {tags}
+            />
+          </StyledTags>
+        </Grid>
+        <Grid>
           <ContentArea>
-            <h1>{title}</h1>
-            <h2 
-              className='contentIntroduction'
-              >
-              {introduction}
-            </h2>
-            <p>Published on - {published}</p>
             <StyledBlogImage>
               <GatsbyImage
                 image={mainImage.gatsbyImageData}
-                className="main-image neumorphizmLarge"
+                className="main-image "
                 alt="Placeholder" />
             </StyledBlogImage>
             <article
@@ -147,7 +195,6 @@ const Blog = ({ data, pageContext }) => {
             <PrevNext
               prev = {pageContext.prev}
               next = {pageContext.next}
-              info = {data.post}
             />
           </ContentArea>
           <DetailArea>
@@ -187,12 +234,23 @@ export const query = graphql`
           formats: [AUTO, WEBP]
         )
       }
+      tags{
+        title
+        slug
+        image{
+          file{
+            url
+            fileName
+          }
+        }
+      }
       content {
         childMarkdownRemark {
           html
           rawMarkdownBody
         }
       }
+
     }
   }
 `

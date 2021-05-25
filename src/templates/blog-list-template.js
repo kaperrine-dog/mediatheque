@@ -194,6 +194,12 @@ export const query = graphql`
           tags{
             title
             slug
+            image{
+              file{
+                url
+                fileName
+              }
+            }
           }
         }
       }
