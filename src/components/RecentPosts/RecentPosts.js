@@ -28,11 +28,11 @@ const StyledRecentItems = styled.div`
 const StyledBlogImage = styled.div`
     .main-image{
       width: 100%;
-      height: 150px;
+      height: 100px;
       padding: 20px 20px 20px;
       img{
         width: 100%;
-        height: 150px;
+        height: 100px;
         border-radius: var(--buttonBorderRadius);
       }
     }

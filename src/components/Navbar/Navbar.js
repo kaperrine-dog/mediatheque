@@ -423,7 +423,6 @@ const NavLinks = styled.div`
     text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
-    letter-spacing: -0.5px;
     position: relative;
     padding-bottom: 0px;
     margin: 10px 0;
