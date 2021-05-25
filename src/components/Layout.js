@@ -168,6 +168,19 @@ p{
 span, div{
   letter-spacing: 0.025em;
 }
+a{
+  color: var(--text-color);
+  background-color: transparent;
+  font-family: 'lato', 'Heebo','Noto Sans JP' , sans-serif;
+  border: 0;
+  text-decoration: none;
+  padding: 0;
+  transition: var(--transition) color;
+  letter-spacing: var(--textLetterSpacingLv2);
+  font-size: 400;
+  &:hover{
+  }
+}
 a.btn,button.btn {
     color: var(--text-color);
     background-color: transparent;
@@ -182,7 +195,7 @@ a.btn,button.btn {
     position: relative;
     padding: 0.5em 1.25em 0.75em;
     align-self: flex-start;
-    letter-spacing: var(--textLetterSpacingLv1);
+    letter-spacing: var(--textLetterSpacingLv2);
     border-radius: var(--buttonBorderRadius);
     //background: var(--background);
     box-shadow:  8px 8px 16px var(--neumorphismShadow),
@@ -515,6 +528,17 @@ a.btn,button.btn {
     border-bottom: 2px rgba(40,40,40,0.35) solid;
     border-right: 2px rgba(40,40,40,0.35) solid;
   }
+  .glass-morphizm{
+    padding: 20px;
+    border-radius: var(--itemCardBorderRadius);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(219,246,255,0.075);
+    box-shadow: rgb(0 0 0 / 30%) 2px 8px 8px;
+    border: 2px rgba(255,255,255,0.4) solid;
+    border-bottom: 2px rgba(40,40,40,0.35) solid;
+    border-right: 2px rgba(40,40,40,0.35) solid;
+  }
 
   .imageWindow{
     //on GatsbyImage Components in the panel or cards
@@ -553,7 +577,7 @@ a.btn,button.btn {
     h1 {
       letter-spacing: var(--textLetterSpacingLv1);
       font-size: var(--contentArticleH1FontSize);
-      font-weight: 400;
+      font-weight: 900;
       margin: 80px 0 60px;
       position: relative;
       padding: 0.125em 1.5em 0.25em;
@@ -590,7 +614,7 @@ a.btn,button.btn {
     }
     h2{
       font-size: calc( var(--contentArticleH1FontSize) - 2px );
-      font-weight: 400;
+      font-weight: 900;
       margin: 80px 0 40px 1.5em;
       position: relative;
       padding: 0.125em 0.5em 0.25em;
@@ -610,7 +634,7 @@ a.btn,button.btn {
       }
     }
     h3{
-      font-weight: 400;
+      font-weight: 900;
       font-size: calc( var(--contentArticleH1FontSize) - 4px );
       margin: 80px 0 40px 1.5em;
       position: relative;
@@ -619,7 +643,7 @@ a.btn,button.btn {
       border-bottom: solid 1px var(--primary);
     }
     h4{
-      font-weight: 400;
+      font-weight: 900;
       font-size: calc( var(--contentArticleH1FontSize) - 6px );
     }
     p{
