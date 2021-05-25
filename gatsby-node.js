@@ -17,7 +17,19 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             slug
             title
-            images
+            postId: contentful_id
+            introduction
+            published(formatString: "Y年MM月DD日")
+            images {
+              file {
+                url
+                fileName
+              }
+              title
+              spaceId
+              node_locale
+              id
+            }
           }
         }
       }
@@ -34,11 +46,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   
-  console.log(data)
   console.log(`あああああああああああああああああ`)
+  console.log(data)
 
-  console.log(data.posts)
-  console.log(data.posts.edges)
+  //console.log(data.posts)
+  //console.log(data.posts.edges)
 
   const postPages = data.posts.edges
   data.posts.edges.forEach(({ node }, index ) => {
