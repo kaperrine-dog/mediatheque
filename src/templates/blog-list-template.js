@@ -105,8 +105,8 @@ const Blog = props => {
   return (
     <>
       <Seo title="Blogs" />
-      <Spacer/>
-      <BlogHeader/>
+{/*       <Spacer/>
+      <BlogHeader/> */}
       <section className="section-padding">
         <Grid>
           <PageIntro
