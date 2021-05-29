@@ -293,7 +293,6 @@ const Network = ({ id, randomRangeMin , randomRangeMax }) => {
 				let viewHeight = window.innerHeight
 				//height = canvas.parentElement.parentElement.clientHeight
 				//width = canvas.parentElement.parentElement.clientWidth
-				//console.log(canvas.parentElement)
 				viewWidth >= viewHeight ? (nodesNumber=60) : (nodesNumber=30)
 				setTimeout( () => {
 					canvasAnimation(randomRangeMin , randomRangeMax, scale, height , height , nodesNumber, canvas );

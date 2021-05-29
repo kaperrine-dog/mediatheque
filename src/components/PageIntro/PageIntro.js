@@ -7,7 +7,7 @@ const TitleArea = styled.div`
     grid-column: 1 / 4;
   }
   @media (min-width: 1000px){
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
   }
 `
 

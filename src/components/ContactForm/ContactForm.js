@@ -78,7 +78,6 @@ const ContactNetlify = () => {
     data['form-name'] = 'contact'
     axios.post('/', new URLSearchParams(data))
       .then( (response) => {
-        console.log(response.data)
         if(typeof document !== `undefined`){
           document.contact.reset()
         }
@@ -88,7 +87,6 @@ const ContactNetlify = () => {
         }
       })
       .catch( (axiosError) => {
-        console.log(axiosError)
         setSendError(true)
         alert(`エラーが発生しました。\nフォームを送信できませんでした。`)
         if(typeof window !== `undefined`){

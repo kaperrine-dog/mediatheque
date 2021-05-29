@@ -180,7 +180,6 @@ const ContactFormS3 = () => {
 
   const handleSubmitClick = () => {
   //prevent to multiple submit
-    console.log( submitClickCount )
     setSubmitClickCount( submitClickCount + 1)
     setTimeout( () => {
       setSubmitClickCount(0)
@@ -188,7 +187,6 @@ const ContactFormS3 = () => {
   }
 
   const onSubmit = (data) => {
-    console.log("onSubmit読み込まれた")
     handleSubmitClick()
     data['form-name'] = 'contact'
     data['g-recaptcha-response'] = recaptcha
@@ -201,7 +199,6 @@ const ContactFormS3 = () => {
       data: postData,
     })
       .then( (response) => {
-        console.log(response.data)
         if(typeof document !== `undefined`){
           document.contact.reset()
         }
@@ -211,7 +208,6 @@ const ContactFormS3 = () => {
         }
       })
       .catch( (axiosError) => {
-        console.log(axiosError)
         setSendError(true)
         alert(`エラーが発生しました。\nフォームを送信できませんでした。\n${axiosError}`)
         if(typeof window !== `undefined`){
@@ -232,7 +228,6 @@ const ContactFormS3 = () => {
           </p>
           <Form 
             netlify 
-            onSubmit={ ()=>{console.log("submit")} }
             name="contact" 
             method="POST" 
             data-netlify-honeypot="bot-field"

@@ -45,12 +45,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  
-  console.log(`あああああああああああああああああ`)
-  console.log(data)
-
-  //console.log(data.posts)
-  //console.log(data.posts.edges)
 
   const postPages = data.posts.edges
   data.posts.edges.forEach(({ node }, index ) => {

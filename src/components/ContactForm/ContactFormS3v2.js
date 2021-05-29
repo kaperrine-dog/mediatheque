@@ -190,7 +190,6 @@ const ContactFormS3v2 = () => {
     data['form-name'] = 'contact'
     axios.post( awsApiURL , new URLSearchParams(data))
       .then( (response) => {
-        console.log(response.data)
         if(typeof document !== `undefined`){
           document.contact.reset()
         }
@@ -200,7 +199,6 @@ const ContactFormS3v2 = () => {
         }
       })
       .catch( (axiosError) => {
-        console.log(axiosError)
         setSendError(true)
         alert(`エラーが発生しました。\nフォームを送信できませんでした。`)
         if(typeof window !== `undefined`){

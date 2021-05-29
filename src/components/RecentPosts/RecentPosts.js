@@ -79,7 +79,6 @@ const RecentPosts = () => {
 
 
   const posts = data.posts.edges
-  console.log(posts)
   return (
     <StyledSidebar className="StyledSidebar">
       <h2>最近の投稿</h2>

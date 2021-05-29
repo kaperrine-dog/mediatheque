@@ -121,7 +121,6 @@ const Tags = ( props )=> {
           <StyledSection>
             <StyledFlexContainer>
               {blogPosts.map(( post , index ) => {
-                console.log(post)
                 return (
                   <StyledFlexItem
                     className={ index % 3 === 0 ? "FlexItem blogCard3n" : "FlexItem blogCard" }

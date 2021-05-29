@@ -18,11 +18,9 @@ var response = {
 };
 
 exports.handler = function(event, context, callback) {
-    console.log('受理したイベント:', event);
     sendEmailToUser(event, function(err, data) {
       context.done(err, null);
     });
-    console.log(event.email)
     sendEmailToOwner(event, function(err, data) {
       context.done(err, null);
     });

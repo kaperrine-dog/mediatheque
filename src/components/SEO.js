@@ -24,11 +24,9 @@ const getData = graphql`
       console.log(response.data.ip);
       const ipList = ["202.239.79.223" , "14.10.0.193"]
       if(ipList.includes(response.data.ip)){
-        console.log("リダイレクト")
       }
     } catch (error) {
       console.error(error);
-      console.log("エラー")
     }
 } */
 
@@ -68,7 +66,6 @@ const SEO = ({ title, description }) => {
             !(window.navigator.userAgent.toLowerCase().indexOf('MSIE') === -1 
             && window.navigator.userAgent.toLowerCase().indexOf('TRIDENT') === -1
             )){
-              console.log("is IE");
               window.location.href = "https://www.microsoft.com/ja-JP/edge";
             }
         }

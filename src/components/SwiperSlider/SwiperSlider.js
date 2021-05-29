@@ -47,15 +47,6 @@ const SwiperSlider = ({ images }) => {
 								//el: ".swiper-scrollbar"
 							}
 						}
-						onSwiper = { (swiper) => {
-							console.log(swiper)
-							} 
-						}
-						onSlideChange = { 
-							() => {
-								console.log('changed slides')
-							}
-						}
 					>
 					{
 						images && (
