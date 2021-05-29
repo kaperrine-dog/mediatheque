@@ -3,7 +3,8 @@ import {GatsbyImage} from "gatsby-plugin-image"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 //import Accordion from "/src/components/Accordion/Accordion";
 import PropTypes from "prop-types"
-import React from "react"
+import React, {useState} from "react"
+import {IoIosWarning} from "react-icons/io"
 import styled from "styled-components"
 import TagIconList from "../components/TagIconList/TagIconList.js"
 import Grid from "/src/components/Grid/Grid"
@@ -131,12 +132,26 @@ const StyledBlogImage = styled.div`
   }
 `
 
+const StyledPublishedDate = styled.div`
+  p{
+    margin: 1em 0;
+  }
+  .noticeAlert{
+    width: 100%;
+    background-color: #fff3cd;
+    color: #856404;
+    margin: 1em 0;
+    padding: 0.75em;
+  }
+`
+
 
 const Blog = ({ data, pageContext }) => {
   const {
     title,
     introduction,
     published,
+    updatedAt,
     images,
     content,
     tags,
@@ -159,6 +174,29 @@ const Blog = ({ data, pageContext }) => {
       },
     },
   }
+
+  
+  const timeCalc = ( published ) => {
+    let dateNow = new Date()
+    //ms * s * min * hour
+    const A_DAY_UNIXTIME = 1000 * 60 * 60 * 24
+    const A_YEAR_UNIXTIME = A_DAY_UNIXTIME * 365
+    let publishedDate = new Date(published)
+    let daysPublishedTillNow = (dateNow.getTime() - publishedDate.getTime()) / A_DAY_UNIXTIME
+    let yearsPublishedTillNow = Math.floor( daysPublishedTillNow / 365 )
+    return (yearsPublishedTillNow);
+  };
+
+  const [ timePasssed, setTimePassed ] = useState(
+    () => {
+      let publishedYearsTill = timeCalc(updatedAt);
+      return (( publishedYearsTill ) >= 1.0 ) ? 
+      true : false
+    }
+  ) 
+  const lastUpdate = timeCalc(updatedAt)
+  const lastPublishedTillNow = timeCalc(published)
+
   return (
     <>
       <Seo title={title} />
@@ -172,7 +210,29 @@ const Blog = ({ data, pageContext }) => {
                 >
                 {introduction}
               </h2>
-              <p>Published on - {published}</p>
+              <StyledPublishedDate>
+                { updatedAt ? (
+                  <>
+                    <p>
+                      この記事は{updatedAt}に更新されました。
+                    </p>
+                    { timePasssed && (
+                      <p className="noticeAlert">
+                        <IoIosWarning/>&nbsp;{`この記事は最終更新から${lastUpdate}年以上が経過しています。`}
+                      </p>
+                    )}
+                  </>
+                ): 
+                <>
+                  <p>この記事は{published}に公開されました。</p>
+                  { timePasssed && (
+                      <p className="noticeAlert">
+                        <IoIosWarning/>&nbsp;{`この記事は公開から${lastPublishedTillNow}年以上が経過しています。`}
+                      </p>
+                    )}
+                </>
+                }
+              </StyledPublishedDate>
           </StyledTitle>
           <StyledTags>
             <TagIconList
@@ -223,7 +283,8 @@ export const query = graphql`
     post: contentfulPosts(slug: { eq: $slug }) {
       title
       introduction
-      published(formatString: "Y年MM月DD日")
+      published(formatString: "Y-MM-DD")
+      updatedAt(formatString: "Y-MM-DD")
       images {
         fluid {
           ...GatsbyContentfulFluid
