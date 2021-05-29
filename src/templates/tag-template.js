@@ -3,7 +3,6 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
 import BlogCard from "/src/components/Blog/BlogCard.js"
-import BlogHeader from "/src/components/Blog/BlogHeader.js"
 import Grid from "/src/components/Grid/Grid.js"
 import PageIntro from "/src/components/PageIntro/PageIntro.js"
 import Seo from "/src/components/SEO.js"
@@ -105,18 +104,20 @@ const Tags = ( props )=> {
   const prevPage =
     currentPage - 1 === 1 ? `/tags/${data.tags.slug}` : `/tags/${data.tags.slug}/${currentPage - 1}`
   const nextPage = `/tags/${data.tags.slug}/${currentPage + 1}`
+
   return (
     <>
       <Seo title="Tags" />
-      <Spacer/>
-      <BlogHeader/>
+{/*       <Spacer/>
+      <BlogHeader/> */}
       <section className="section-padding">
         <Grid>
-
           <PageIntro
             title={`${data.tags.title}に関する記事の一覧`}
             subTitle=""
             paragraph=""
+            iconUrl={data.tags.image.file.url}
+            iconAlt={data.tags.image.file.fileName}
           />
           <StyledSection>
             <StyledFlexContainer>
@@ -196,6 +197,18 @@ export const query = graphql`
         tags{
           title
           slug
+          image{
+            file{
+              url
+              fileName
+            }
+          }
+        }
+      }
+      image{
+        file{
+          url
+          fileName
         }
       }
     }
