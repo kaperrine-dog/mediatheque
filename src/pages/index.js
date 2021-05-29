@@ -1,6 +1,6 @@
-import { graphql, useStaticQuery } from "gatsby"
+import {graphql, useStaticQuery} from "gatsby"
 import React from "react"
-import { Link } from "react-scroll"
+import {Link} from "react-scroll"
 import About from "/src/components/About/About"
 import Banner from "/src/components/Banner/Banner"
 import FeaturedWorks from "/src/components/FeaturedWorks/FeaturedWorks"
@@ -65,7 +65,7 @@ const Index = () => {
       <Hero>
         <Banner
           title={data.site.siteMetadata.title}
-          info={data.site.siteMetadata.description}
+          info={``}
         >
           <Link className="btn" to="about" smooth={true} duration={500}>
             Learn More
