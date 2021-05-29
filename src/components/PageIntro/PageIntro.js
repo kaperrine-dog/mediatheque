@@ -18,6 +18,10 @@ const Title = styled.h1`
     margin-bottom: 2.125rem;
     text-indent: 0.75em;
   }
+  img{
+    height: 1em;
+    margin: 0 1em 0 0;
+  }
 `
 
 const ContentArea = styled.div`
@@ -37,11 +41,16 @@ const ContentArea = styled.div`
   }
 `
 
-const PageIntro = ({ title, subTitle, paragraph }) => {
+const PageIntro = ({ title, subTitle, paragraph, iconUrl, iconAlt }) => {
   return (
     <>
       <TitleArea>
-        <Title>{title}</Title>
+        <Title>
+          { iconUrl &&
+            <img src={`${iconUrl}`} alt={`${iconAlt}`}/>
+          }
+          {title}
+        </Title>
       </TitleArea>
       { (subTitle && paragraph) && (
       <ContentArea>
