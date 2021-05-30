@@ -8,7 +8,16 @@ exports.createPages = async ({ graphql, actions }) => {
       works: allContentfulWorks {
         edges {
           node {
+            released(formatString: "Y年MM月DD日")
+            updatedAt(formatString: "Y年MM月DD日")
+            name
+            workId: contentful_id
             slug
+            introduction
+            url
+            description {
+              description
+            }
           }
         }
       }
@@ -63,16 +72,25 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-
-  data.works.edges.forEach(({ node }) => {
+  
+  const workPages = data.works.edges
+  data.works.edges.forEach(({ node }, index) => {
+    const prev = index === 0 ? null : workPages[index - 1].node
+    const next = index === workPages.length - 1 ? null : workPages[index + 1].node
     createPage({
       path: `works/${node.slug}`,
       component: path.resolve("./src/templates/work-template.js"),
       context: {
         slug: node.slug,
+        slug: node.slug,
+        title: node.title,
+        image: node.images,
+        prev,
+        next,
       },
     })
   })
+  
   //Amount of posts
   const posts = data.posts.edges
   // Posts per page
@@ -92,17 +110,6 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-/*   data.tags.edges.forEach(({ node }) => {
-    createPage({
-      path: `tags/${node.slug}`,
-      component: path.resolve("./src/templates/tag-template.js"),
-      context: {
-        id: node.id,
-        slug: node.slug,
-      },
-    })
-  }) */
-
   Array.from({ length: numPages }).forEach((_, i) => {
     data.tags.edges.forEach(({ node }) => {
       createPage({
@@ -120,16 +127,25 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-/*   data.tags.edges.forEach(({ node }) => {
 
-      //Amount of posts
-      const posts = node.posts
-      // Posts per page
-      const postsPerPage = 6
-      // How many pages
-      const numPages = Math.ceil(posts.length / postsPerPage)
-    
-  }) */
+  //Amount of posts
+  const works = data.works.edges
+  // Posts per page
+  const worksPerPage = 9
+  // How many pages
+  const numWorksPages = Math.ceil(works.length / worksPerPage)
+  Array.from({ length: numWorksPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/works` : `/works/${i + 1}`,
+      component: path.resolve("./src/templates/work-list-template.js"),
+      context: {
+        limit: worksPerPage,
+        skip: i * worksPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
 }
 
 
