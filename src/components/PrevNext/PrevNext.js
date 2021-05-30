@@ -8,6 +8,12 @@ const StyledCardsContainer = styled.div`
   @media(min-width:769px){
     flex-direction: row;
   }
+  .prev{
+    margin-right: auto;
+  }
+  .next{
+    margin-left: auto;
+  }
 `
 const StyledCards = styled.div`
   width: 100%;
@@ -92,11 +98,10 @@ const PrevNext = ({ prev, next },index) => {
   return(
     <StyledCardsContainer>
       <>
-        <StyledCards
-        className = "prev glass-morphizm"
-        >
         { prev !== null && (
-          <>
+          <StyledCards
+          className = "prev glass-morphizm"
+          >
             <div className="header">
               <span className="stickArrowPrev"></span>
               <div className="textPrev">
@@ -119,16 +124,14 @@ const PrevNext = ({ prev, next },index) => {
                 alt="Placeholder"
               />
             </AniLink>
-          </>
+          </StyledCards>
         ) }
-        </StyledCards>
 
-        <StyledCards
-          className="next glass-morphizm"
-        >
           {
             next !== null && (
-              <>
+              <StyledCards
+                className="next glass-morphizm"
+              >
                 <div className="header">
                   <div className="textNext">
                     { next ? ( `次の記事` ) : (`前の記事`) }
@@ -151,10 +154,9 @@ const PrevNext = ({ prev, next },index) => {
                   />
                   <h4>{ `${next.title}` }</h4>
                 </AniLink>
-              </>
+              </StyledCards>
             )
           }
-        </StyledCards>
       </>
     </StyledCardsContainer>
   )
