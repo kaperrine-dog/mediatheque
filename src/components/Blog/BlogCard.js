@@ -6,6 +6,7 @@ import styled from "styled-components"
 
 const StyledBlogItem = styled.article`
   width: 100%;
+  min-height: 500px;
   margin: auto auto;
   padding: 40px 35px;
   position: relative;
@@ -80,7 +81,6 @@ const StyledBlogItemContent = styled.div`
   //background-color: var(--blogPanelBG);
   //border-top: 3px solid var(--primary);
   padding: 1.5rem 0.5em 0;
-  min-height: 15rem;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -112,6 +112,7 @@ const StyledBlogIntro = styled.p`
   width: 100%;
   text-overflow: ellipsis;
   display: -webkit-box;
+  min-height: 7em;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;  
   overflow: hidden;
@@ -122,6 +123,12 @@ const StyledTags = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  .tagLink{
+    margin: 0 10px;
+    .tagIcon{
+      height: 25px;
+    }
+  }
 `
 
 const BlogCard = ({ blog }) => {
@@ -148,7 +155,6 @@ const BlogCard = ({ blog }) => {
         </AniLink>
         <AniLink
           className="linkOnAImage"
-          cover
           direction="up"
           //swipe
           //entryOffset={100}
@@ -166,15 +172,21 @@ const BlogCard = ({ blog }) => {
               {introduction}
           </StyledBlogIntro>
           <StyledTags>
-            { tags && tags.map(({ title, slug } , index) => {
+            { tags && tags.map(({ title, slug, image } , index) => {
+              console.log(title)
+              console.log(image)
               return(
                   <AniLink
-                    className='navLink btnSmall' 
+                    className='navLink tagLink' 
                     cover
                     bg="var(--background)"
                     to={`/tags/${slug}`}
                   >
-                    {title}
+                    <img
+                      className="tagIcon"
+                      src={image.file.url}
+                      alt={image.title}
+                    />
                   </AniLink>
               )
             })}

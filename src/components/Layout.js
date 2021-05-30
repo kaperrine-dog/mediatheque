@@ -557,6 +557,8 @@ a.btn,button.btn {
       letter-spacing: var(--textLetterSpacingLv1);
     }
   }
+  
+
   //contentful childMarkdownRemark.html styles
   .contentArticle{
     pre{
