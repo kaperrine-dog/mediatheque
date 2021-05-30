@@ -1,10 +1,11 @@
 import React from "react"
+import {Pagination} from "swiper"
 import Grid from "/src/components/Grid/Grid"
 import PageIntro from "/src/components/PageIntro/PageIntro"
 import Seo from "/src/components/SEO"
-import Works from "/src/components/Works/Works"
+import WorksList from "/src/components/Works/Works"
 
-const works = () => {
+const works = (pageContext) => {
   return (
     <>
       <Seo title="Works" />
@@ -15,7 +16,7 @@ const works = () => {
             subTitle=""
             paragraph=""
           />
-          <Works />
+          <WorksList />
         </Grid>
       </section>
     </>
