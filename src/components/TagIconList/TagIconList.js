@@ -30,7 +30,7 @@ const StyledIconList = styled.div`
           align-items: center;
           justify-content: center;
           width: 40px;
-          img{
+          .tagIcon{
             height: 100%;
             width: 100%;
             object-fit: contain;
@@ -61,6 +61,7 @@ const TagIconList = ({tags}) => {
               <div className="tagsList">
                 <div className="imageFrame">
                   <img
+                    className="tagIcon"
                     src={tag.image.file.url}
                   />
                 </div>
