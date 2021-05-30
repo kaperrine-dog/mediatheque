@@ -4,10 +4,14 @@ import WorkList from "./WorkList"
 
 const getWorks = graphql`
   query {
-    works: allContentfulWorks
-    (filter: {node_locale: {eq: "ja-JP"}}) {
+    works: allContentfulWorks(
+      filter: {node_locale: {eq: "ja-JP"}}
+      sort: { fields: released, order: DESC }
+    ) {
       edges {
         node {
+          released
+          updatedAt
           name
           workId: contentful_id
           slug
@@ -25,9 +29,9 @@ const getWorks = graphql`
   }
 `
 
-const Works = () => {
+const WorksList = () => {
   const { works } = useStaticQuery(getWorks)
   return <WorkList works={works} />
 }
 
-export default Works
+export default WorksList
