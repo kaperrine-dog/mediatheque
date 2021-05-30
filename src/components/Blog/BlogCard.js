@@ -173,8 +173,6 @@ const BlogCard = ({ blog }) => {
           </StyledBlogIntro>
           <StyledTags>
             { tags && tags.map(({ title, slug, image } , index) => {
-              console.log(title)
-              console.log(image)
               return(
                   <AniLink
                     className='navLink tagLink' 
