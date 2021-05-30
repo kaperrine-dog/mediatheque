@@ -87,6 +87,13 @@ const getPosts = graphql`
           tags{
             title
             slug
+            image{
+              title
+              file{
+                url
+                fileName
+              }
+            }
           }
         }
       }

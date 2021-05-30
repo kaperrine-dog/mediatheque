@@ -162,6 +162,7 @@ export const query = graphql`
             title
             slug
             image{
+              title
               file{
                 url
                 fileName
