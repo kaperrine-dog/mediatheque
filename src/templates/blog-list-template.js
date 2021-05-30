@@ -129,10 +129,12 @@ const Blog = props => {
               })}
             </StyledFlexContainer>
           </StyledSection>
-          <Pagination
-            pageContext = {props.pageContext}
-            basePath = {props.path}
-          />
+          { typeof window !== `undefined` &&
+            <Pagination
+              pageContext = {props.pageContext}
+              basePath = {props.path}
+            />
+          }
         </Grid>
       </section>
     </>

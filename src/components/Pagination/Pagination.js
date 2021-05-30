@@ -31,11 +31,12 @@ const StyledPagination = styled.div`
 
 
 const Pagination = ({ pageContext, basePath }) => {
-
+  
   const { 
     currentPage,
     numPages
   } = pageContext
+
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
 

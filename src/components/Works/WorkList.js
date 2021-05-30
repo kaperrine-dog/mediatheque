@@ -13,10 +13,12 @@ const WorkList = ( {works, pageContext, basePath}) => {
               work={node} />
               )
         })}
-      <Pagination
-        pageContext = {pageContext}
-        basePath = {basePath}
-      />
+        { typeof window !== `undefined` &&
+          <Pagination
+            pageContext = {pageContext}
+            basePath = {basePath}
+          />
+        }
     </>
   )
 }
