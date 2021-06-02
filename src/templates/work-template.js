@@ -53,7 +53,6 @@ const ContentArea = styled.div`
   }
   h1 {
     margin-top: 0;
-    text-transform: capitalize;
   }
   p {
     margin-bottom: 40px;
@@ -76,7 +75,6 @@ const StyledHeader = styled.div`
   }
   h1 {
     margin-top: 0;
-    text-transform: capitalize;
   }
   p {
     margin-bottom: 40px;
@@ -111,9 +109,10 @@ const workTemplate = ({ data }) => {
   const linkToOtherSites = (e) => {
     e.preventDefault()
     deleteAllCookies()
-    window.location.href = `http://${url}/`
+    window.location.href = `${url}`
   }
   const [ bannerImage, ...mainImages ] = images
+
   const [ ...subImages ] = narrowImages
   const contentHtml = description.childMarkdownRemark.html
   return <>
@@ -127,7 +126,7 @@ const workTemplate = ({ data }) => {
               onClick ={ linkToOtherSites }
               className = "btnEmbed"
               >
-                {  `https://www.${url}/` }
+                {  `${url}` }
             </StyledURL>
             }
             { introduction && 
@@ -164,16 +163,18 @@ const workTemplate = ({ data }) => {
             >
             Jump to the Site
           </button> 
-          <StyledImageGallery>
-            <Accordion
-              title = {'PC画面キャプチャ'}
-              state = {false}
-            >
-              <SwiperSlider
-                images = { mainImages }
-                />
-            </Accordion>
-          </StyledImageGallery>
+          { mainImages && (
+            <StyledImageGallery>
+              <Accordion
+                title = {'PC画面キャプチャ'}
+                state = {false}
+              >
+                <SwiperSlider
+                  images = { mainImages }
+                  />
+              </Accordion>
+            </StyledImageGallery>
+          )}
         </ContentArea>
       </Grid>
     </section>
