@@ -189,7 +189,6 @@ a.btn,button.btn {
     text-decoration: none;
     padding: 0;
     transition: var(--transition) color;
-    text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
     position: relative;
@@ -235,7 +234,7 @@ a.btn,button.btn {
         bottom: 10px;
         background-color: var(--primary);
         margin: 0 auto;
-        width: 70%;
+        width: 55%;
         transition: all 0.5s;
       }
     }
@@ -248,7 +247,6 @@ a.btn,button.btn {
     text-decoration: none;
     padding: 0;
     transition: var(--transition) color;
-    text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
     letter-spacing: var(--textLetterSpacingLv2);
@@ -351,7 +349,6 @@ a.btn,button.btn {
     text-decoration: none;
     padding: 0;
     transition: var(--transition) color;
-    text-transform: capitalize;
     font-size: var(--menuItem);
     font-weight: 900;
     letter-spacing: var(--textLetterSpacingLv2);
