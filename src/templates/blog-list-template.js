@@ -132,7 +132,8 @@ const Blog = props => {
           { typeof window !== `undefined` &&
             <Pagination
               pageContext = {props.pageContext}
-              basePath = {props.path}
+              basePath = {props.pageContext.basePath}
+              numPages = {props.pageContext.numPostPages}
             />
           }
         </Grid>
@@ -162,7 +163,6 @@ export const query = graphql`
             title
             slug
             image{
-              title
               file{
                 url
                 fileName
