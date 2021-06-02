@@ -2,7 +2,7 @@ import React from "react"
 import Pagination from "../Pagination/Pagination.js"
 import Work from "./Work"
 
-const WorkList = ( {works, pageContext, basePath}) => {
+const WorkList = ( {works, pageContext}) => {
   
   return (
     <>
@@ -16,7 +16,8 @@ const WorkList = ( {works, pageContext, basePath}) => {
         { typeof window !== `undefined` &&
           <Pagination
             pageContext = {pageContext}
-            basePath = {basePath}
+            basePath = {pageContext.basePath}
+            numPages = {pageContext.numWorksPages}
           />
         }
     </>
