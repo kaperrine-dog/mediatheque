@@ -1,12 +1,12 @@
 import {graphql} from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+//import AniLink from "gatsby-plugin-transition-link/AniLink"
 import React from "react"
 import styled from "styled-components"
 import BlogCard from "/src/components/Blog/BlogCard.js"
 import Grid from "/src/components/Grid/Grid.js"
 import PageIntro from "/src/components/PageIntro/PageIntro.js"
+import Pagination from "/src/components/Pagination/Pagination.js"
 import Seo from "/src/components/SEO.js"
-
 
 const StyledSection = styled.section`
   grid-column: 1 / 1;
@@ -94,10 +94,10 @@ const Spacer = styled.div`
 
 
 const Tags = ( props )=> {
-  const { currentPage, numPages } = props.pageContext
+  const { currentPage, numTagPages } = props.pageContext
 
   const isFirst = currentPage === 1
-  const isLast = currentPage === numPages
+  const isLast = currentPage === numTagPages
   //const { slug, posts } = data.tags
   const { data } = props
   const blogPosts = data.tags.posts
@@ -136,42 +136,13 @@ const Tags = ( props )=> {
               })}
             </StyledFlexContainer>
           </StyledSection>
-          <StyledPagination>
-            {!isFirst && (
-              <AniLink
-                className="btnEmbed"
-                cover
-                bg="var(--background)"
-                to={prevPage}
-              >
-                Prev
-              </AniLink>
-            )}
-
-            {Array.from({ length: numPages }, (_, i) => {
-              return (
-                <AniLink
-                  key={i}
-                  cover
-                  bg="var(--background)"
-                  to={`/tags/${data.tags.slug}/${i === 0 ? "" : i + 1}`}
-                  className={i + 1 === currentPage ? "btn btn-active" : "btnEmbed"}
-                >
-                  {i + 1}
-                </AniLink>
-              )
-            })}
-            {!isLast && (
-              <AniLink
-                className="btnEmbed"
-                cover
-                bg="var(--background)"
-                to={nextPage}
-              >
-                Next
-              </AniLink>
-            )}
-          </StyledPagination>
+          { typeof window !== `undefined` &&
+            <Pagination
+              pageContext = {props.pageContext}
+              basePath = {props.pageContext.basePath}
+              numPages = {props.pageContext.numTagPages}
+            />
+          }
         </Grid>
       </section>
     </>
