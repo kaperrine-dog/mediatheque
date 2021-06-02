@@ -30,16 +30,15 @@ const StyledPagination = styled.div`
 `
 
 
-const Pagination = ({ pageContext, basePath }) => {
+const Pagination = ({ pageContext, basePath, numPages }) => {
   
   const { 
     currentPage,
-    numPages
   } = pageContext
 
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-
+  console.log(numPages)
   const prevPage =
   currentPage - 1 === 1 ? `${basePath}` : `${basePath}/${currentPage - 1}`
   const nextPage = `${basePath}/${currentPage + 1}`
@@ -50,7 +49,7 @@ const Pagination = ({ pageContext, basePath }) => {
       {!isFirst && (
         <AniLink
           cover
-          className="btnEmbed"
+          className="btn"
           bg="var(--background)"
           to={prevPage}
         >
@@ -66,7 +65,7 @@ const Pagination = ({ pageContext, basePath }) => {
               key={i}
               bg="var(--background)"
               to={`${basePath}/${i === 0 ? "" : i + 1}`}
-              className={i + 1 === currentPage ? "btn btn-active" : "btnEmbed"}
+              className={i + 1 === currentPage ? "btn btn-active" : "btn"}
             >
               {i + 1}
             </AniLink>
@@ -75,7 +74,7 @@ const Pagination = ({ pageContext, basePath }) => {
       })}
       {!isLast && (
         <AniLink
-          className="btnEmbed"
+          className="btn"
           cover
           bg="var(--background)"
           to={nextPage}
