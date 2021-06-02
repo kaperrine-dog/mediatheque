@@ -37,6 +37,7 @@ export const query = graphql`
 
 const Works = ( props ) => {
   const { data } = props
+
   return (
     <>
       <Seo title="Works" />
@@ -50,7 +51,6 @@ const Works = ( props ) => {
           <WorkList 
             works={data.works}
             pageContext = { props.pageContext }
-            basePath = { props.path }
           />
           {/* <Works /> */}
         </Grid>
