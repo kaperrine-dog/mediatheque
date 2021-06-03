@@ -42,12 +42,12 @@ const Works = ( props ) => {
     <>
       <Seo title="Works" />
       <section className="section-padding">
+        <PageIntro
+          title="All of my Works"
+          subTitle=""
+          paragraph=""
+        />
         <Grid>
-          <PageIntro
-            title="All of my Works"
-            subTitle=""
-            paragraph=""
-          />
           <WorkList 
             works={data.works}
             pageContext = { props.pageContext }
