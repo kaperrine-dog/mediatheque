@@ -9,11 +9,15 @@ import Work from "../Works/Work"
 const getWorks = graphql`
   query {
     featuredWorks: allContentfulWorks(
+      limit: 3
+      sort: { fields: released, order: DESC }
       filter: { featured: { eq: true } }
     ) {
       edges {
         node {
           name
+          released
+          updatedAt
           introduction
           workId: contentful_id
           slug
