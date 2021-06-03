@@ -22,7 +22,7 @@ const StyledWorkItem = styled.article`
                 20px -20px 40px var(--neumorphizmLight);
   
   @media (min-width: 769px){
-    margin: auto;
+    margin: auto 0;
     max-width: 350px;
     min-height: 510px;
   }

@@ -11,14 +11,19 @@ import Seo from "/src/components/SEO.js"
 const StyledSection = styled.section`
   grid-column: 1 / 1;
   @media (min-width: 769px){
-    grid-column: 1 / 4;
+    grid-column: 1 / 2;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  @media (min-width: 1000px){
+    grid-column: 1 / 2;
     margin-left: -20px;
     margin-right: -20px;
   }
 `
 const StyledFlexContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  //display: flex;
+  //flex-wrap: wrap;
   .blogCardEven{
   }
   .blogCardOdd{
@@ -53,30 +58,6 @@ const StyledFlexItem = styled.div`
   }
 `
 
-const StyledPagination = styled.div`
-  grid-column: 1 / 4;
-  text-align: right;
-
-  .btn {
-    margin-right: 20px;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &.btn-active {
-      color: var(--primary);
-
-      &:after {
-        display: none;
-      }
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-`
 
 const Spacer = styled.div`
   height: 30px;
@@ -106,29 +87,31 @@ const Blog = props => {
 {/*       <Spacer/>
       <BlogHeader/> */}
       <section className="section-padding">
+        <PageIntro
+          title="Blog"
+          subTitle=""
+          paragraph=""
+        />
         <Grid>
-          <PageIntro
-            title="Blog"
-            subTitle=""
-            paragraph=""
-          />
-          <StyledSection>
+          { data.post.edges ? data.post.edges.map(({ node }, index ) => {
+            return (
+              <BlogCard 
+                  key={node.postId}
+                  blog={node}
+                  />
+                  )
+                  
+                })
+            : <p>投稿がありません。</p>
+            }
+{/*           <StyledSection>
             <StyledFlexContainer>
-              {data.post.edges.map(({ node }, index ) => {
-                return (
-                  <StyledFlexItem
-                    className={ index % 3 === 0 ? "FlexItem blogCard3n" : "FlexItem blogCard" }
-                  >
-                    <BlogCard 
-                      key={node.postId}
-                      blog={node}
-                    />
-                  </StyledFlexItem>
-                )
-                
-              })}
+              <StyledFlexItem
+                className={ index % 3 === 0 ? "FlexItem blogCard3n" : "FlexItem blogCard" }
+                >
+              </StyledFlexItem>
             </StyledFlexContainer>
-          </StyledSection>
+          </StyledSection> */}
           { typeof window !== `undefined` &&
             <Pagination
               pageContext = {props.pageContext}
