@@ -5,12 +5,29 @@ import styled from "styled-components";
 
 
 const StyledPagination = styled.div`
-  grid-column: 1 / 4;
-  text-align: right;
+  grid-column: 1 / 1 ;
+  display: flex;
+  justify-content: center;
+  @media(min-width: 769px){
+    grid-column: 1 / 3 ;
+    justify-content: center;
+  }
+  @media(min-width: 1000px){
+    grid-column: 1 / 4 ;
+    justify-content: flex-end;
+  }
+  @media(min-width: 1400px){
+    grid-column: 1 / 4;
+    justify-content: flex-end;
+  }
 
-  .btn {
-    margin-right: 20px;
-
+  .btnSmall {
+    margin: 0 5px 0;
+    @media(min-width: 1000px){
+      margin-right: 5px;
+      font-size: var(--btnSmallFontSize);
+    }
+    border-radius: 15px;
     &:hover {
       cursor: pointer;
     }
@@ -24,7 +41,9 @@ const StyledPagination = styled.div`
     }
 
     &:last-child {
-      margin-right: 0;
+      @media(min-width: 1000px){
+        margin-right: 0;
+      }
     }
   }
 `
@@ -49,7 +68,7 @@ const Pagination = ({ pageContext, basePath, numPages }) => {
       {!isFirst && (
         <AniLink
           cover
-          className="btn"
+          className="btnSmall"
           bg="var(--background)"
           to={prevPage}
         >
@@ -65,7 +84,7 @@ const Pagination = ({ pageContext, basePath, numPages }) => {
               key={i}
               bg="var(--background)"
               to={`${basePath}/${i === 0 ? "" : i + 1}`}
-              className={i + 1 === currentPage ? "btn btn-active" : "btn"}
+              className={i + 1 === currentPage ? "btnSmall btn-active" : "btnSmall"}
             >
               {i + 1}
             </AniLink>
@@ -74,7 +93,7 @@ const Pagination = ({ pageContext, basePath, numPages }) => {
       })}
       {!isLast && (
         <AniLink
-          className="btn"
+          className="btnSmall"
           cover
           bg="var(--background)"
           to={nextPage}
