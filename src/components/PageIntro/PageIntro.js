@@ -12,10 +12,9 @@ const TitleArea = styled.div`
 `
 
 const Title = styled.h1`
-  margin: 0;
+  margin: 0 0 2.125rem;
+  text-indent: 0.5em;
   @media (min-width: 769px){
-    margin: 0 0 2.125rem;
-    text-indent: 0.75em;
   }
   img{
     height: 1em;
