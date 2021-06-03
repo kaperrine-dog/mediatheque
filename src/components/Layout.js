@@ -33,6 +33,8 @@ const GlobalStyle = createGlobalStyle`
   --marginSmall: 20px;
   --marginStd: 40px;
   --marginLarge: 60px;
+  --btnSmallFontSize:14px;
+  --tagBtnFontSize: 12px;
 
   @media(min-width:768px) {
     --h1: 1.75rem;
@@ -51,6 +53,7 @@ const GlobalStyle = createGlobalStyle`
     --paddingBorder: 3.875rem;
     --paddingLarge: 9.375rem;
     --heroH1: 10vw;
+    --btnSmallFontSize:16px;
   }
   @media(min-width: 1400px){
     --heroH1: 140px;
@@ -234,7 +237,7 @@ a.btn,button.btn {
         bottom: 10px;
         background-color: var(--primary);
         margin: 0 auto;
-        width: 55%;
+        width: 70%;
         transition: all 0.5s;
       }
     }
@@ -393,7 +396,6 @@ a.btn,button.btn {
     position: relative;
     padding: 0.5em 1.25em 0.75em;
     margin: 0em 0.5em 1em;
-    height: 2.25em;
     align-self: flex-start;
     display: flex;
     align-items: center;
@@ -439,7 +441,7 @@ a.btn,button.btn {
         bottom: 4px;
         background-color: var(--primary);
         margin: 0 auto;
-        width: 70%;
+        width: 60%;
         transition: all 0.5s;
       }
     }
