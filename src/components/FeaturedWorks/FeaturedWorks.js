@@ -34,7 +34,7 @@ const getWorks = graphql`
 `
 const TitleArea = styled.div`
     grid-column: 1 / 1;
-    grid-row: 2 / 3;
+    grid-row: 4 / 5;
     max-width: 500px;
     margin: auto;
   @media (min-width: 769px) {
