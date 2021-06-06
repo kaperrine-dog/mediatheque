@@ -115,7 +115,7 @@ const HeroTitleInverted = styled.div`
   letter-spacing: 0.025em;
   font-weight: 900;
   color: var(--background);
-  -webkit-text-stroke: 1px var(--textColor);
+  //-webkit-text-stroke: 1px var(--textColor);
   text-shadow:0px 0px 0.25rem var(--titleTextShadow), -0px -0px 0.25rem var(--titleTextShadow),
               -0px 0px 0.25rem var(--titleTextShadow), 0px -0px 0.25rem var(--titleTextShadow),
               0px 0px 0.25rem var(--titleTextShadow),  0 -0px 0.25rem var(--titleTextShadow),
