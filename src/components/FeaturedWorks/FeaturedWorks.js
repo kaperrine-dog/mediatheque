@@ -54,30 +54,6 @@ const Title = styled.h2`
   margin-bottom: 2.125rem;
 `
 
-const FlexContainer = styled.div`
-  //grid-column: 1/4;
-  @media (min-width: 769px) {
-    margin-left: -20px;
-    margin-right: -20px;
-    grid-column: 2 / 4;
-    display: flex;
-    justify-content: space-between;
-
-    p {
-      margin-top: 0;
-    }
-  }
-`
-
-const FlexItem = styled.div`
-  flex: 0 0 50%;
-  margin-bottom: 40px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`
-
 const Section = styled.section`
   background: var(--parallaxBG);
 `

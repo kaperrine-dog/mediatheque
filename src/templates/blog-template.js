@@ -159,21 +159,7 @@ const Blog = ({ data, pageContext }) => {
 
   const [mainImage, ...blogImages] = images
   const contentHtml = content.childMarkdownRemark.html
-  const options = {
-    renderNode: {
-      "embedded-asset-block": node => {
-        return (
-          <div>
-            <img
-              width="100%"
-              src={node.data.target.fields.file["ja-JP"].url}
-              alt="Placeholder"
-            />
-          </div>
-        )
-      },
-    },
-  }
+
 
   
   const timeCalc = ( published ) => {

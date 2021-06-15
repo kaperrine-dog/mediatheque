@@ -222,6 +222,7 @@ const Footer = () => {
             <AniLink cover bg="var(--headerBG)" to="/">
               <img
                 src={Logo}
+                alt={`site logo`}
                 />
               <span>
                 { siteMetadata.title }
@@ -296,7 +297,7 @@ const Footer = () => {
           <Copyright>
             Copyright &copy; {new Date().getFullYear()}{" "}
             <a
-              href=""
+              href="/"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -1,18 +1,7 @@
-import {graphql, useStaticQuery} from "gatsby"
-import {getImage} from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 import Network from "../Network/Network.js"
 
-const getImages = graphql`
-  query HeroImage {
-    fluid: file(relativePath: { eq: "deepsea01.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-      }
-    }
-  }
-`
 
 const HeroContainer = styled.div`
 
@@ -136,9 +125,7 @@ const HeroSubTitle = styled.h2`
 `
 
 const Banner = ({ title, info, children }) => {
-  const data = useStaticQuery(getImages)
 
-  const image = getImage(data.fluid.childImageSharp.gatsbyImageData)
   return (
     <section className="section-padding">
       <HeroContainer className="container">
@@ -153,7 +140,6 @@ const Banner = ({ title, info, children }) => {
              randomRangeMin = {-34}
              randomRangeMax = {14}
             />
-{/*             <GatsbyImage image={image} alt="hero image" /> */}
           </HeroImage>
           <ContentArea>
             <HeroSubTitle>{info}</HeroSubTitle>
