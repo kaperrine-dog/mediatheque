@@ -103,7 +103,7 @@ module.exports = {
         // Setting this parameter is also optional
         respectDNT: true,
         // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0,
+        pageTransitionDelay: 200,
         // Defers execution of google analytics script after page load
         defer: false,
         // Any additional optional fields

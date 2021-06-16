@@ -78,38 +78,17 @@ const StyledPagination = styled.div`
   }
 `
 
-const Spacer = styled.div`
-  height: 30px;
-  @media (min-width: 769px) {
-    height: 115px;
-  }
-  @media (min-width: 1000px) {
-    height: 115px;
-  }
-  @media (min-width: 1200px) {
-    height: 100px;
-  }
-`
-
-
 
 const Tags = ( props )=> {
-  const { currentPage, numTagPages } = props.pageContext
 
-  const isFirst = currentPage === 1
-  const isLast = currentPage === numTagPages
   //const { slug, posts } = data.tags
   const { data } = props
   const blogPosts = data.tags.posts
-  const prevPage =
-    currentPage - 1 === 1 ? `/tags/${data.tags.slug}` : `/tags/${data.tags.slug}/${currentPage - 1}`
-  const nextPage = `/tags/${data.tags.slug}/${currentPage + 1}`
-
+  
+  
   return (
     <>
       <Seo title="Tags" />
-{/*       <Spacer/>
-      <BlogHeader/> */}
       <section className="section-padding">
         <Grid>
           <PageIntro
