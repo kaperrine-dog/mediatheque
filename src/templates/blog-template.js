@@ -166,7 +166,7 @@ const Blog = ({ data, pageContext }) => {
     let dateNow = new Date()
     //ms * s * min * hour
     const A_DAY_UNIXTIME = 1000 * 60 * 60 * 24
-    const A_YEAR_UNIXTIME = A_DAY_UNIXTIME * 365
+    //const A_YEAR_UNIXTIME = A_DAY_UNIXTIME * 365
     let publishedDate = new Date(published)
     let daysPublishedTillNow = (dateNow.getTime() - publishedDate.getTime()) / A_DAY_UNIXTIME
     let yearsPublishedTillNow = Math.floor( daysPublishedTillNow / 365 )

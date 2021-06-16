@@ -53,30 +53,6 @@ const StyledFlexItem = styled.div`
   }
 `
 
-const StyledPagination = styled.div`
-  grid-column: 1 / 4;
-  text-align: right;
-
-  .btn {
-    margin-right: 20px;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &.btn-active {
-      color: var(--primary);
-
-      &:after {
-        display: none;
-      }
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-`
 
 
 const Tags = ( props )=> {

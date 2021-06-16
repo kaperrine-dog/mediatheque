@@ -555,6 +555,7 @@ const Navbar = () => {
             <AniLink cover bg="var(--headerBG)" to="/">
               <img
                 src={Logo}
+                alt={`site main Logo`}
                 />
               <span>
                 { siteMetadata.title }

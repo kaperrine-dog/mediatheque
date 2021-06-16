@@ -51,9 +51,7 @@ const StyledSelfIntroHeader = styled.div`
   }
 `
 
-const StyledRightContent = styled.div`
-  
-`
+
 
 const SelfIntroduction = () => {
 

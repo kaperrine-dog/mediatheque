@@ -63,6 +63,7 @@ const TagIconList = ({tags}) => {
                   <img
                     className="tagIcon"
                     src={tag.image.file.url}
+                    alt={tag.title}
                   />
                 </div>
                 <span>
