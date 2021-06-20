@@ -44,6 +44,7 @@ const SEO = ({ title, description }) => {
     <Helmet htmlAttribute={{ lang: "en" }} title={`${title} | ${siteTitle}`}>
       <meta name="description" content={description || siteDesc} />
       <meta name="image" content={image} />
+      <meta name="referrer" content="no-referrer">
       {/* Facebook Card */}
       <meta property="og:url" content={siteUrl} />
       <meta property="og:type" content="website" />
