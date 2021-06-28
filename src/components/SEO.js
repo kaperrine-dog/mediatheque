@@ -17,19 +17,6 @@ const getData = graphql`
   }
 `
 
-/* async function getIpClient() {
-    try {
-      const response = await axios.get('https://api.ipify.org?format=json');
-      console.log(response);
-      console.log(response.data.ip);
-      const ipList = ["202.239.79.223" , "14.10.0.193"]
-      if(ipList.includes(response.data.ip)){
-      }
-    } catch (error) {
-      console.error(error);
-    }
-} */
-
 const SEO = ({ title, description }) => {
   const { site } = useStaticQuery(getData)
 
