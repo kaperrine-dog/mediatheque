@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  node:
+    container_name: ${CONTAINER_NAME:-project}_node
+    build:
+      context: ./docker
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./app:/home/node/app
+    ports:
+      - ${NODE_LOCALPORT8000:-8000}:8000
+      - ${NODE_LOCALPORT3000:-3000}:3000
+    stdin_open: true
+    tty: true

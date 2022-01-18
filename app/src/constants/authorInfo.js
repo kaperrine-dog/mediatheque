@@ -2,7 +2,7 @@ export default
   {
     author: `wangchang`,
     introduction:
-      `フロントエンドとサーバー構築やってます。\n 最近はReactとJavaScriptが好きです。\n Pythonとかもやったりします。よろしくお願いします。`,
+      `フロント〜バックエンド〜サーバー構築までをやっています。\n 最近はTypeScriptが好きです。\n たまにPythonもやったりします。よろしくお願いします。`,
     image: `/src/images/ago.jpg`,
     github: {
       grass: `https://grass-graph.moshimo.works/images/kaperrine-dog.png`

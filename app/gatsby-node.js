@@ -4,56 +4,56 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const { data } = await graphql(`
-    query {
-      works: allContentfulWorks {
-        edges {
-          node {
-            released(formatString: "Y年MM月DD日")
-            updatedAt(formatString: "Y年MM月DD日")
-            name
-            workId: contentful_id
-            slug
-            introduction
-            url
-            description {
-              description
-            }
-          }
-        }
-      }
-      posts: allContentfulPosts {
-        edges {
-          node {
-            slug
-            title
-            postId: contentful_id
-            introduction
-            published(formatString: "Y年MM月DD日")
-            images {
-              file {
-                url
-                fileName
-              }
-              title
-              spaceId
-              node_locale
-              id
-            }
-          }
-        }
-      }
-      tags: allContentfulTags {
-        edges {
-          node {
-            slug
-            posts{
-              slug
-            }
+  query {
+    works: allContentfulWorks {
+      edges {
+        node {
+          released(formatString: "Y年MM月DD日")
+          updatedAt(formatString: "Y年MM月DD日")
+          name
+          workId: contentful_id
+          slug
+          introduction
+          url
+          description {
+            description
           }
         }
       }
     }
-  `)
+    posts: allContentfulPosts {
+      edges {
+        node {
+          slug
+          title
+          postId: contentful_id
+          introduction
+          published(formatString: "Y年MM月DD日")
+          images {
+            file {
+              url
+              fileName
+            }
+            title
+            spaceId
+            node_locale
+            id
+          }
+        }
+      }
+    }
+    tags: allContentfulTags {
+      edges {
+        node {
+          slug
+          posts{
+            slug
+          }
+        }
+      }
+    }
+  }
+`)
 
   const postPages = data.posts.edges
   data.posts.edges.forEach(({ node }, index ) => {
@@ -112,6 +112,9 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   
   data.tags.edges.forEach(({ node }) => {
+    if ( node.posts ){
+      return
+    }
     const tagPosts = node.posts
     const numTagPages = Math.ceil(tagPosts.length / postsPerPage)
     Array.from({ length: numTagPages }).forEach((_, i) => {

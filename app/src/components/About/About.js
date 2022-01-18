@@ -41,7 +41,7 @@ const About = ({ largePadding, id }) => {
       <Grid>
         <TitleArea>
           <Title>
-            
+            
           </Title>
           <Link className="btn" to="works" smooth={true} duration={500}>
             View Works
