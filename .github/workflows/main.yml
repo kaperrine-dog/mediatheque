@@ -34,6 +34,7 @@ jobs:
 
       - name: install
         run: yarn install
+        working-directory: ./app
 
       - name: build
         env: 
@@ -47,9 +48,11 @@ jobs:
           GATSBY_RECAPTCHA_SITE_KEY_VISIBLE: ${{secrets.GATSBY_RECAPTCHA_SITE_KEY_VISIBLE}}
           GATSBY_RECAPTCHA_SECRET_KEY_VISIBLE: ${{secrets.GATSBY_RECAPTCHA_SECRET_KEY_VISIBLE}}
         run: yarn build
+        working-directory: ./app
 
       - name: Upload files
         env: 
           S3_CONTENTS_BUCKET: ${{ secrets.S3_CONTENTS_BUCKET }}
         run: |
           aws s3 sync ./public s3://$S3_CONTENTS_BUCKET/ --quiet
+        working-directory: ./app
