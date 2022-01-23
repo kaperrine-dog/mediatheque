@@ -48,24 +48,6 @@ const SEO = ({ title, description }) => {
       <meta name="twitter:description" content={siteDesc} />
       <meta name="twitter:image" content={`${siteUrl}${image}`} />
       <meta name="robots" content="noindex"/>
-      <script>
-        {`
-        const handleIE = () => {
-          if(
-            !(window.navigator.userAgent.toLowerCase().indexOf('MSIE') === -1 
-            && window.navigator.userAgent.toLowerCase().indexOf('TRIDENT') === -1
-            )){
-              window.location.href = "https://www.microsoft.com/ja-JP/edge";
-            }
-        }
-        handleIE()
-        `
-      }
-      </script>
-      <script>{
-      //getIpClient()
-      }
-      </script>
     </Helmet>
   )
 }
